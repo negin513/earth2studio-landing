@@ -1,0 +1,93 @@
+site_name: NVIDIA Earth2Studio
+site_description: The AI inference engine for Earth — open-source toolkit for AI weather and climate models
+site_url: https://nvidia.github.io/earth2studio/
+repo_url: https://github.com/NVIDIA/earth2studio
+repo_name: NVIDIA/earth2studio
+
+theme:
+  name: material
+  custom_dir: overrides
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - content.code.annotate
+    - navigation.indexes
+    - navigation.path
+    - navigation.top
+    - navigation.footer
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+  font:
+    code: Roboto Mono
+  language: en
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: light
+      primary: custom
+      accent: lime
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: dark
+      primary: custom
+      accent: lime
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+  icon:
+    logo: nvidia/nvidia-logo
+    repo: fontawesome/brands/github
+
+extra_css:
+  - assets/css/color-schemes.css
+  - assets/css/fonts.css
+  - assets/css/custom-material.css
+
+
+plugins:
+  - search
+
+markdown_extensions:
+  - attr_list
+  - md_in_html
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+      options:
+        custom_icons:
+          - overrides/.icons
+  - pymdownx.tabbed:
+      alternate_style: true
+  - def_list
+  - admonition
+  - footnotes
+  - toc:
+      permalink: true
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/NVIDIA/earth2studio
+
+copyright: |
+  &copy; Copyright 2023-2026 NVIDIA CORPORATION &amp; AFFILIATES. All rights reserved.
+
+nav:
+  - Home: index.md
+  - User Guide:
+      - user-guide/index.md
+      - Models: user-guide/models.md
+      - Data: user-guide/data.md
+      - Workflows: user-guide/workflows.md
+      - Ecosystem: user-guide/ecosystem.md
+      - Verification: user-guide/verification.md
+  - Examples: examples/index.md
+  - Recipes: recipes/index.md
+  - Applications: applications/index.md
+  - Earth2Academy: earth2academy/index.md
