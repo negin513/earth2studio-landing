@@ -80,7 +80,7 @@ them without rewriting the rest.</p>
 
 <div class="grid cards e2s-cols-4" markdown>
 
-- :fontawesome-solid-earth-americas: **AI-Ready Earth System Data Sources**
+- :fontawesome-solid-satellite: **AI-Ready Earth System Data Sources**
 
     ---
 
@@ -302,7 +302,7 @@ model families powering national forecasting and digital-twin initiatives.</p>
     Benchmark models on identical data through one unified API, and
     verify results with built-in metrics.
 
-- :fontawesome-solid-satellite: **Met services & agencies**
+- :fontawesome-solid-satellite-dish: **Met services & agencies**
 
     ---
 
