@@ -250,13 +250,6 @@ model families powering national forecasting and digital-twin initiatives.</p>
   <span>Shanghai AI Lab</span>
 </div>
 
-| Model | Institution | Type |
-| --- | --- | --- |
-| FourCastNet 3 / SFNO | NVIDIA | Global prognostic |
-| GraphCast | Google DeepMind | Global prognostic |
-| Aurora | Microsoft | Global prognostic |
-| CorrDiff | NVIDIA | Downscaling diagnostic |
-
 <div class="e2s-centered" markdown>
 [Browse the full model zoo :octicons-arrow-right-24:](user-guide/models.md){ .md-button }
 </div>
