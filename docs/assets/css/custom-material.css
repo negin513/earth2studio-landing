@@ -711,3 +711,8 @@
   max-width: 720px !important;
   opacity: 0.85;
 }
+
+/* Audience grid: auto-fit, no orphan card */
+.md-typeset .grid.e2s-cols-fit {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}

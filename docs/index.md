@@ -268,42 +268,37 @@ photovoltaic prediction. <em>(As of NVIDIA's January 2026 announcement.)</em></p
 <!-- ═══ 9. WHO IT'S FOR ═══ -->
 ## Who it's for { .e2s-centered }
 
-<div class="grid cards" markdown>
+<div class="grid cards e2s-cols-fit" markdown>
 
 - :fontawesome-solid-microscope: **Scientists & researchers**
 
     ---
 
-    Benchmark models on identical data through one unified API, and
-    verify results with built-in metrics.
+    Benchmark models on identical data through one API; verify with built-in metrics.
 
 - :fontawesome-solid-satellite-dish: **Met services & agencies**
 
     ---
 
-    Sovereign forecasting capability — run, fine-tune, and deploy
-    independently, on infrastructure you control.
+    Run, fine-tune, and deploy forecasting capability on infrastructure you control.
 
 - :fontawesome-solid-building: **Enterprises**
 
     ---
 
-    Bring forecasting in-house. Run ensembles for risk quantification in
-    energy, insurance, logistics, and agriculture.
+    Ensembles for risk quantification in energy, insurance, logistics, and agriculture.
 
 - :fontawesome-solid-code: **Developers**
 
     ---
 
-    Build weather-aware products on a composable Python SDK — with
-    agent-ready skills for automated setup.
+    Weather-aware products on a composable Python SDK, with agent-ready skills.
 
 - :fontawesome-solid-graduation-cap: **Educators & students**
 
     ---
 
-    A free, open on-ramp to modern Earth system AI that runs on a
-    single GPU.
+    A free, open on-ramp to Earth system AI that runs on a single GPU.
 
 </div>
 
