@@ -117,6 +117,9 @@
       },
       "catalog": true,
       "checkpoint": "hf://nvidia/stormcast-v1-era5-hrrr@6c89a0877a0d6b231033d3b0d8b9828a6f833ed8",
+      "coords": {
+        "time_step_h": 1.0
+      },
       "extra": "stormcast",
       "grid": {
         "cadence": "1h"
@@ -1953,6 +1956,10 @@
       },
       "catalog": true,
       "checkpoint": "hf://nvidia/cbottle@eebd93c85b3cd3a5a8f79c546ed917b0b80438f4",
+      "coords": {
+        "degrees": 0.25,
+        "shape": "721\u00d71440"
+      },
       "extra": "cbottle",
       "grid": {
         "resolution": "100km"
@@ -1989,6 +1996,10 @@
       },
       "catalog": true,
       "checkpoint": "hf://nvidia/cbottle@eebd93c85b3cd3a5a8f79c546ed917b0b80438f4",
+      "coords": {
+        "degrees": 0.25,
+        "shape": "721\u00d71440"
+      },
       "extra": "cbottle",
       "name": "CBottleSR",
       "references": [
@@ -2052,6 +2063,10 @@
       },
       "catalog": true,
       "checkpoint": "ngc://models/nvidia/modulus/modulus_diagnostics@v0.1",
+      "coords": {
+        "degrees": 0.25,
+        "shape": "721\u00d71440"
+      },
       "extra": "climatenet",
       "name": "ClimateNet",
       "references": [
@@ -2116,6 +2131,10 @@
       },
       "catalog": true,
       "checkpoint": "hf://nvidia/corrdiff-cmip6-era5@f756fad5b85efec64df4868aead14dda698b8aea",
+      "coords": {
+        "history_h": 24.0,
+        "time_step_h": 24.0
+      },
       "extra": "corrdiff",
       "name": "CorrDiffCMIP6",
       "references": [
@@ -2174,6 +2193,10 @@
       },
       "catalog": true,
       "checkpoint": "ngc://models/nvidia/modulus/corrdiff_inference_package@1",
+      "coords": {
+        "degrees": 9.0,
+        "shape": "36\u00d740"
+      },
       "extra": "corrdiff",
       "name": "CorrDiffTaiwan",
       "references": [
@@ -2345,6 +2368,10 @@
       },
       "catalog": true,
       "checkpoint": "hf://jychoi-hpc/ORBIT-2@718625a11bc908633efc0ed2b6e5aac05af26a66",
+      "coords": {
+        "degrees": 0.25,
+        "shape": "721\u00d71440"
+      },
       "extra": "orbit",
       "name": "OrbitGlobalPrecip",
       "source_file": "earth2studio/models/dx/orbit2_precip.py",
@@ -2370,6 +2397,10 @@
       },
       "catalog": true,
       "checkpoint": "ngc://models/nvidia/modulus/modulus_diagnostics@v0.1",
+      "coords": {
+        "degrees": 0.25,
+        "shape": "720\u00d71440"
+      },
       "extra": null,
       "grid": {
         "cadence": "6h",
@@ -2403,6 +2434,10 @@
       },
       "catalog": true,
       "checkpoint": "ngc://models/nvidia/earth-2/afno_dx_tp-v1-era5@v0.1.0",
+      "coords": {
+        "degrees": 0.25,
+        "shape": "720\u00d71440"
+      },
       "extra": null,
       "grid": {
         "cadence": "6h",
@@ -2436,6 +2471,10 @@
       },
       "catalog": true,
       "checkpoint": "ngc://models/nvidia/earth-2/afno_dx_sr-v1-era5@1.0.0",
+      "coords": {
+        "degrees": 0.25,
+        "shape": "721\u00d71440"
+      },
       "extra": "solarradiation-afno",
       "grid": {
         "cadence": "1h"
@@ -2464,6 +2503,10 @@
       },
       "catalog": true,
       "checkpoint": "ngc://models/nvidia/earth-2/afno_dx_sr-v1-era5@1.0.0",
+      "coords": {
+        "degrees": 0.25,
+        "shape": "721\u00d71440"
+      },
       "extra": "solarradiation-afno",
       "grid": {
         "cadence": "6h"
@@ -2513,6 +2556,10 @@
         ]
       },
       "catalog": true,
+      "coords": {
+        "degrees": 0.25,
+        "shape": "721\u00d71440"
+      },
       "extra": null,
       "name": "TCTrackerVitart",
       "references": [
@@ -2537,6 +2584,10 @@
         ]
       },
       "catalog": true,
+      "coords": {
+        "degrees": 0.25,
+        "shape": "721\u00d71440"
+      },
       "extra": null,
       "name": "TCTrackerWuDuan",
       "references": [
@@ -2565,6 +2616,10 @@
       },
       "catalog": true,
       "checkpoint": "ngc://models/nvidia/earth-2/afno_dx_wg-v1-era5@v0.1.0",
+      "coords": {
+        "degrees": 0.25,
+        "shape": "720\u00d71440"
+      },
       "extra": "windgust-afno",
       "grid": {
         "resolution": "0.25\u00b0"
@@ -2998,10 +3053,17 @@
       },
       "catalog": true,
       "checkpoint": "hf://ecmwf/aifs-single-1.1",
+      "coords": {
+        "degrees": 0.25,
+        "history_h": 6.0,
+        "shape": "721\u00d71440",
+        "time_step_h": 6.0
+      },
       "extra": "aifs",
       "grid": {
         "cadence": "6h"
       },
+      "license_restricted": true,
       "name": "AIFS",
       "references": [
         "https://arxiv.org/abs/2406.01465",
@@ -3038,10 +3100,17 @@
       },
       "catalog": true,
       "checkpoint": "hf://ecmwf/aifs-single-2.0@08286fc247419bc40666226c816ad4ac686d2a8b",
+      "coords": {
+        "degrees": 0.25,
+        "history_h": 6.0,
+        "shape": "721\u00d71440",
+        "time_step_h": 6.0
+      },
       "extra": "aifs2",
       "grid": {
         "cadence": "6h"
       },
+      "license_restricted": true,
       "name": "AIFS2",
       "references": [
         "https://arxiv.org/abs/2509.18994",
@@ -3078,7 +3147,14 @@
       },
       "catalog": true,
       "checkpoint": "hf://ecmwf/aifs-ens-2.0@29a1f8c4ab76cd0e5b64cfd415f4ff9e08edf7cf",
+      "coords": {
+        "degrees": 0.25,
+        "history_h": 6.0,
+        "shape": "721\u00d71440",
+        "time_step_h": 6.0
+      },
       "extra": "aifs2ens",
+      "license_restricted": true,
       "name": "AIFS2ENS",
       "references": [
         "https://arxiv.org/abs/2506.10868",
@@ -3114,10 +3190,17 @@
       },
       "catalog": true,
       "checkpoint": "hf://ecmwf/aifs-ens-1.0",
+      "coords": {
+        "degrees": 0.25,
+        "history_h": 6.0,
+        "shape": "721\u00d71440",
+        "time_step_h": 6.0
+      },
       "extra": "aifsens",
       "grid": {
         "cadence": "6h"
       },
+      "license_restricted": true,
       "name": "AIFSENS",
       "references": [
         "https://arxiv.org/abs/2406.01465",
@@ -3151,6 +3234,10 @@
       },
       "catalog": true,
       "checkpoint": "hf://nvidia/atlas-era5@fdce0480c5e6f03d409089bf285f4bcc1d84519e",
+      "coords": {
+        "degrees": 0.25,
+        "shape": "721\u00d71440"
+      },
       "extra": "atlas",
       "name": "Atlas",
       "source_file": "earth2studio/models/px/atlas.py",
@@ -3179,11 +3266,18 @@
       },
       "catalog": true,
       "checkpoint": "hf://microsoft/aurora@refs%2Fpr%2F1",
+      "coords": {
+        "degrees": 0.25,
+        "history_h": 6.0,
+        "shape": "720\u00d71440",
+        "time_step_h": 6.0
+      },
       "extra": "aurora",
       "grid": {
         "cadence": "6h",
         "resolution": "0.25\u00b0"
       },
+      "license_restricted": true,
       "name": "Aurora",
       "references": [
         "https://arxiv.org/abs/2405.13063",
@@ -3220,11 +3314,18 @@
       },
       "catalog": true,
       "checkpoint": "hf://microsoft/aurora@c171214768997594e1a3fc6b8d9bbb489e9d21ab",
+      "coords": {
+        "degrees": 0.25,
+        "history_h": 6.0,
+        "shape": "720\u00d71440",
+        "time_step_h": 1.0
+      },
       "extra": "aurora",
       "grid": {
         "cadence": "6h",
         "resolution": "0.25\u00b0"
       },
+      "license_restricted": true,
       "name": "Aurora1p5",
       "references": [
         "https://arxiv.org/abs/2405.13063",
@@ -3261,10 +3362,17 @@
       },
       "catalog": true,
       "checkpoint": "hf://microsoft/aurora@c171214768997594e1a3fc6b8d9bbb489e9d21ab",
+      "coords": {
+        "degrees": 0.25,
+        "history_h": 6.0,
+        "shape": "720\u00d71440",
+        "time_step_h": 1.0
+      },
       "extra": "aurora",
       "grid": {
         "resolution": "0.25\u00b0"
       },
+      "license_restricted": true,
       "name": "Aurora1p5Ensemble",
       "references": [
         "https://arxiv.org/abs/2405.13063",
@@ -3299,6 +3407,10 @@
       },
       "catalog": true,
       "checkpoint": "hf://nvidia/cbottle@eebd93c85b3cd3a5a8f79c546ed917b0b80438f4",
+      "coords": {
+        "degrees": 0.25,
+        "shape": "721\u00d71440"
+      },
       "extra": "cbottle",
       "name": "CBottleVideo",
       "references": [
@@ -3454,6 +3566,12 @@
       },
       "catalog": true,
       "checkpoint": "ngc://models/nvidia/modulus/modulus_dlwp_cubesphere@v0.2",
+      "coords": {
+        "degrees": 0.25,
+        "history_h": 6.0,
+        "shape": "721\u00d71440",
+        "time_step_h": 6.0
+      },
       "extra": "dlwp",
       "grid": {
         "cadence": "6h"
@@ -3503,6 +3621,11 @@
       },
       "catalog": true,
       "checkpoint": "hf://nvidia/fourcastnet1@c67a63995f6c8e0e557eb3d791f32f437e9b02d5",
+      "coords": {
+        "degrees": 0.25,
+        "shape": "720\u00d71440",
+        "time_step_h": 6.0
+      },
       "extra": "fcn",
       "grid": {
         "cadence": "6h",
@@ -3538,6 +3661,11 @@
       },
       "catalog": true,
       "checkpoint": "hf://nvidia/fourcastnet3@76ef0c60237e458b33196ba027134e27f3fc4538",
+      "coords": {
+        "degrees": 0.25,
+        "shape": "721\u00d71440",
+        "time_step_h": 6.0
+      },
       "extra": "fcn3",
       "name": "FCN3",
       "references": [
@@ -3571,6 +3699,12 @@
       },
       "catalog": true,
       "checkpoint": "hf://NickGeneva/earth_ai/fengwu",
+      "coords": {
+        "degrees": 0.25,
+        "history_h": 6.0,
+        "shape": "721\u00d71440",
+        "time_step_h": 6.0
+      },
       "extra": "fengwu",
       "grid": {
         "cadence": "6h",
@@ -3607,6 +3741,12 @@
       },
       "catalog": true,
       "checkpoint": "hf://NickGeneva/earth_ai/fuxi",
+      "coords": {
+        "degrees": 0.25,
+        "history_h": 6.0,
+        "shape": "721\u00d71440",
+        "time_step_h": 6.0
+      },
       "extra": "fuxi",
       "grid": {
         "cadence": "6h",
@@ -3643,7 +3783,12 @@
         ]
       },
       "catalog": true,
+      "coords": {
+        "history_h": 12.0,
+        "time_step_h": 12.0
+      },
       "extra": "gencast",
+      "license_restricted": true,
       "name": "GenCastMini",
       "references": [
         "https://arxiv.org/abs/2312.15796",
@@ -3675,7 +3820,14 @@
         ]
       },
       "catalog": true,
+      "coords": {
+        "degrees": 0.25,
+        "history_h": 6.0,
+        "shape": "721\u00d71440",
+        "time_step_h": 6.0
+      },
       "extra": "graphcast",
+      "license_restricted": true,
       "name": "GraphCastOperational",
       "references": [
         "https://arxiv.org/abs/2212.12794",
@@ -3707,10 +3859,17 @@
         ]
       },
       "catalog": true,
+      "coords": {
+        "degrees": 1.0,
+        "history_h": 6.0,
+        "shape": "181\u00d7360",
+        "time_step_h": 6.0
+      },
       "extra": "graphcast",
       "grid": {
         "resolution": "1.0\u00b0"
       },
+      "license_restricted": true,
       "name": "GraphCastSmall",
       "references": [
         "https://arxiv.org/abs/2212.12794",
@@ -3742,6 +3901,11 @@
       },
       "catalog": true,
       "checkpoint": "ngc://models/nvidia/earth-2/afno_dx_fi-v1-era5@v0.1.0",
+      "coords": {
+        "degrees": 0.25,
+        "shape": "720\u00d71440",
+        "time_step_h": 1.0
+      },
       "extra": "interp-modafno",
       "grid": {
         "cadence": "1h",
@@ -3777,11 +3941,17 @@
         ]
       },
       "catalog": true,
+      "coords": {
+        "degrees": 0.25,
+        "shape": "721\u00d71440",
+        "time_step_h": 24.0
+      },
       "extra": "pangu",
       "grid": {
         "cadence": "24h",
         "resolution": "0.25\u00b0"
       },
+      "license_restricted": true,
       "name": "Pangu24",
       "references": [
         "https://doi.org/10.1038/s41586-023-06185-3",
@@ -3812,11 +3982,17 @@
         ]
       },
       "catalog": true,
+      "coords": {
+        "degrees": 0.25,
+        "shape": "721\u00d71440",
+        "time_step_h": 3.0
+      },
       "extra": "pangu",
       "grid": {
         "cadence": "3h",
         "resolution": "0.25\u00b0"
       },
+      "license_restricted": true,
       "name": "Pangu3",
       "references": [
         "https://doi.org/10.1038/s41586-023-06185-3",
@@ -3847,11 +4023,17 @@
         ]
       },
       "catalog": true,
+      "coords": {
+        "degrees": 0.25,
+        "shape": "721\u00d71440",
+        "time_step_h": 6.0
+      },
       "extra": "pangu",
       "grid": {
         "cadence": "6h",
         "resolution": "0.25\u00b0"
       },
+      "license_restricted": true,
       "name": "Pangu6",
       "references": [
         "https://doi.org/10.1038/s41586-023-06185-3",
@@ -3902,6 +4084,11 @@
       },
       "catalog": true,
       "checkpoint": "ngc://models/nvidia/modulus/sfno_73ch_small@0.1.0",
+      "coords": {
+        "degrees": 0.25,
+        "shape": "721\u00d71440",
+        "time_step_h": 6.0
+      },
       "extra": "sfno",
       "grid": {
         "cadence": "6h",
@@ -3939,6 +4126,9 @@
       },
       "catalog": true,
       "checkpoint": "hf://nvidia/stormcast-v1-era5-hrrr@6c89a0877a0d6b231033d3b0d8b9828a6f833ed8",
+      "coords": {
+        "time_step_h": 1.0
+      },
       "extra": "stormcast",
       "grid": {
         "cadence": "1h"
@@ -3975,6 +4165,9 @@
       },
       "catalog": true,
       "checkpoint": "hf://nvidia/stormcast-conus@bc8dd783f96fe0fa75fcff5bb67f66b549a5299f",
+      "coords": {
+        "time_step_h": 1.0
+      },
       "extra": "stormcast-conus",
       "name": "StormCastCONUS",
       "references": [
@@ -4055,6 +4248,10 @@
       },
       "catalog": true,
       "checkpoint": "hf://salv47/u-cast@775f2974b52b5beb8945ac3c60212ca25e0a13f5",
+      "coords": {
+        "degrees": 1.5,
+        "shape": "121\u00d7240"
+      },
       "extra": "ucast",
       "grid": {
         "resolution": "1.5\u00b0"

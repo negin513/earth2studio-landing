@@ -151,6 +151,127 @@ def parse_grid(docstring: str) -> dict[str, str]:
     return out
 
 
+LICENSE_SENTENCE = "We encourage users to familiarize themselves with the license restrictions"
+UNIT_HOURS = {"h": 1.0, "m": 1 / 60, "s": 1 / 3600, "D": 24.0, "W": 168.0}
+
+
+def _coord_dicts(class_node: ast.ClassDef) -> list[ast.Dict]:
+    """CoordSystem dict literals inside the class (those with a 'variable' or
+    'lead_time' key) — these carry the grid, variables, and time step."""
+    found = []
+    for node in ast.walk(class_node):
+        if not isinstance(node, ast.Dict):
+            continue
+        keys = {k.value for k in node.keys if isinstance(k, ast.Constant)}
+        if "variable" in keys or "lead_time" in keys:
+            found.append(node)
+    return found
+
+
+def _dict_value(node: ast.Dict, key: str) -> ast.AST | None:
+    for k, v in zip(node.keys, node.values):
+        if isinstance(k, ast.Constant) and k.value == key:
+            return v
+    return None
+
+
+def _timedeltas(node: ast.AST) -> list[float]:
+    """Every np.timedelta64(value, unit) under a node, in hours."""
+    out = []
+    for sub in ast.walk(node):
+        if not isinstance(sub, ast.Call):
+            continue
+        fn = sub.func
+        name = fn.attr if isinstance(fn, ast.Attribute) else getattr(fn, "id", "")
+        if name != "timedelta64" or len(sub.args) < 2:
+            continue
+        try:
+            value = ast.literal_eval(sub.args[0])
+            unit = ast.literal_eval(sub.args[1])
+        except (ValueError, SyntaxError):
+            continue
+        if unit in UNIT_HOURS:
+            out.append(float(value) * UNIT_HOURS[unit])
+    return out
+
+
+def _override_step(class_node: ast.ClassDef) -> float | None:
+    """Time step set by assignment rather than in a coord literal.
+
+    Pangu24/Pangu6/Pangu3 inherit PanguBase's 6h coord dict and then reassign
+    ``self._output_coords["lead_time"]`` in ``__init__`` — without this, a
+    subclass would inherit the base's step and be reported wrongly.
+    """
+    steps: list[float] = []
+    for node in ast.walk(class_node):
+        if not isinstance(node, ast.Assign):
+            continue
+        for target in node.targets:
+            if not isinstance(target, ast.Subscript):
+                continue
+            key = target.slice
+            if not (isinstance(key, ast.Constant) and key.value == "lead_time"):
+                continue
+            value = target.value
+            attr = getattr(value, "attr", "")
+            if "output_coords" not in attr:
+                continue
+            steps.extend(d for d in _timedeltas(node.value) if d > 0)
+    return min(steps) if steps else None
+
+
+def parse_coords(class_node: ast.ClassDef) -> dict[str, Any]:
+    """Time step, history requirement, and grid shape from the coord systems.
+
+    Deliberately conservative: only literal np.linspace/timedelta64 calls are read.
+    Anything computed at load time (AIFS resolves its variables from checkpoint
+    metadata) is left absent rather than guessed.
+    """
+    out: dict[str, Any] = {}
+    steps: list[float] = []
+    history: list[float] = []
+
+    for coord in _coord_dicts(class_node):
+        lead = _dict_value(coord, "lead_time")
+        if lead is not None:
+            deltas = _timedeltas(lead)
+            positive = [d for d in deltas if d > 0]
+            negative = [d for d in deltas if d < 0]
+            steps.extend(positive)
+            history.extend(negative)
+
+        # Grid: np.linspace(90, -90, N) on lat / lon
+        if "shape" not in out:
+            lat, lon = _dict_value(coord, "lat"), _dict_value(coord, "lon")
+            dims = [_linspace_n(lat), _linspace_n(lon)]
+            if all(dims):
+                out["shape"] = f"{dims[0]}\u00d7{dims[1]}"
+                # 0.25deg on a 721-row grid includes both poles; 720 excludes the south
+                out["degrees"] = round(360 / dims[1], 4)
+
+    if steps:
+        out["time_step_h"] = min(steps)
+    if history:
+        out["history_h"] = abs(min(history))
+    return out
+
+
+def _linspace_n(node: ast.AST | None) -> int | None:
+    """The point count from an np.linspace(...) / np.arange-style coordinate."""
+    if node is None:
+        return None
+    for sub in ast.walk(node):
+        if isinstance(sub, ast.Call):
+            fn = sub.func
+            name = fn.attr if isinstance(fn, ast.Attribute) else getattr(fn, "id", "")
+            if name == "linspace" and len(sub.args) >= 3:
+                try:
+                    return int(ast.literal_eval(sub.args[2]))
+                except (ValueError, SyntaxError, TypeError):
+                    return None
+    return None
+
+
 def parse_default_package(class_node: ast.ClassDef) -> str | None:
     """Default checkpoint URI from ``load_default_package()``.
 
@@ -167,6 +288,41 @@ def parse_default_package(class_node: ast.ClassDef) -> str | None:
     return None
 
 
+def _inherited_coords(
+    class_node: ast.ClassDef, by_name: dict[str, ast.ClassDef]
+) -> dict[str, Any]:
+    """Walk same-file base classes for coords.
+
+    Eight catalog classes define no coords of their own (Pangu24/6/3 -> PanguBase,
+    StormScopeGOES/MRMS -> StormScopeBase, DLESyMLatLon -> DLESyM, ...).
+    """
+    seen: set[str] = set()
+    queue = [b.id for b in class_node.bases if isinstance(b, ast.Name)]
+    while queue:
+        name = queue.pop(0)
+        if name in seen or name not in by_name:
+            continue
+        seen.add(name)
+        base = by_name[name]
+        coords = parse_coords(base)
+        if coords:
+            return coords
+        queue.extend(b.id for b in base.bases if isinstance(b, ast.Name))
+    return {}
+
+
+def _resolve_coords(
+    class_node: ast.ClassDef, by_name: dict[str, ast.ClassDef]
+) -> dict[str, Any]:
+    """Class coords, falling back to same-file bases, with subclass step overrides."""
+    coords = parse_coords(class_node) or _inherited_coords(class_node, by_name)
+    override = _override_step(class_node)
+    if override is not None:
+        coords = dict(coords)
+        coords["time_step_h"] = override
+    return coords
+
+
 def scan_module(source: Path, module: str) -> dict[str, dict[str, Any]]:
     """Class name -> metadata for every class defined under ``earth2studio/<module>/``."""
     found: dict[str, dict[str, Any]] = {}
@@ -177,6 +333,7 @@ def scan_module(source: Path, module: str) -> dict[str, dict[str, Any]]:
             tree = ast.parse(py.read_text())
         except SyntaxError:
             continue
+        by_name = {n.name: n for n in tree.body if isinstance(n, ast.ClassDef)}
         for node in tree.body:
             if not isinstance(node, ast.ClassDef):
                 continue
@@ -189,6 +346,7 @@ def scan_module(source: Path, module: str) -> dict[str, dict[str, Any]]:
                 "references": parse_references(doc),
                 "warning": parse_warning(doc),
                 "grid": parse_grid(doc),
+                "coords": _resolve_coords(node, by_name),
                 "source_file": f"earth2studio/{module}/{py.name}",
             }
     return found
@@ -327,8 +485,12 @@ def build(source: Path) -> dict[str, Any]:
                 entry["references"] = meta["references"]
             if meta.get("warning"):
                 entry["warning"] = meta["warning"]
+                if meta["warning"].startswith(LICENSE_SENTENCE):
+                    entry["license_restricted"] = True
             if meta.get("grid"):
                 entry["grid"] = meta["grid"]
+            if meta.get("coords"):
+                entry["coords"] = meta["coords"]
             if key == "data_sources":
                 nvars = variables.get(f"{name}Lexicon")
                 if nvars:

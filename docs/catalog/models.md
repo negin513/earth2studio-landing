@@ -25,7 +25,7 @@ predict the next state and roll forward to build a forecast.
 
 <div class="e2s-table">
 <table class="e2s-rows">
-<thead><tr><th>Model</th><th>Coverage</th><th>Type</th><th>Products</th><th>Rec. VRAM</th><th>Install</th><th>Checkpoint</th><th>Refs</th></tr></thead>
+<thead><tr><th>Model</th><th>Coverage</th><th>Type</th><th>Step</th><th>Grid</th><th>Init</th><th>Products</th><th>Rec. VRAM</th><th>Install</th><th>Refs</th></tr></thead>
 <tbody>
 {%- for m in entries('prognostic') %}
 <tr data-href="https://nvidia.github.io/earth2studio/modules/generated/models/px/earth2studio.models.px.{{ m.name }}.html"
@@ -35,11 +35,13 @@ predict the next state and roll forward to build a forecast.
 <td><code>{{ m.name }}</code></td>
 <td>{{ m.badges.region | join(', ') | upper if m.badges.region else '—' }}</td>
 <td>{{ m.badges['class'] | join(', ') | upper if m.badges['class'] else '—' }}</td>
+<td>{% if m.coords and m.coords.time_step_h %}{{ m.coords.time_step_h | int }}h{% else %}—{% endif %}</td>
+<td>{% if m.coords and m.coords.shape %}<span title="{{ m.coords.degrees }}° resolution">{{ m.coords.shape }}</span>{% else %}—{% endif %}</td>
+<td>{% if m.coords and m.coords.history_h %}<span title="requires {{ m.coords.history_h | int }}h of prior state">+{{ m.coords.history_h | int }}h hist</span>{% else %}single{% endif %}</td>
 <td>{{ m.badges['product'] | join(', ') if m.badges['product'] else '—' }}</td>
 <td>{{ m.badges.gpu | join(', ') | upper if m.badges.gpu else '—' }}</td>
 <td>{% if m.extra %}<code>[{{ m.extra }}]</code>{% else %}—{% endif %}</td>
-<td>{% if m.checkpoint %}<code>{{ m.checkpoint.split('@')[0] }}</code>{% else %}—{% endif %}</td>
-<td class="e2s-refs">{% for r in m.references %}{% if 'arxiv' in r %}<a href="{{ r }}" title="Paper">📄</a>{% elif 'huggingface' in r %}<a href="{{ r }}" title="Hugging Face">🤗</a>{% elif 'ngc' in r %}<a href="{{ r }}" title="NGC">NGC</a>{% elif 'github' in r %}<a href="{{ r }}" title="GitHub">⌥</a>{% endif %}{% endfor %}{% if m.warning %}<span class="e2s-warn" title="{{ m.warning | truncate(220) | e }}">⚠</span>{% endif %}</td>
+<td class="e2s-refs">{% for r in m.references %}{% if 'arxiv' in r %}<a href="{{ r }}" title="Paper">📄</a>{% elif 'huggingface' in r %}<a href="{{ r }}" title="Hugging Face">🤗</a>{% elif 'ngc' in r %}<a href="{{ r }}" title="NGC">NGC</a>{% elif 'github' in r %}<a href="{{ r }}" title="GitHub">⌥</a>{% endif %}{% endfor %}{% if m.license_restricted %}<span class="e2s-warn" title="Checkpoint has license restrictions — review before use">⚠</span>{% elif m.warning %}<span class="e2s-warn" title="{{ m.warning | truncate(200) | e }}">ⓘ</span>{% endif %}</td>
 </tr>
 {%- endfor %}
 </tbody>
@@ -66,7 +68,7 @@ downscaling to higher resolution, cyclone tracking, and other decision-ready var
 <td>{{ m.badges['product'] | join(', ') if m.badges['product'] else '—' }}</td>
 <td>{{ m.badges.gpu | join(', ') | upper if m.badges.gpu else '—' }}</td>
 <td>{% if m.extra %}<code>[{{ m.extra }}]</code>{% else %}—{% endif %}</td>
-<td class="e2s-refs">{% for r in m.references %}{% if 'arxiv' in r %}<a href="{{ r }}" title="Paper">📄</a>{% elif 'huggingface' in r %}<a href="{{ r }}" title="Hugging Face">🤗</a>{% elif 'ngc' in r %}<a href="{{ r }}" title="NGC">NGC</a>{% elif 'github' in r %}<a href="{{ r }}" title="GitHub">⌥</a>{% endif %}{% endfor %}{% if m.warning %}<span class="e2s-warn" title="{{ m.warning | truncate(220) | e }}">⚠</span>{% endif %}</td>
+<td class="e2s-refs">{% for r in m.references %}{% if 'arxiv' in r %}<a href="{{ r }}" title="Paper">📄</a>{% elif 'huggingface' in r %}<a href="{{ r }}" title="Hugging Face">🤗</a>{% elif 'ngc' in r %}<a href="{{ r }}" title="NGC">NGC</a>{% elif 'github' in r %}<a href="{{ r }}" title="GitHub">⌥</a>{% endif %}{% endfor %}{% if m.license_restricted %}<span class="e2s-warn" title="Checkpoint has license restrictions — review before use">⚠</span>{% elif m.warning %}<span class="e2s-warn" title="{{ m.warning | truncate(200) | e }}">ⓘ</span>{% endif %}</td>
 </tr>
 {%- endfor %}
 </tbody>
@@ -99,7 +101,9 @@ downscaling to higher resolution, cyclone tracking, and other decision-ready var
 **Legend** — *Type*: MRF medium-range forecast · NWC nowcasting · DS downscaling ·
 S2S subseasonal-to-seasonal · CM climate · DA data assimilation.
 *Install*: the pip extra, e.g. `pip install earth2studio[fcn3]`.
-*Refs*: 📄 paper · 🤗 Hugging Face · NGC catalog · ⌥ GitHub · ⚠ licensing note (hover).
+*Step*: model integration step. *Grid*: native output grid (hover for degrees).
+*Init*: `single` needs one atmospheric state; `+Nh hist` needs N hours of prior state too.
+*Refs*: 📄 paper · 🤗 Hugging Face · NGC catalog · ⌥ GitHub · ⚠ checkpoint license restrictions · ⓘ other caveat (hover).
 Click any row to open its API reference.
 
 [Full API reference :octicons-arrow-right-24:](https://nvidia.github.io/earth2studio/modules/models_px.html){ .md-button }
