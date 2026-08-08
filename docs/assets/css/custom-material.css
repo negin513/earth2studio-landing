@@ -647,3 +647,51 @@
 .md-typeset table:not([class]) {
   margin-inline: auto;
 }
+
+/* Long uv command chip: wrap gracefully */
+.e2s-pip code {
+  display: inline-block;
+  line-height: 1.6;
+  max-width: 100%;
+  white-space: normal;
+  word-break: break-all;
+}
+
+/* Institution logo strip */
+.e2s-logos {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.6rem 3rem;
+  justify-content: center;
+  margin: 1.8rem auto 2.4rem;
+  max-width: 900px;
+}
+
+.e2s-logos img {
+  border: none !important;
+  border-radius: 0 !important;
+  filter: grayscale(1) opacity(0.62);
+  height: 2rem;
+  max-width: 8.5rem;
+  object-fit: contain;
+  transition: filter 0.2s ease;
+  width: auto;
+}
+
+.e2s-logos img:hover { filter: grayscale(0) opacity(1); }
+
+[data-md-color-scheme="dark"] .e2s-logos img {
+  filter: grayscale(1) invert(1) opacity(0.7);
+}
+
+[data-md-color-scheme="dark"] .e2s-logos img:hover {
+  filter: grayscale(0) invert(0) opacity(1);
+}
+
+.e2s-logos span {
+  color: var(--md-default-fg-color--light);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}

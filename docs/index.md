@@ -20,7 +20,7 @@ AI-ready data, and GPU-accelerated pipelines, behind one API.
 [Get started](user-guide/index.md){ .md-button .md-button--primary }
 [Learn more](#why-it-matters){ .md-button }
 
-<p class="e2s-pip"><code>pip install earth2studio</code>
+<p class="e2s-pip"><code>uv add "earth2studio @ git+https://github.com/NVIDIA/earth2studio.git@0.17.0"</code>
 <span class="e2s-pip__ver">v0.17.0 · July 2026</span></p>
 
 </div>
@@ -239,15 +239,15 @@ Graduate from a notebook to recipes like huge ensembles and S2S forecasting.
 models developed by research teams across industry and academia — the same
 model families powering national forecasting and digital-twin initiatives.</p>
 
-<div class="e2s-orgs">
-  <span>NVIDIA</span>
-  <span>Google DeepMind</span>
-  <span>ECMWF</span>
-  <span>Microsoft</span>
-  <span>Huawei</span>
-  <span>Fudan University</span>
+<div class="e2s-logos">
+  <img src="assets/images/logos/nvidia.svg" alt="NVIDIA" title="NVIDIA">
+  <img src="assets/images/logos/deepmind.svg" alt="Google DeepMind" title="Google DeepMind">
+  <img src="assets/images/logos/ecmwf.svg" alt="ECMWF" title="ECMWF">
+  <img src="assets/images/logos/microsoft.svg" alt="Microsoft" title="Microsoft">
+  <img src="assets/images/logos/huawei.svg" alt="Huawei" title="Huawei">
+  <img src="assets/images/logos/fudan.svg" alt="Fudan University" title="Fudan University">
+  <img src="assets/images/logos/ai2.svg" alt="Allen Institute for AI" title="Allen Institute for AI">
   <span>Shanghai AI Lab</span>
-  <span>Allen Institute for AI</span>
 </div>
 
 | Model | Institution | Type |
