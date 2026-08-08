@@ -332,19 +332,6 @@ model families powering national forecasting and digital-twin initiatives.</p>
 
 </div>
 
-<!-- ═══ 10. SOVEREIGNTY BAND ═══ -->
-<div class="e2s-bleed e2s-sov" markdown>
-
-## Your models. Your data. Your GPUs. { .e2s-sov__title }
-
-Earth2Studio is open source and runs where you run — no queue, no service
-tier, no data leaving your site.
-
-[Get started :octicons-arrow-right-24:](user-guide/index.md){ .md-button .md-button--primary }
-[Browse examples](examples/index.md){ .md-button }
-
-</div>
-
 <!-- ═══ 11. CITATION + MISSION ═══ -->
 ## Citing Earth2Studio { .e2s-centered }
 

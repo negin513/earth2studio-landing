@@ -603,45 +603,6 @@
   margin: 0 !important;
 }
 
-/* Sovereignty band */
-.e2s-sov {
-  background:
-    radial-gradient(ellipse 70% 100% at 50% 0%, rgba(118, 185, 0, 0.16) 0%, transparent 70%),
-    #141810;
-  margin-top: 3.2rem;
-  padding-block: 3.6rem 4rem;
-  text-align: center;
-}
-
-.e2s-sov__title {
-  color: #fff !important;
-  font-size: clamp(1.5rem, 3vw, 2.1rem) !important;
-  margin-top: 0 !important;
-}
-
-.e2s-sov p {
-  color: rgba(255, 255, 255, 0.7);
-  margin: 0 auto 1.8rem;
-  max-width: 560px;
-}
-
-.e2s-sov .md-button {
-  border-color: rgba(255, 255, 255, 0.35);
-  color: #fff;
-  margin: 0 0.3rem;
-}
-
-.e2s-sov .md-button:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-  border-color: #fff;
-  color: #fff;
-}
-
-.e2s-sov .md-button--primary,
-.e2s-sov .md-button--primary:hover {
-  border-color: var(--md-primary-fg-color);
-  color: #000;
-}
 
 /* Institutions teaser table centered */
 .md-typeset table:not([class]) {
