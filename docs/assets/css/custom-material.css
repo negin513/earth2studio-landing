@@ -709,41 +709,6 @@
   .md-typeset .grid.e2s-cols-4 { grid-template-columns: 1fr; }
 }
 
-/* Card media: satellite image in the data pillar */
-.md-typeset .e2s-card-img {
-  aspect-ratio: 16 / 10;
-  border: none !important;
-  border-radius: 8px !important;
-  display: block;
-  margin: 0 0 0.8em;
-  object-fit: cover;
-  object-position: center 30%;
-  width: 100%;
-}
-
-/* Mini model grid in the zoo pillar */
-.md-typeset p.e2s-minigrid,
-.e2s-minigrid {
-  display: grid;
-  gap: 6px;
-  grid-template-columns: repeat(3, 1fr);
-  margin-bottom: 0.9em;
-}
-
-.e2s-minigrid span {
-  background: var(--md-code-bg-color);
-  border: 1px solid var(--md-default-fg-color--lightest);
-  border-radius: 6px;
-  color: var(--md-default-fg-color--light);
-  font-size: 0.62rem;
-  font-weight: 700;
-  overflow: hidden;
-  padding: 0.5em 0.2em;
-  text-align: center;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
 /* Count badge at card bottom */
 .e2s-count {
   color: var(--md-primary-fg-color);

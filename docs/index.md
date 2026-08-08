@@ -84,8 +84,6 @@ them without rewriting the rest.</p>
 
     ---
 
-    ![Full-disk satellite view of Earth from GOES-16](assets/images/satellite.jpg){ .e2s-card-img }
-
     Reanalysis, operational forecasts, and satellite and in-situ
     observations — analysis-ready and cloud-optimized, streamed on demand.
 
@@ -97,11 +95,9 @@ them without rewriting the rest.</p>
 
     ---
 
-    <span>SFNO</span><span>FourCastNet&nbsp;3</span><span>GraphCast</span><span>Aurora</span><span>Pangu</span><span>AIFS</span><span>FuXi</span><span>FengWu</span><span>StormCast</span><span>GenCast</span><span>DLWP</span><span>CorrDiff</span>
-    { .e2s-minigrid }
-
     The largest open collection of prognostic and diagnostic Earth system
-    AI models, with automatic checkpoint fetching.
+    AI models — from medium-range weather to subseasonal scales — with
+    automatic checkpoint fetching.
 
     [Explore models →](user-guide/models.md)
 
