@@ -302,21 +302,26 @@ photovoltaic prediction. <em>(As of NVIDIA's January 2026 announcement.)</em></p
 
 </div>
 
-<!-- ═══ 11. CITATION + MISSION ═══ -->
-## Citing Earth2Studio { .e2s-centered }
-
-```bibtex
-@software{earth2studio2024,
-  author  = {{Earth2Studio Contributors}},
-  title   = {{NVIDIA Earth2Studio}},
-  url     = {https://github.com/NVIDIA/earth2studio},
-  year    = {2024}
-}
-```
-
+<!-- ═══ CLOSING CTA ═══ -->
 <div class="e2s-centered" markdown>
+
+## Ready to run your first forecast?
 
 *Our mission is to enable everyone to build, research, and explore AI-driven
 weather and climate science.*
 
+[Get started](#quickstart){ .md-button .md-button--primary }
+[Browse examples :octicons-link-external-16:](https://nvidia.github.io/earth2studio/examples/){ .md-button }
+
 </div>
+
+??? note "Cite Earth2Studio"
+
+    ```bibtex
+    @software{earth2studio2024,
+      author  = {{Earth2Studio Contributors}},
+      title   = {{NVIDIA Earth2Studio}},
+      url     = {https://github.com/NVIDIA/earth2studio},
+      year    = {2024}
+    }
+    ```

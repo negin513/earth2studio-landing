@@ -202,22 +202,9 @@
 }
 
 /* Zarr.dev-style centered hero */
-.md-typeset h1.e2s-center-title {
-  font-size: 2.6rem;
-  font-weight: 700;
-  margin-bottom: 0.4em;
-  text-align: center;
-}
 
-.e2s-hero-min {
-  margin: 0 auto 2.5em;
-  max-width: 640px;
-  text-align: center;
-}
 
-.e2s-hero-min p { font-size: 1.02rem; line-height: 1.7; }
 
-.e2s-hero-min .md-button { margin: 0.3em 0.35em; }
 
 /* Emoji card icons a touch larger */
 .md-typeset .grid.cards > ul > li > p:first-child .twemoji {
@@ -504,18 +491,6 @@
 }
 
 /* Institutions strip */
-.e2s-orgs {
-  color: var(--md-default-fg-color--light);
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem 2.4rem;
-  font-size: 0.82rem;
-  font-weight: 600;
-  justify-content: center;
-  letter-spacing: 0.05em;
-  margin-block: 1.4rem 0;
-  text-transform: uppercase;
-}
 
 /* Center section intros */
 .e2s-centered { text-align: center; }
