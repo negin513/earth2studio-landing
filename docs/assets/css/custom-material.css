@@ -722,6 +722,7 @@
 }
 
 /* Mini model grid in the zoo pillar */
+.md-typeset p.e2s-minigrid,
 .e2s-minigrid {
   display: grid;
   gap: 6px;

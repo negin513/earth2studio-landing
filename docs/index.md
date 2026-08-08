@@ -97,12 +97,8 @@ them without rewriting the rest.</p>
 
     ---
 
-    <div class="e2s-minigrid">
-    <span>SFNO</span><span>FourCastNet&nbsp;3</span><span>GraphCast</span>
-    <span>Aurora</span><span>Pangu</span><span>AIFS</span>
-    <span>FuXi</span><span>FengWu</span><span>StormCast</span>
-    <span>GenCast</span><span>DLWP</span><span>CorrDiff</span>
-    </div>
+    <span>SFNO</span><span>FourCastNet&nbsp;3</span><span>GraphCast</span><span>Aurora</span><span>Pangu</span><span>AIFS</span><span>FuXi</span><span>FengWu</span><span>StormCast</span><span>GenCast</span><span>DLWP</span><span>CorrDiff</span>
+    { .e2s-minigrid }
 
     The largest open collection of prognostic and diagnostic Earth system
     AI models, with automatic checkpoint fetching.
