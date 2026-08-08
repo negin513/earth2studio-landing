@@ -695,3 +695,8 @@
 .e2s-quick + ul .twemoji svg {
   fill: var(--md-primary-fg-color);
 }
+
+/* Hero badge row */
+.e2s-badges { margin-top: 0.7rem; }
+.e2s-badges img { height: 20px; border: none !important; border-radius: 3px !important; }
+.e2s-badges a { margin-right: 0.35rem; }

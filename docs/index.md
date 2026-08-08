@@ -18,8 +18,13 @@ infrastructure. **40+ open models** behind one Python API.
 [Get started](#quickstart){ .md-button .md-button--primary }
 [Try it in your browser :octicons-link-external-16:](https://build.nvidia.com/nvidia/fourcastnet){ .md-button }
 
-<p class="e2s-pip"><code>uv add "earth2studio @ git+https://github.com/NVIDIA/earth2studio.git@0.17.0"</code>
-<span class="e2s-pip__ver">v0.17.0 · July 2026</span></p>
+<p class="e2s-pip"><code>uv add "earth2studio @ git+https://github.com/NVIDIA/earth2studio.git@0.17.0"</code></p>
+
+<p class="e2s-badges">
+<a href="https://pypi.org/project/earth2studio/"><img src="https://img.shields.io/pypi/v/earth2studio?color=76b900&label=PyPI" alt="PyPI version"></a>
+<a href="https://pypi.org/project/earth2studio/"><img src="https://img.shields.io/pypi/dm/earth2studio?color=76b900&label=downloads" alt="Monthly downloads"></a>
+<a href="https://github.com/NVIDIA/earth2studio/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-Apache--2.0-76b900" alt="Apache-2.0 license"></a>
+</p>
 
 </div>
 <div class="e2s-hero2__img" markdown>
