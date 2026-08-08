@@ -14,8 +14,8 @@ hide:
 <h1>Earth2Studio<br><em>Unified platform for AI in Earth System Sciences</em></h1>
 
 Turn pre-trained AI Earth system models into running, GPU-accelerated
-forecast pipelines — the largest open model zoo, cloud data on demand,
-and built-in verification, behind one API.
+forecast pipelines — the largest open model zoo, AI-ready Earth system
+data on demand, and built-in verification, behind one API.
 
 [Get started](user-guide/index.md){ .md-button .md-button--primary }
 [Learn more](#everything-you-need-out-of-the-box){ .md-button }
@@ -57,12 +57,13 @@ handles the models, data plumbing, and GPU details.</p>
     FourCastNet, GraphCast, Pangu, Aurora, AIFS, and many more — swap
     models with a one-line change. Checkpoints fetch automatically.
 
-- 🌐 **Data on demand**
+- 🌐 **AI-ready Earth system data**
 
     ---
 
-    ERA5, GFS, HRRR, satellite and station observations — streamed from
-    cloud stores with no manual downloads or preprocessing.
+    ERA5, GFS, HRRR, satellite and in-situ observations — analysis-ready
+    and cloud-optimized, streamed on demand with no downloads or
+    preprocessing.
 
 - ✅ **Verification built in**
 
@@ -108,10 +109,11 @@ and ready to run behind one interface — with new models added continuously.
 </div>
 <div class="e2s-spot__body" markdown>
 
-### Weather data, without the data engineering
+### AI-ready Earth system data, without the data engineering
 
-Reanalysis, operational forecasts, and observations pulled straight from
-cloud stores into your pipeline — regridding and coordinates handled for you.
+Reanalysis, operational forecasts, and satellite and in-situ observations
+pulled straight from cloud stores into your pipeline — analysis-ready, with
+regridding and coordinates handled for you.
 
 [Explore data →](user-guide/data.md)
 

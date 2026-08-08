@@ -1,7 +1,7 @@
-# Data
+# AI-Ready Earth System Data Sources
 
-Earth2Studio provides on-demand access to weather and climate data straight
-from cloud stores — no manual downloads, no preprocessing scripts. Every data
+Earth2Studio provides on-demand access to AI-ready Earth system data straight
+from cloud stores — analysis-ready and cloud-optimized — no manual downloads, no preprocessing scripts. Every data
 source implements the same interface, so pipelines can swap sources without
 code changes.
 
