@@ -719,3 +719,18 @@
   margin-top: 0.9em;
   text-transform: uppercase;
 }
+
+/* Font Awesome card icons in brand green */
+.md-typeset .grid.cards > ul > li > p:first-child .twemoji,
+.md-typeset .grid.cards > ul > li > p:first-child .twemoji svg {
+  color: var(--md-primary-fg-color);
+  fill: var(--md-primary-fg-color);
+  height: 1.35em;
+  width: 1.35em;
+  vertical-align: -0.25em;
+}
+
+/* Quickstart check bullets in green */
+.e2s-quick + ul .twemoji svg {
+  fill: var(--md-primary-fg-color);
+}

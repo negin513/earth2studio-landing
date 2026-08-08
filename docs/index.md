@@ -49,21 +49,21 @@ instead of supercomputer-hours.</p>
 
 <div class="grid cards" markdown>
 
-- ⚡ **Anticipate**
+- :fontawesome-solid-bolt: **Anticipate**
 
     ---
 
     Ensemble forecasts at a scale traditional NWP can't afford —
     quantify tail risk for the extreme events that matter most.
 
-- 🌱 **Adapt**
+- :fontawesome-solid-seedling: **Adapt**
 
     ---
 
     Downscaled, decision-ready projections for energy, agriculture,
     insurance, and infrastructure planning.
 
-- 🔭 **Advance**
+- :fontawesome-solid-rocket: **Advance**
 
     ---
 
@@ -80,7 +80,7 @@ them without rewriting the rest.</p>
 
 <div class="grid cards e2s-cols-4" markdown>
 
-- 🌐 **AI-Ready Earth System Data Sources**
+- :fontawesome-solid-earth-americas: **AI-Ready Earth System Data Sources**
 
     ---
 
@@ -89,7 +89,7 @@ them without rewriting the rest.</p>
 
     [Explore data →](user-guide/data.md)
 
-- 🧠 **Earth System Model Zoo**
+- :fontawesome-solid-brain: **Earth System Model Zoo**
 
     ---
 
@@ -101,7 +101,7 @@ them without rewriting the rest.</p>
 
     <span class="e2s-count">40+ AI models</span>
 
-- 🔁 **Composable Inference Pipelines**
+- :fontawesome-solid-diagram-project: **Composable Inference Pipelines**
 
     ---
 
@@ -110,7 +110,7 @@ them without rewriting the rest.</p>
 
     [Explore workflows →](user-guide/workflows.md)
 
-- ✅ **Trusted Verification**
+- :fontawesome-solid-circle-check: **Trusted Verification**
 
     ---
 
@@ -170,9 +170,9 @@ regridding, coordinates, and device placement are handled for you.</p>
 
 </div>
 
-- ✔ Checkpoints fetch automatically
-- ✔ Regridding and coordinates handled
-- ✔ Swapping models is a one-line change
+- :fontawesome-solid-check: Checkpoints fetch automatically
+- :fontawesome-solid-check: Regridding and coordinates handled
+- :fontawesome-solid-check: Swapping models is a one-line change
 
 <!-- ═══ 6. SPOTLIGHTS ═══ -->
 ## More than a model runner { .e2s-centered }
@@ -261,7 +261,7 @@ model families powering national forecasting and digital-twin initiatives.</p>
 
 <div class="grid cards" markdown>
 
-- 🏗️ **Train with PhysicsNeMo**
+- :fontawesome-solid-cubes: **Train with PhysicsNeMo**
 
     ---
 
@@ -270,7 +270,7 @@ model families powering national forecasting and digital-twin initiatives.</p>
 
     [PhysicsNeMo →](https://docs.nvidia.com/physicsnemo/latest/index.html)
 
-- 🗂️ **Speaks the scientific stack**
+- :fontawesome-solid-layer-group: **Speaks the scientific stack**
 
     ---
 
@@ -279,7 +279,7 @@ model families powering national forecasting and digital-twin initiatives.</p>
 
     [Ecosystem →](user-guide/ecosystem.md)
 
-- 🤖 **Agent-ready**
+- :fontawesome-solid-robot: **Agent-ready**
 
     ---
 
@@ -295,35 +295,35 @@ model families powering national forecasting and digital-twin initiatives.</p>
 
 <div class="grid cards" markdown>
 
-- 🔬 **Scientists & researchers**
+- :fontawesome-solid-microscope: **Scientists & researchers**
 
     ---
 
     Benchmark models on identical data through one unified API, and
     verify results with built-in metrics.
 
-- 🛰️ **Met services & agencies**
+- :fontawesome-solid-satellite: **Met services & agencies**
 
     ---
 
     Sovereign forecasting capability — run, fine-tune, and deploy
     independently, on infrastructure you control.
 
-- 🏢 **Enterprises**
+- :fontawesome-solid-building: **Enterprises**
 
     ---
 
     Bring forecasting in-house. Run ensembles for risk quantification in
     energy, insurance, logistics, and agriculture.
 
-- 💻 **Developers**
+- :fontawesome-solid-code: **Developers**
 
     ---
 
     Build weather-aware products on a composable Python SDK — with
     agent-ready skills for automated setup.
 
-- 🎓 **Educators & students**
+- :fontawesome-solid-graduation-cap: **Educators & students**
 
     ---
 
