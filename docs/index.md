@@ -80,6 +80,15 @@ them without rewriting the rest.</p>
 
 <div class="grid cards e2s-cols-4" markdown>
 
+- 🌐 **AI-Ready Earth System Data Sources**
+
+    ---
+
+    Reanalysis, operational forecasts, and satellite and in-situ
+    observations — analysis-ready and cloud-optimized, streamed on demand.
+
+    [Explore data →](user-guide/data.md)
+
 - 🧠 **Earth System Model Zoo**
 
     ---
@@ -89,15 +98,6 @@ them without rewriting the rest.</p>
     automatic checkpoint fetching.
 
     [Explore models →](user-guide/models.md)
-
-- 🌐 **AI-Ready Earth System Data Sources**
-
-    ---
-
-    Reanalysis, operational forecasts, and satellite and in-situ
-    observations — analysis-ready and cloud-optimized, streamed on demand.
-
-    [Explore data →](user-guide/data.md)
 
 - 🔁 **Composable Inference Pipelines**
 
