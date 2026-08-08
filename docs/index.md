@@ -180,12 +180,6 @@ regridding, coordinates, and device placement are handled for you.</p>
 
 </div>
 
-!!! tip "No GPU handy?"
-
-    Try FourCastNet in your browser — sample events include Hurricane Harvey
-    and Typhoon Hagibis.
-    [Launch the playground :octicons-link-external-16:](https://build.nvidia.com/nvidia/fourcastnet)
-
 <!-- ═══ 6. SPOTLIGHT ═══ -->
 <div class="e2s-bleed e2s-alt" markdown>
 
