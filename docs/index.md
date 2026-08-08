@@ -229,44 +229,6 @@ from these research teams. Logos do not imply endorsement.</p>
 [Browse the full model zoo :octicons-arrow-right-24:](user-guide/models.md){ .md-button }
 </div>
 
-<!-- ═══ PROVEN IN OPERATION ═══ -->
-## Proven in operation { .e2s-centered }
-
-<p class="e2s-centered">Earth-2 models — delivered through Earth2Studio — run
-in production today.</p>
-
-<div class="grid cards e2s-cols-fit e2s-proof" markdown>
-
-- **Brightband**
-
-    ---
-
-    Issues daily global ensemble forecasts with Earth-2 Medium Range —
-    among the first to run it operationally.
-
-    [Source: Brightband →](https://www.brightband.com/company/news/earth2-medium-range-model)
-
-- **Israel Meteorological Service**
-
-    ---
-
-    Runs CorrDiff operationally: "a 90% reduction in compute time at
-    2.5-kilometer resolution." — Amir Givati, IMS director
-
-    [Source: NVIDIA →](https://blogs.nvidia.com/blog/nvidia-earth-2-open-models/)
-
-- **GCL**
-
-    ---
-
-    Uses Earth-2 models in operation for photovoltaic power prediction.
-
-    [Source: NVIDIA →](https://blogs.nvidia.com/blog/nvidia-earth-2-open-models/)
-
-</div>
-
-<p class="e2s-centered e2s-evidence">As of NVIDIA's January 2026 open-models announcement.</p>
-
 <!-- ═══ 8. ECOSYSTEM ═══ -->
 <div class="e2s-bleed e2s-alt" markdown>
 
