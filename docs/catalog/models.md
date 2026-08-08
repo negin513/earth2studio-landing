@@ -13,23 +13,36 @@ what it forecasts, where, at what recommended GPU memory, and how to install it.
     rights to download, use, and (if applicable) redistribute each model and dataset.
     Apache-2.0 covers the Earth2Studio code only.
 
-<div class="e2s-facets" data-target="px" markdown>
-Filter: <span class="e2s-facet-chips"></span>
-</div>
+<div class="e2s-catalog" data-catalog="models">
+  <input class="e2s-search" type="search" placeholder="Search models, products, checkpoints…" aria-label="Search models">
+  <div class="e2s-facets"></div>
+  <p class="e2s-count-line"><span class="e2s-shown"></span> shown · <a href="#" class="e2s-reset">reset filters</a></p>
 
 ## Prognostic models ({{ n('prognostic') }})
 
 Prognostic models perform time integration — given the atmospheric state now, they
 predict the next state and roll forward to build a forecast.
 
-<div class="e2s-table" markdown>
-
-| Model | Coverage | Type | Products | Rec. VRAM | Install | Checkpoint |
-| --- | --- | --- | --- | --- | --- | --- |
-{% for m in entries('prognostic') -%}
-| [`{{ m.name }}`](https://nvidia.github.io/earth2studio/modules/generated/models/px/earth2studio.models.px.{{ m.name }}.html) | {{ m.badges.region | join(', ') | upper if m.badges.region else '—' }} | {{ m.badges['class'] | join(', ') | upper if m.badges['class'] else '—' }} | {{ m.badges['product'] | join(', ') if m.badges['product'] else '—' }} | {{ m.badges.gpu | join(', ') | upper if m.badges.gpu else '—' }} | {% if m.extra %}`[{{ m.extra }}]`{% else %}—{% endif %} | {% if m.checkpoint %}`{{ m.checkpoint.split('@')[0] }}`{% else %}—{% endif %} |
-{% endfor %}
-
+<div class="e2s-table">
+<table class="e2s-rows">
+<thead><tr><th>Model</th><th>Coverage</th><th>Type</th><th>Products</th><th>Rec. VRAM</th><th>Install</th><th>Checkpoint</th></tr></thead>
+<tbody>
+{%- for m in entries('prognostic') %}
+<tr data-href="https://nvidia.github.io/earth2studio/modules/generated/models/px/earth2studio.models.px.{{ m.name }}.html"
+    data-region="{{ m.badges.region | join(' ') }}" data-class="{{ m.badges['class'] | join(' ') }}"
+    data-product="{{ m.badges['product'] | join(' ') }}" data-gpu="{{ m.badges.gpu | join(' ') }}"
+    data-year="{{ m.badges.year | join(' ') }}">
+<td><code>{{ m.name }}</code></td>
+<td>{{ m.badges.region | join(', ') | upper if m.badges.region else '—' }}</td>
+<td>{{ m.badges['class'] | join(', ') | upper if m.badges['class'] else '—' }}</td>
+<td>{{ m.badges['product'] | join(', ') if m.badges['product'] else '—' }}</td>
+<td>{{ m.badges.gpu | join(', ') | upper if m.badges.gpu else '—' }}</td>
+<td>{% if m.extra %}<code>[{{ m.extra }}]</code>{% else %}—{% endif %}</td>
+<td>{% if m.checkpoint %}<code>{{ m.checkpoint.split('@')[0] }}</code>{% else %}—{% endif %}</td>
+</tr>
+{%- endfor %}
+</tbody>
+</table>
 </div>
 
 ## Diagnostic models ({{ n('diagnostic') }})
@@ -37,26 +50,53 @@ predict the next state and roll forward to build a forecast.
 Diagnostic models derive new quantities from existing fields — precipitation,
 downscaling to higher resolution, cyclone tracking, and other decision-ready variables.
 
-<div class="e2s-table" markdown>
-
-| Model | Coverage | Type | Products | Rec. VRAM | Install |
-| --- | --- | --- | --- | --- | --- |
-{% for m in entries('diagnostic') -%}
-| [`{{ m.name }}`](https://nvidia.github.io/earth2studio/modules/generated/models/dx/earth2studio.models.dx.{{ m.name }}.html) | {{ m.badges.region | join(', ') | upper if m.badges.region else '—' }} | {{ m.badges['class'] | join(', ') | upper if m.badges['class'] else '—' }} | {{ m.badges['product'] | join(', ') if m.badges['product'] else '—' }} | {{ m.badges.gpu | join(', ') | upper if m.badges.gpu else '—' }} | {% if m.extra %}`[{{ m.extra }}]`{% else %}—{% endif %} |
-{% endfor %}
-
+<div class="e2s-table">
+<table class="e2s-rows">
+<thead><tr><th>Model</th><th>Coverage</th><th>Type</th><th>Products</th><th>Rec. VRAM</th><th>Install</th></tr></thead>
+<tbody>
+{%- for m in entries('diagnostic') %}
+<tr data-href="https://nvidia.github.io/earth2studio/modules/generated/models/dx/earth2studio.models.dx.{{ m.name }}.html"
+    data-region="{{ m.badges.region | join(' ') }}" data-class="{{ m.badges['class'] | join(' ') }}"
+    data-product="{{ m.badges['product'] | join(' ') }}" data-gpu="{{ m.badges.gpu | join(' ') }}"
+    data-year="{{ m.badges.year | join(' ') }}">
+<td><code>{{ m.name }}</code></td>
+<td>{{ m.badges.region | join(', ') | upper if m.badges.region else '—' }}</td>
+<td>{{ m.badges['class'] | join(', ') | upper if m.badges['class'] else '—' }}</td>
+<td>{{ m.badges['product'] | join(', ') if m.badges['product'] else '—' }}</td>
+<td>{{ m.badges.gpu | join(', ') | upper if m.badges.gpu else '—' }}</td>
+<td>{% if m.extra %}<code>[{{ m.extra }}]</code>{% else %}—{% endif %}</td>
+</tr>
+{%- endfor %}
+</tbody>
+</table>
 </div>
 
 ## Data assimilation models ({{ n('data_assimilation') }})
 
-{% for m in entries('data_assimilation') -%}
-- **`{{ m.name }}`** — {{ m.summary | truncate(150) }}
-{% endfor %}
+<div class="e2s-table">
+<table class="e2s-rows">
+<thead><tr><th>Model</th><th>Coverage</th><th>Install</th><th>Description</th></tr></thead>
+<tbody>
+{%- for m in entries('data_assimilation') %}
+<tr data-href="https://nvidia.github.io/earth2studio/modules/models_da.html"
+    data-region="{{ m.badges.region | join(' ') }}" data-class="{{ m.badges['class'] | join(' ') }}"
+    data-product="{{ m.badges['product'] | join(' ') }}" data-gpu="{{ m.badges.gpu | join(' ') }}"
+    data-year="{{ m.badges.year | join(' ') }}">
+<td><code>{{ m.name }}</code></td>
+<td>{{ m.badges.region | join(', ') | upper if m.badges.region else '—' }}</td>
+<td>{% if m.extra %}<code>[{{ m.extra }}]</code>{% else %}—{% endif %}</td>
+<td>{{ m.summary | truncate(90) }}</td>
+</tr>
+{%- endfor %}
+</tbody>
+</table>
+</div>
 
----
+</div>
 
 **Legend** — *Type*: MRF medium-range forecast · NWC nowcasting · DS downscaling ·
 S2S subseasonal-to-seasonal · CM climate · DA data assimilation.
 *Install*: the pip extra, e.g. `pip install earth2studio[fcn3]`.
+Click any row to open its API reference.
 
 [Full API reference :octicons-arrow-right-24:](https://nvidia.github.io/earth2studio/modules/models_px.html){ .md-button }
