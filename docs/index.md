@@ -107,7 +107,7 @@ them without rewriting the rest.</p>
 </div>
 
 <!-- ═══ 5. QUICKSTART — tabbed code ═══ -->
-## Your first forecast in five lines { .e2s-centered }
+## Your first forecast in five lines { .e2s-centered #quickstart }
 
 <p class="e2s-centered">A data source, a model, a run function — checkpoints,
 regridding, coordinates, and device placement are handled for you.</p>
@@ -117,12 +117,12 @@ regridding, coordinates, and device placement are handled for you.</p>
 === "Deterministic"
 
     ```python
-    from earth2studio.models.px import SFNO
+    from earth2studio.models.px import FCN3
     from earth2studio.data import GFS
     from earth2studio.io import ZarrBackend
     from earth2studio.run import deterministic
 
-    model = SFNO.load_model(SFNO.load_default_package())
+    model = FCN3.load_model(FCN3.load_default_package())
     deterministic(["2024-01-01"], 10, model, GFS(), ZarrBackend())
     ```
 
@@ -158,6 +158,19 @@ regridding, coordinates, and device placement are handled for you.</p>
 - :fontawesome-solid-check: Checkpoints fetch automatically
 - :fontawesome-solid-check: Regridding and coordinates handled
 - :fontawesome-solid-check: Swapping models is a one-line change
+
+<div class="e2s-centered" markdown>
+
+[Browse the example gallery :octicons-link-external-16:](https://nvidia.github.io/earth2studio/examples/){ .md-button .md-button--primary }
+[Install guide :octicons-link-external-16:](https://nvidia.github.io/earth2studio/userguide/about/install.html){ .md-button }
+
+</div>
+
+!!! tip "No GPU handy?"
+
+    Try FourCastNet in your browser — sample events include Hurricane Harvey
+    and Typhoon Hagibis.
+    [Launch the playground :octicons-link-external-16:](https://build.nvidia.com/nvidia/fourcastnet)
 
 <!-- ═══ 6. SPOTLIGHTS ═══ -->
 ## More than a model runner { .e2s-centered }
