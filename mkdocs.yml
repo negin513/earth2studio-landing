@@ -1,5 +1,5 @@
 site_name: NVIDIA Earth2Studio
-site_description: The AI inference engine for Earth — open-source toolkit for AI weather and climate models
+site_description: Unified platform for AI in Earth System Sciences — open-source inference for AI weather and climate models
 site_url: https://nvidia.github.io/earth2studio/
 repo_url: https://github.com/NVIDIA/earth2studio
 repo_name: NVIDIA/earth2studio

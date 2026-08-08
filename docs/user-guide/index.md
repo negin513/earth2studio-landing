@@ -1,8 +1,9 @@
 # User Guide
 
-Earth2Studio is an AI inference pipeline toolkit for weather and climate
-applications. It rides on top of different AI frameworks, model architectures,
-data sources, and SciML tooling while providing one unified API.
+Earth2Studio is the unified platform for AI in Earth System Sciences — an
+open-source inference pipeline toolkit for weather and climate applications.
+It rides on top of different AI frameworks, model architectures, data sources,
+and SciML tooling while providing one unified API.
 
 Start with any of the sections below, or jump straight to the
 [official documentation](https://nvidia.github.io/earth2studio/) for install
