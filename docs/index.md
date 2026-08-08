@@ -11,11 +11,11 @@ hide:
 <div class="e2s-hero2__inner" markdown>
 <div class="e2s-hero2__text" markdown>
 
-<h1>The unified platform for <em>AI in Earth System Sciences</em></h1>
+<h1>Earth2Studio<br><em>Unified platform for AI in Earth System Sciences</em></h1>
 
-Earth2Studio turns pre-trained AI Earth system models into running,
-GPU-accelerated forecast pipelines — the largest open model zoo, cloud
-data on demand, and built-in verification, behind one API.
+Turn pre-trained AI Earth system models into running, GPU-accelerated
+forecast pipelines — the largest open model zoo, cloud data on demand,
+and built-in verification, behind one API.
 
 [Get started](user-guide/index.md){ .md-button .md-button--primary }
 [Learn more](#everything-you-need-out-of-the-box){ .md-button }

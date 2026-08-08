@@ -524,3 +524,12 @@
   margin: 0 auto 2.2rem;
   max-width: 620px;
 }
+
+/* Hero: name on line one, green tagline smaller on line two */
+.e2s-hero2__text h1 em {
+  display: inline-block;
+  font-size: 0.52em;
+  font-weight: 650;
+  letter-spacing: 0.01em;
+  margin-top: 0.45em;
+}
