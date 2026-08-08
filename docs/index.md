@@ -16,7 +16,7 @@ Run and verify AI-driven forecasts of the Earth system — on your own
 infrastructure. **40+ open models** behind one Python API.
 
 [Get started](#quickstart){ .md-button .md-button--primary }
-[Try it in your browser :octicons-link-external-16:](https://build.nvidia.com/nvidia/fourcastnet){ .md-button }
+[View on GitHub](https://github.com/NVIDIA/earth2studio){ .md-button }
 
 <p class="e2s-pip"><code>uv add "earth2studio @ git+https://github.com/NVIDIA/earth2studio.git@0.17.0"</code></p>
 
