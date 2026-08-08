@@ -180,25 +180,6 @@ regridding, coordinates, and device placement are handled for you.</p>
 <div class="e2s-spot" markdown>
 <div class="e2s-spot__media" markdown>
 
-![The Earth2Studio model zoo](https://huggingface.co/datasets/nvidia/earth2studio-assets/resolve/main/readme/v2/earth2studio-readme-model-zoo.png?v3)
-
-</div>
-<div class="e2s-spot__body" markdown>
-
-### The largest open model zoo
-
-Prognostic and diagnostic Earth system AI models from across the field,
-packaged and ready to run behind one interface — with new models added
-continuously.
-
-[Explore models →](user-guide/models.md)
-
-</div>
-</div>
-
-<div class="e2s-spot" markdown>
-<div class="e2s-spot__media" markdown>
-
 ![Earth2Studio data sources](https://huggingface.co/datasets/nvidia/earth2studio-assets/resolve/main/readme/v2/earth2studio-readme-data-sources.png?v3)
 
 </div>
@@ -211,6 +192,25 @@ pulled straight from cloud stores into your pipeline — analysis-ready, with
 regridding and coordinates handled for you.
 
 [Explore data →](user-guide/data.md)
+
+</div>
+</div>
+
+<div class="e2s-spot" markdown>
+<div class="e2s-spot__media" markdown>
+
+![The Earth2Studio model zoo](https://huggingface.co/datasets/nvidia/earth2studio-assets/resolve/main/readme/v2/earth2studio-readme-model-zoo.png?v3)
+
+</div>
+<div class="e2s-spot__body" markdown>
+
+### The largest open model zoo
+
+Prognostic and diagnostic Earth system AI models from across the field,
+packaged and ready to run behind one interface — with new models added
+continuously.
+
+[Explore models →](user-guide/models.md)
 
 </div>
 </div>
