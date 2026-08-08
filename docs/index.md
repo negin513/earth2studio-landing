@@ -37,10 +37,10 @@ infrastructure. **40+ open models** behind one Python API.
 
 <!-- ═══ 2. TRUST BAND ═══ -->
 <div class="e2s-bleed e2s-trust">
-  <span>Part of NVIDIA Earth-2</span>
-  <span>Apache-2.0 open source</span>
-  <span>Global forecasts on a single GPU</span>
-  <span>Production-ready pipelines</span>
+  <span><a href="https://www.nvidia.com/en-us/high-performance-computing/earth-2/">Part of NVIDIA Earth-2</a></span>
+  <span><a href="https://github.com/NVIDIA/earth2studio/blob/main/LICENSE">Apache-2.0 open source</a></span>
+  <span><a href="user-guide/models/">40+ AI models</a></span>
+  <span><a href="user-guide/data/">60+ data sources</a></span>
 </div>
 
 <!-- ═══ 3. WHY IT MATTERS ═══ -->
@@ -101,8 +101,6 @@ them without rewriting the rest.</p>
     automatic checkpoint fetching.
 
     [Explore models →](user-guide/models.md)
-
-    <span class="e2s-count">40+ AI models</span>
 
 - :fontawesome-solid-diagram-project: **Composable Inference Pipelines**
 

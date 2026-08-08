@@ -700,3 +700,7 @@
 .e2s-badges { margin-top: 0.7rem; }
 .e2s-badges img { height: 20px; border: none !important; border-radius: 3px !important; }
 .e2s-badges a { margin-right: 0.35rem; }
+
+/* Trust band links inherit band styling */
+.e2s-trust a { color: inherit; font-weight: inherit; }
+.e2s-trust a:hover { color: var(--md-primary-fg-color); text-decoration: none; }
