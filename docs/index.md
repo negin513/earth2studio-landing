@@ -84,20 +84,32 @@ them without rewriting the rest.</p>
 
     ---
 
+    ![Full-disk satellite view of Earth from GOES-16](assets/images/satellite.jpg){ .e2s-card-img }
+
     Reanalysis, operational forecasts, and satellite and in-situ
     observations — analysis-ready and cloud-optimized, streamed on demand.
 
     [Explore data →](user-guide/data.md)
 
+    <span class="e2s-count">60+ data sources</span>
+
 - 🧠 **Earth System Model Zoo**
 
     ---
 
+    <div class="e2s-minigrid">
+    <span>SFNO</span><span>FourCastNet&nbsp;3</span><span>GraphCast</span>
+    <span>Aurora</span><span>Pangu</span><span>AIFS</span>
+    <span>FuXi</span><span>FengWu</span><span>StormCast</span>
+    <span>GenCast</span><span>DLWP</span><span>CorrDiff</span>
+    </div>
+
     The largest open collection of prognostic and diagnostic Earth system
-    AI models — from medium-range weather to subseasonal scales — with
-    automatic checkpoint fetching.
+    AI models, with automatic checkpoint fetching.
 
     [Explore models →](user-guide/models.md)
+
+    <span class="e2s-count">40+ AI models</span>
 
 - 🔁 **Composable Inference Pipelines**
 
