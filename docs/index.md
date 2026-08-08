@@ -89,8 +89,6 @@ them without rewriting the rest.</p>
 
     [Explore data →](user-guide/data.md)
 
-    <span class="e2s-count">60+ data sources</span>
-
 - 🧠 **Earth System Model Zoo**
 
     ---
