@@ -777,3 +777,21 @@
 @media (prefers-reduced-motion: reduce) {
   .e2s-orbit__ring, .e2s-orbit__icon { animation: none; }
 }
+
+/* ═══ Generated catalog tables ═══ */
+.e2s-table { overflow-x: auto; }
+
+.e2s-table table {
+  font-size: 0.74rem;
+  width: 100%;
+}
+
+.e2s-table th {
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.e2s-table td:first-child { white-space: nowrap; }
+.e2s-table code { font-size: 0.9em; }

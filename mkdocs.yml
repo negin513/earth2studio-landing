@@ -85,6 +85,10 @@ copyright: |
 
 nav:
   - Home: index.md
+  - Catalog:
+      - Models: catalog/models.md
+      - Data Sources: catalog/data.md
+      - Components: catalog/components.md
   - User Guide:
       - user-guide/index.md
       - Models: user-guide/models.md
