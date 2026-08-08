@@ -212,9 +212,24 @@ model families powering national forecasting and digital-twin initiatives.</p>
   <span>Shanghai AI Lab</span>
 </div>
 
+<p class="e2s-centered e2s-evidence">Model architectures in the zoo originate
+from these research teams. Logos do not imply endorsement.</p>
+
 <div class="e2s-centered" markdown>
 [Browse the full model zoo :octicons-arrow-right-24:](user-guide/models.md){ .md-button }
 </div>
+
+<!-- ═══ PROVEN IN OPERATION ═══ -->
+## Proven in operation { .e2s-centered }
+
+<p class="e2s-centered">Earth-2 models — delivered through Earth2Studio — run
+in production today. <a href="https://www.brightband.com/company/news/earth2-medium-range-model">Brightband</a>
+issues daily global ensemble forecasts with Earth-2 Medium Range. The
+<strong>Israel Meteorological Service</strong> runs CorrDiff operationally —
+"a 90% reduction in compute time at 2.5-kilometer resolution" (Amir Givati,
+IMS director, <a href="https://blogs.nvidia.com/blog/nvidia-earth-2-open-models/">per
+NVIDIA</a>). <strong>GCL</strong> uses Earth-2 models in operation for
+photovoltaic prediction. <em>(As of NVIDIA's January 2026 announcement.)</em></p>
 
 <!-- ═══ 8. ECOSYSTEM ═══ -->
 ## Built open, connected everywhere { .e2s-centered }
