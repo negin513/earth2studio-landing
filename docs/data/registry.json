@@ -39,7 +39,8 @@
       "badged": 0,
       "catalog": 14,
       "total": 17
-    }
+    },
+    "vocabulary": 364
   },
   "data_assimilation": [
     {
@@ -117,7 +118,15 @@
       "catalog": true,
       "checkpoint": "hf://nvidia/stormcast-v1-era5-hrrr@6c89a0877a0d6b231033d3b0d8b9828a6f833ed8",
       "extra": "stormcast",
+      "grid": {
+        "cadence": "1h"
+      },
       "name": "StormCastSDA",
+      "references": [
+        "https://arxiv.org/abs/2408.10958",
+        "https://huggingface.co/nvidia/stormcast-v1-era5-hrrr",
+        "https://arxiv.org/abs/2306.10574"
+      ],
       "source_file": "earth2studio/models/da/sda_stormcast.py",
       "summary": "StormCast with score-based data assimilation (SDA) using diffusion posterior sampling for convection-allowing regional forecasts. Combines a regression and diffusion model with DPS guidance to assimilate observations during inference. Model time step size is 1 hour, taking as input:"
     }
@@ -140,6 +149,9 @@
       },
       "catalog": true,
       "name": "ACE2ERA5Data",
+      "references": [
+        "https://arxiv.org/html/2411.11268v1"
+      ],
       "source_file": "earth2studio/data/ace2.py",
       "summary": "ACE2-ERA5 data source providing forcing or initial-conditions data. Files are downloaded on-demand and cached automatically. Data are served as-is; no transformations are applied, with the exception of global mean CO2 concentration, which may be overridden by a user-supplied function."
     },
@@ -159,9 +171,16 @@
         ]
       },
       "catalog": true,
+      "grid": {
+        "resolution": "0.25\u00b0"
+      },
       "name": "AIFS_ENS_FX",
+      "references": [
+        "https://github.com/ecmwf/ecmwf-opendata"
+      ],
       "source_file": "earth2studio/data/ecmwf.py",
-      "summary": "Artificial intelligence forecast system (AIFS) ENS forecast data on an equirectangular grid at 0.25 degree resolution. AIFS is an AI forecast model developed by ECMWF. Data for the most recent 4 days can be retrieved from ECMWF's servers (source `ecmwf`). Historical data is part of ECMWF's open data project on AWS (source `aws`)."
+      "summary": "Artificial intelligence forecast system (AIFS) ENS forecast data on an equirectangular grid at 0.25 degree resolution. AIFS is an AI forecast model developed by ECMWF. Data for the most recent 4 days can be retrieved from ECMWF's servers (source `ecmwf`). Historical data is part of ECMWF's open data project on AWS (source `aws`).",
+      "warning": "This is a remote data source and can potentially download a large amount of data to your local machine for large requests."
     },
     {
       "badges": {
@@ -179,9 +198,16 @@
         ]
       },
       "catalog": true,
+      "grid": {
+        "resolution": "0.25\u00b0"
+      },
       "name": "AIFS_FX",
+      "references": [
+        "https://github.com/ecmwf/ecmwf-opendata"
+      ],
       "source_file": "earth2studio/data/ecmwf.py",
-      "summary": "Artificial intelligence forecast system (AIFS) SINGLE forecast data on an equirectangular grid at 0.25 degree resolution. AIFS is an AI forecast model developed by ECMWF. Data for the most recent 4 days can be retrieved from ECMWF's servers (source `ecmwf`). Historical data is part of ECMWF's open data project on AWS (source `aws`)."
+      "summary": "Artificial intelligence forecast system (AIFS) SINGLE forecast data on an equirectangular grid at 0.25 degree resolution. AIFS is an AI forecast model developed by ECMWF. Data for the most recent 4 days can be retrieved from ECMWF's servers (source `ecmwf`). Historical data is part of ECMWF's open data project on AWS (source `aws`).",
+      "warning": "This is a remote data source and can potentially download a large amount of data to your local machine for large requests."
     },
     {
       "badges": {
@@ -199,9 +225,15 @@
         ]
       },
       "catalog": true,
+      "grid": {
+        "cadence": "1h",
+        "resolution": "0.25\u00b0"
+      },
       "name": "ARCO",
       "source_file": "earth2studio/data/arco.py",
-      "summary": "Analysis-Ready, Cloud Optimized (ARCO) is a data store of ERA5 re-analysis data currated by Google. This data is stored in Zarr format and contains 31 surface variables, pressure level variables defined on 37 pressure levels, and model level variables defined on the 137 native ERA5 vertical levels, all on a 0.25 degree lat lon grid. Temporal resolution is 1 hour."
+      "summary": "Analysis-Ready, Cloud Optimized (ARCO) is a data store of ERA5 re-analysis data currated by Google. This data is stored in Zarr format and contains 31 surface variables, pressure level variables defined on 37 pressure levels, and model level variables defined on the 137 native ERA5 vertical levels, all on a 0.25 degree lat lon grid. Temporal resolution is 1 hour.",
+      "variables": 43,
+      "warning": "This is a remote data source and can potentially download a large amount of data to your local machine for large requests."
     },
     {
       "badges": {
@@ -220,7 +252,8 @@
       "catalog": true,
       "name": "CAMS_FX",
       "source_file": "earth2studio/data/cams.py",
-      "summary": "CAMS Global atmospheric composition forecast data source."
+      "summary": "CAMS Global atmospheric composition forecast data source.",
+      "warning": "This is a remote data source and can potentially download a large amount of data to your local machine for large requests."
     },
     {
       "badges": {
@@ -240,7 +273,15 @@
       },
       "catalog": true,
       "checkpoint": "hf://nvidia/cbottle@eebd93c85b3cd3a5a8f79c546ed917b0b80438f4",
+      "grid": {
+        "resolution": "100km"
+      },
       "name": "CBottle3D",
+      "references": [
+        "https://arxiv.org/abs/2505.06474v1",
+        "https://github.com/NVlabs/cBottle",
+        "https://catalog.ngc.nvidia.com/orgs/nvidia/teams/earth-2/models/cbottle"
+      ],
       "source_file": "earth2studio/data/cbottle.py",
       "summary": "Climate in a bottle data source Climate in a Bottle (cBottle) is an AI model for emulating global km-scale climate simulations and reanalysis on the equal-area HEALPix grid. The cBottle data source uses the a globally-trained coarse-resolution image diffusion model that generates 100km (50k-pixel) fields given monthly average sea surface temperatures and solar conditioning."
     },
@@ -262,7 +303,9 @@
       "catalog": true,
       "name": "CDS",
       "source_file": "earth2studio/data/cds.py",
-      "summary": "The climate data source (CDS) serving ERA5 re-analysis data. This data source requires users to have a CDS API access key which can be obtained for free on the CDS webpage."
+      "summary": "The climate data source (CDS) serving ERA5 re-analysis data. This data source requires users to have a CDS API access key which can be obtained for free on the CDS webpage.",
+      "variables": 117,
+      "warning": "This is a remote data source and can potentially download a large amount of data to your local machine for large requests."
     },
     {
       "badges": {
@@ -281,7 +324,8 @@
       "catalog": true,
       "name": "CFS_FX",
       "source_file": "earth2studio/data/cfs.py",
-      "summary": "NCEP Climate Forecast System v2 (CFSv2) pressure-level forecast source."
+      "summary": "NCEP Climate Forecast System v2 (CFSv2) pressure-level forecast source.",
+      "warning": "This is a remote data source and can potentially download a large amount of data to your local machine for large requests."
     },
     {
       "badges": {
@@ -302,7 +346,8 @@
       "catalog": true,
       "name": "CFS_FX_Flux",
       "source_file": "earth2studio/data/cfs.py",
-      "summary": "NCEP Climate Forecast System v2 surface-flux forecast source."
+      "summary": "NCEP Climate Forecast System v2 surface-flux forecast source.",
+      "warning": "This is a remote data source and can potentially download a large amount of data to your local machine for large requests."
     },
     {
       "badges": {
@@ -319,9 +364,13 @@
         ]
       },
       "catalog": true,
+      "grid": {
+        "cadence": "6h"
+      },
       "name": "CFS_Reforecast_FX",
       "source_file": "earth2studio/data/cfs_reforecast.py",
-      "summary": "NCEP CFSv2 6-hourly 9-month reforecast (pressure-level product)."
+      "summary": "NCEP CFSv2 6-hourly 9-month reforecast (pressure-level product).",
+      "warning": "This is a remote data source and can potentially download a large amount of data to your local machine for large requests. Unlike the operational archive, the reforecast bucket has no `.idx` companions; every variable request triggers a full grib-file download (~22 MB) if not already cached."
     },
     {
       "badges": {
@@ -338,9 +387,13 @@
         ]
       },
       "catalog": true,
+      "grid": {
+        "cadence": "6h"
+      },
       "name": "CFS_Reforecast_FX_Flux",
       "source_file": "earth2studio/data/cfs_reforecast.py",
-      "summary": "NCEP CFSv2 6-hourly 9-month reforecast (surface-flux product)."
+      "summary": "NCEP CFSv2 6-hourly 9-month reforecast (surface-flux product).",
+      "warning": "This is a remote data source and can potentially download a large amount of data to your local machine for large requests."
     },
     {
       "badges": {
@@ -361,7 +414,8 @@
       "catalog": true,
       "name": "CMIP6",
       "source_file": "earth2studio/data/cmip6.py",
-      "summary": "CMIP6 data source for Earth2Studio."
+      "summary": "CMIP6 data source for Earth2Studio.",
+      "warning": "This is a remote data source and can potentially download a large amount of data to your local machine for large requests. The source data used is provided in an unoptimized format."
     },
     {
       "badges": {
@@ -457,7 +511,8 @@
       "catalog": true,
       "name": "DynamicalAIFS",
       "source_file": "earth2studio/data/dynamical.py",
-      "summary": "ECMWF AIFS Single analysis view from the dynamical.org catalog."
+      "summary": "ECMWF AIFS Single analysis view from the dynamical.org catalog.",
+      "warning": "This is a remote data source and can potentially download a large amount of data to your local machine for large requests."
     },
     {
       "badges": {
@@ -476,7 +531,8 @@
       "catalog": true,
       "name": "DynamicalAIFSENS_FX",
       "source_file": "earth2studio/data/dynamical.py",
-      "summary": "ECMWF AIFS ENS ensemble forecast from the dynamical.org catalog."
+      "summary": "ECMWF AIFS ENS ensemble forecast from the dynamical.org catalog.",
+      "warning": "This is a remote data source and can potentially download a large amount of data to your local machine for large requests."
     },
     {
       "badges": {
@@ -495,7 +551,8 @@
       "catalog": true,
       "name": "DynamicalAIFS_ENS",
       "source_file": "earth2studio/data/dynamical.py",
-      "summary": "ECMWF AIFS ENS analysis view from the dynamical.org catalog."
+      "summary": "ECMWF AIFS ENS analysis view from the dynamical.org catalog.",
+      "warning": "This is a remote data source and can potentially download a large amount of data to your local machine for large requests."
     },
     {
       "badges": {
@@ -514,7 +571,8 @@
       "catalog": true,
       "name": "DynamicalAIFS_FX",
       "source_file": "earth2studio/data/dynamical.py",
-      "summary": "ECMWF AIFS Single forecast from the dynamical.org catalog."
+      "summary": "ECMWF AIFS Single forecast from the dynamical.org catalog.",
+      "warning": "This is a remote data source and can potentially download a large amount of data to your local machine for large requests."
     },
     {
       "badges": {
@@ -533,7 +591,8 @@
       "catalog": true,
       "name": "DynamicalGEFS",
       "source_file": "earth2studio/data/dynamical.py",
-      "summary": "NOAA GEFS analysis from the dynamical.org catalog."
+      "summary": "NOAA GEFS analysis from the dynamical.org catalog.",
+      "warning": "This is a remote data source and can potentially download a large amount of data to your local machine for large requests."
     },
     {
       "badges": {
@@ -552,7 +611,8 @@
       "catalog": true,
       "name": "DynamicalGEFS_FX",
       "source_file": "earth2studio/data/dynamical.py",
-      "summary": "NOAA GEFS (35 day) ensemble forecast from the dynamical.org catalog."
+      "summary": "NOAA GEFS (35 day) ensemble forecast from the dynamical.org catalog.",
+      "warning": "This is a remote data source and can potentially download a large amount of data to your local machine for large requests."
     },
     {
       "badges": {
@@ -571,7 +631,8 @@
       "catalog": true,
       "name": "DynamicalGFS",
       "source_file": "earth2studio/data/dynamical.py",
-      "summary": "NOAA GFS analysis from the dynamical.org catalog."
+      "summary": "NOAA GFS analysis from the dynamical.org catalog.",
+      "warning": "This is a remote data source and can potentially download a large amount of data to your local machine for large requests."
     },
     {
       "badges": {
@@ -590,7 +651,8 @@
       "catalog": true,
       "name": "DynamicalGFS_FX",
       "source_file": "earth2studio/data/dynamical.py",
-      "summary": "NOAA GFS forecast from the dynamical.org catalog."
+      "summary": "NOAA GFS forecast from the dynamical.org catalog.",
+      "warning": "This is a remote data source and can potentially download a large amount of data to your local machine for large requests."
     },
     {
       "badges": {
@@ -610,7 +672,8 @@
       "catalog": true,
       "name": "DynamicalHRRR",
       "source_file": "earth2studio/data/dynamical.py",
-      "summary": "NOAA HRRR analysis from the dynamical.org catalog."
+      "summary": "NOAA HRRR analysis from the dynamical.org catalog.",
+      "warning": "This is a remote data source and can potentially download a large amount of data to your local machine for large requests."
     },
     {
       "badges": {
@@ -628,9 +691,13 @@
         ]
       },
       "catalog": true,
+      "grid": {
+        "cadence": "48h"
+      },
       "name": "DynamicalHRRR_FX",
       "source_file": "earth2studio/data/dynamical.py",
-      "summary": "NOAA HRRR 48-hour virtual forecast from the dynamical.org catalog."
+      "summary": "NOAA HRRR 48-hour virtual forecast from the dynamical.org catalog.",
+      "warning": "This is a remote data source and can potentially download a large amount of data to your local machine for large requests."
     },
     {
       "badges": {
@@ -650,7 +717,8 @@
       "catalog": true,
       "name": "DynamicalICON_EU_FX",
       "source_file": "earth2studio/data/dynamical.py",
-      "summary": "DWD ICON-EU 5-day forecast from the dynamical.org catalog."
+      "summary": "DWD ICON-EU 5-day forecast from the dynamical.org catalog.",
+      "warning": "This is a remote data source and can potentially download a large amount of data to your local machine for large requests."
     },
     {
       "badges": {
@@ -669,7 +737,8 @@
       "catalog": true,
       "name": "DynamicalIFS_ENS",
       "source_file": "earth2studio/data/dynamical.py",
-      "summary": "ECMWF IFS ENS analysis view from the dynamical.org catalog."
+      "summary": "ECMWF IFS ENS analysis view from the dynamical.org catalog.",
+      "warning": "This is a remote data source and can potentially download a large amount of data to your local machine for large requests."
     },
     {
       "badges": {
@@ -686,9 +755,13 @@
         ]
       },
       "catalog": true,
+      "grid": {
+        "resolution": "0.25\u00b0"
+      },
       "name": "DynamicalIFS_ENS_FX",
       "source_file": "earth2studio/data/dynamical.py",
-      "summary": "ECMWF IFS ENS (15 day, 0.25 degree) ensemble forecast from dynamical.org."
+      "summary": "ECMWF IFS ENS (15 day, 0.25 degree) ensemble forecast from dynamical.org.",
+      "warning": "This is a remote data source and can potentially download a large amount of data to your local machine for large requests."
     },
     {
       "badges": {
@@ -706,7 +779,8 @@
       "catalog": true,
       "name": "DynamicalMRMS",
       "source_file": "earth2studio/data/dynamical.py",
-      "summary": "NOAA MRMS CONUS analysis from the dynamical.org catalog."
+      "summary": "NOAA MRMS CONUS analysis from the dynamical.org catalog.",
+      "warning": "This is a remote data source and can potentially download a large amount of data to your local machine for large requests."
     },
     {
       "badges": {
@@ -725,9 +799,13 @@
         ]
       },
       "catalog": true,
+      "grid": {
+        "resolution": "0.25\u00b0"
+      },
       "name": "EarthMoverBrightBandIFS",
       "source_file": "earth2studio/data/earthmover.py",
-      "summary": "Brightband ECMWF IFS 0.25 degree initial-condition data source on Earthmover Arraylake."
+      "summary": "Brightband ECMWF IFS 0.25 degree initial-condition data source on Earthmover Arraylake.",
+      "warning": "This is a remote data source and can download a large amount of data for large requests."
     },
     {
       "badges": {
@@ -745,9 +823,13 @@
         ]
       },
       "catalog": true,
+      "grid": {
+        "resolution": "0.1\u00b0"
+      },
       "name": "EarthMoverBrightBandIFS_FX",
       "source_file": "earth2studio/data/earthmover.py",
-      "summary": "Brightband ECMWF IFS 0.1 degree (10km) 15-day forecast data source on Earthmover Arraylake."
+      "summary": "Brightband ECMWF IFS 0.1 degree (10km) 15-day forecast data source on Earthmover Arraylake.",
+      "warning": "This is a remote data source and can download a large amount of data for large requests."
     },
     {
       "badges": {
@@ -766,9 +848,13 @@
         ]
       },
       "catalog": true,
+      "grid": {
+        "resolution": "0.25\u00b0"
+      },
       "name": "EarthMoverERA5",
       "source_file": "earth2studio/data/earthmover.py",
-      "summary": "Earthmover ERA5 0.25 degree reanalysis data source."
+      "summary": "Earthmover ERA5 0.25 degree reanalysis data source.",
+      "warning": "This is a remote data source and can download a large amount of data for large requests."
     },
     {
       "badges": {},
@@ -793,9 +879,14 @@
         ]
       },
       "catalog": true,
+      "grid": {
+        "cadence": "6h",
+        "resolution": "0.5\u00b0"
+      },
       "name": "GEFS_FX",
       "source_file": "earth2studio/data/gefs.py",
-      "summary": "The Global Ensemble Forecast System (GEFS) forecast source is a 30 member ensemble forecast provided on an 0.5 degree equirectangular grid. GEFS is a weather forecast model developed by National Centers for Environmental Prediction (NCEP). This forecast source has data at 6-hour intervals spanning from Sept 23rd 2020 to present date. Each forecast provides 3-hourly predictions up to 10 days (240 hours) and 6 hourly predictions for another 6 days (384 hours)."
+      "summary": "The Global Ensemble Forecast System (GEFS) forecast source is a 30 member ensemble forecast provided on an 0.5 degree equirectangular grid. GEFS is a weather forecast model developed by National Centers for Environmental Prediction (NCEP). This forecast source has data at 6-hour intervals spanning from Sept 23rd 2020 to present date. Each forecast provides 3-hourly predictions up to 10 days (240 hours) and 6 hourly predictions for another 6 days (384 hours).",
+      "warning": "This is a remote data source and can potentially download a large amount of data to your local machine for large requests."
     },
     {
       "badges": {
@@ -813,9 +904,14 @@
         ]
       },
       "catalog": true,
+      "grid": {
+        "cadence": "6h",
+        "resolution": "0.25\u00b0"
+      },
       "name": "GEFS_FX_721x1440",
       "source_file": "earth2studio/data/gefs.py",
-      "summary": "The Global Ensemble Forecast System (GEFS) forecast source is a 30 member ensemble forecast provided on an 0.25 degree equirectangular grid. GEFS is a weather forecast model developed by National Centers for Environmental Prediction (NCEP). This data source provides the select variables of GEFS served on a higher resolution grid t 6-hour intervals spanning from Sept 23rd 2020 to present date. Each forecast provides 3-hourly predictions up to 10 days (240 hours) and 6 hourly predictions for another 6 days (384 hours)."
+      "summary": "The Global Ensemble Forecast System (GEFS) forecast source is a 30 member ensemble forecast provided on an 0.25 degree equirectangular grid. GEFS is a weather forecast model developed by National Centers for Environmental Prediction (NCEP). This data source provides the select variables of GEFS served on a higher resolution grid t 6-hour intervals spanning from Sept 23rd 2020 to present date. Each forecast provides 3-hourly predictions up to 10 days (240 hours) and 6 hourly predictions for another 6 days (384 hours).",
+      "warning": "This is a remote data source and can potentially download a large amount of data to your local machine for large requests."
     },
     {
       "badges": {
@@ -833,9 +929,15 @@
         ]
       },
       "catalog": true,
+      "grid": {
+        "cadence": "6h",
+        "resolution": "0.25\u00b0"
+      },
       "name": "GFS",
       "source_file": "earth2studio/data/gfs.py",
-      "summary": "The global forecast service (GFS) initial state data source provided on an equirectangular grid. GFS is a weather forecast model developed by NOAA. This data source is provided on a 0.25 degree lat lon grid at 6-hour intervals spanning from Jan 1st 2021 to present date."
+      "summary": "The global forecast service (GFS) initial state data source provided on an equirectangular grid. GFS is a weather forecast model developed by NOAA. This data source is provided on a 0.25 degree lat lon grid at 6-hour intervals spanning from Jan 1st 2021 to present date.",
+      "variables": 246,
+      "warning": "This is a remote data source and can potentially download a large amount of data to your local machine for large requests."
     },
     {
       "badges": {
@@ -853,9 +955,14 @@
         ]
       },
       "catalog": true,
+      "grid": {
+        "cadence": "6h",
+        "resolution": "0.25\u00b0"
+      },
       "name": "GFS_FX",
       "source_file": "earth2studio/data/gfs.py",
-      "summary": "The global forecast service (GFS) forecast source provided on an equirectangular grid. GFS is a weather forecast model developed by NOAA. This data source is on a 0.25 degree lat lon grid at 6-hour intervals spanning from Feb 26th 2021 to present date. Each forecast provides hourly predictions up to 16 days (384 hours)."
+      "summary": "The global forecast service (GFS) forecast source provided on an equirectangular grid. GFS is a weather forecast model developed by NOAA. This data source is on a 0.25 degree lat lon grid at 6-hour intervals spanning from Feb 26th 2021 to present date. Each forecast provides hourly predictions up to 16 days (384 hours).",
+      "warning": "This is a remote data source and can potentially download a large amount of data to your local machine for large requests."
     },
     {
       "badges": {
@@ -877,7 +984,9 @@
       "catalog": true,
       "name": "GHCNDaily",
       "source_file": "earth2studio/data/ghcn.py",
-      "summary": "NOAA's Global Historical Climatology Network Daily (GHCN-D) is a dataset that contains daily climate summaries from land surface stations across the globe."
+      "summary": "NOAA's Global Historical Climatology Network Daily (GHCN-D) is a dataset that contains daily climate summaries from land surface stations across the globe.",
+      "variables": 12,
+      "warning": "This is a remote data source and can potentially download a large amount of data to your local machine for large requests."
     },
     {
       "badges": {
@@ -897,7 +1006,9 @@
       "catalog": true,
       "name": "GHCNHourly",
       "source_file": "earth2studio/data/ghcn.py",
-      "summary": "NOAA's Global Historical Climatology Network Hourly (GHCNh) is a global database of hourly surface observations that supersedes the Integrated Surface Database (ISD). It compiles observations from thousands of stations worldwide into a common data model with consistent CSV encoding."
+      "summary": "NOAA's Global Historical Climatology Network Hourly (GHCNh) is a global database of hourly surface observations that supersedes the Integrated Surface Database (ISD). It compiles observations from thousands of stations worldwide into a common data model with consistent CSV encoding.",
+      "variables": 8,
+      "warning": "This is a remote data source and can potentially download a large amount of data to your local machine for large requests."
     },
     {
       "badges": {
@@ -932,7 +1043,9 @@
       "catalog": true,
       "name": "GOESGLM",
       "source_file": "earth2studio/data/goes_glm.py",
-      "summary": "NOAA GOES Geostationary Lightning Mapper (GLM) Level 2 Lightning Cluster-Filter Algorithm (LCFA) event data source."
+      "summary": "NOAA GOES Geostationary Lightning Mapper (GLM) Level 2 Lightning Cluster-Filter Algorithm (LCFA) event data source.",
+      "variables": 2,
+      "warning": "GLM produces hundreds of files per hour. Large time windows can download tens to hundreds of gigabytes of NetCDFs. Use ``lat_lon_bbox`` to discard out-of-region events on parse and keep ``time_tolerance`` bounded."
     },
     {
       "badges": {
@@ -968,9 +1081,14 @@
         ]
       },
       "catalog": true,
+      "grid": {
+        "cadence": "1h",
+        "resolution": "3km"
+      },
       "name": "HRRR",
       "source_file": "earth2studio/data/hrrr.py",
-      "summary": "High-Resolution Rapid Refresh (HRRR) data source provides hourly North-American weather analysis data developed by NOAA (used to initialize the HRRR forecast model). This data source is provided on a Lambert conformal 3km grid at 1-hour intervals. The spatial dimensionality of HRRR data is [1059, 1799]."
+      "summary": "High-Resolution Rapid Refresh (HRRR) data source provides hourly North-American weather analysis data developed by NOAA (used to initialize the HRRR forecast model). This data source is provided on a Lambert conformal 3km grid at 1-hour intervals. The spatial dimensionality of HRRR data is [1059, 1799].",
+      "warning": "This is a remote data source and can potentially download a large amount of data to your local machine for large requests."
     },
     {
       "badges": {
@@ -989,9 +1107,14 @@
         ]
       },
       "catalog": true,
+      "grid": {
+        "cadence": "48h",
+        "resolution": "3km"
+      },
       "name": "HRRR_FX",
       "source_file": "earth2studio/data/hrrr.py",
-      "summary": "High-Resolution Rapid Refresh (HRRR) forecast source provides a North-American weather forecasts with hourly forecast runs developed by NOAA. This forecast source has hourly forecast steps up to a lead time of 48 hours. Data is provided on a Lambert conformal 3km grid at 1-hour intervals. The spatial dimensionality of HRRR data is [1059, 1799]."
+      "summary": "High-Resolution Rapid Refresh (HRRR) forecast source provides a North-American weather forecasts with hourly forecast runs developed by NOAA. This forecast source has hourly forecast steps up to a lead time of 48 hours. Data is provided on a Lambert conformal 3km grid at 1-hour intervals. The spatial dimensionality of HRRR data is [1059, 1799].",
+      "warning": "This is a remote data source and can potentially download a large amount of data to your local machine for large requests."
     },
     {
       "badges": {
@@ -1009,7 +1132,8 @@
       "catalog": true,
       "name": "HimawariAHI",
       "source_file": "earth2studio/data/himawari_ahi.py",
-      "summary": "Himawari-8/9 AHI (Advanced Himawari Imager) data source."
+      "summary": "Himawari-8/9 AHI (Advanced Himawari Imager) data source.",
+      "warning": "This is a remote data source and can potentially download a large amount of data to your local machine for large requests. Each full disk image consists of 88 tile files per channel."
     },
     {
       "badges": {
@@ -1027,7 +1151,9 @@
       "catalog": true,
       "name": "IBTrACS",
       "source_file": "earth2studio/data/ibtracs.py",
-      "summary": "International Best Track Archive for Climate Stewardship (IBTrACS) data source."
+      "summary": "International Best Track Archive for Climate Stewardship (IBTrACS) data source.",
+      "variables": 9,
+      "warning": "This is a remote data source and can potentially download a large amount of data to your local machine for large requests. The ``\"ALL\"`` region file is ~23 MB."
     },
     {
       "badges": {
@@ -1048,7 +1174,9 @@
       "catalog": true,
       "name": "IEM_ASOS",
       "source_file": "earth2studio/data/iem.py",
-      "summary": "IEM archive of parsed ASOS, AWOS, and METAR station observations."
+      "summary": "IEM archive of parsed ASOS, AWOS, and METAR station observations.",
+      "variables": 10,
+      "warning": "Broad station or time selections can return large responses. IEM limits requests without explicit stations to 24 hours and applies an IP-based one-request-per-second throttle."
     },
     {
       "badges": {
@@ -1066,9 +1194,16 @@
         ]
       },
       "catalog": true,
+      "grid": {
+        "resolution": "0.25\u00b0"
+      },
       "name": "IFS",
+      "references": [
+        "https://github.com/ecmwf/ecmwf-opendata"
+      ],
       "source_file": "earth2studio/data/ecmwf.py",
-      "summary": "Integrated forecast system (IFS) HRES initial state (analysis) data source on an equirectangular grid at 0.25 degree resolution. IFS is a forecast model developed by ECMWF. Data for the most recent 4 days can be retrieved from ECMWF's servers (source `ecmwf`). Historical data is part of ECMWF's open data project on AWS (source `aws`)."
+      "summary": "Integrated forecast system (IFS) HRES initial state (analysis) data source on an equirectangular grid at 0.25 degree resolution. IFS is a forecast model developed by ECMWF. Data for the most recent 4 days can be retrieved from ECMWF's servers (source `ecmwf`). Historical data is part of ECMWF's open data project on AWS (source `aws`).",
+      "warning": "This is a remote data source and can potentially download a large amount of data to your local machine for large requests."
     },
     {
       "badges": {
@@ -1086,9 +1221,16 @@
         ]
       },
       "catalog": true,
+      "grid": {
+        "resolution": "0.25\u00b0"
+      },
       "name": "IFS_ENS",
+      "references": [
+        "https://github.com/ecmwf/ecmwf-opendata"
+      ],
       "source_file": "earth2studio/data/ecmwf.py",
-      "summary": "Integrated forecast system (IFS) ensemble (ENS) initial state data source on an equirectangular grid at 0.25 degree resolution. IFS is a forecast model developed by ECMWF. Data for the most recent 4 days can be retrieved from ECMWF's servers (source `ecmwf`). Historical data is part of ECMWF's open data project on AWS (source `aws`)."
+      "summary": "Integrated forecast system (IFS) ensemble (ENS) initial state data source on an equirectangular grid at 0.25 degree resolution. IFS is a forecast model developed by ECMWF. Data for the most recent 4 days can be retrieved from ECMWF's servers (source `ecmwf`). Historical data is part of ECMWF's open data project on AWS (source `aws`).",
+      "warning": "This is a remote data source and can potentially download a large amount of data to your local machine for large requests."
     },
     {
       "badges": {
@@ -1106,9 +1248,16 @@
         ]
       },
       "catalog": true,
+      "grid": {
+        "resolution": "0.25\u00b0"
+      },
       "name": "IFS_ENS_FX",
+      "references": [
+        "https://github.com/ecmwf/ecmwf-opendata"
+      ],
       "source_file": "earth2studio/data/ecmwf.py",
-      "summary": "Integrated forecast system (IFS) ensemble (ENS) forecast data source on an equirectangular grid at 0.25 degree resolution. IFS is a forecast model developed by ECMWF. Data for the most recent 4 days can be retrieved from ECMWF's servers (source `ecmwf`). Historical data is part of ECMWF's open data project on AWS (source `aws`)."
+      "summary": "Integrated forecast system (IFS) ensemble (ENS) forecast data source on an equirectangular grid at 0.25 degree resolution. IFS is a forecast model developed by ECMWF. Data for the most recent 4 days can be retrieved from ECMWF's servers (source `ecmwf`). Historical data is part of ECMWF's open data project on AWS (source `aws`).",
+      "warning": "This is a remote data source and can potentially download a large amount of data to your local machine for large requests."
     },
     {
       "badges": {
@@ -1126,9 +1275,16 @@
         ]
       },
       "catalog": true,
+      "grid": {
+        "resolution": "0.25\u00b0"
+      },
       "name": "IFS_FX",
+      "references": [
+        "https://github.com/ecmwf/ecmwf-opendata"
+      ],
       "source_file": "earth2studio/data/ecmwf.py",
-      "summary": "Integrated forecast system (IFS) HRES forecast data source on an equirectangular grid at 0.25 degree resolution. IFS is a forecast model developed by ECMWF. Data for the most recent 4 days can be retrieved from ECMWF's servers (source `ecmwf`). Historical data is part of ECMWF's open data project on AWS (source `aws`)."
+      "summary": "Integrated forecast system (IFS) HRES forecast data source on an equirectangular grid at 0.25 degree resolution. IFS is a forecast model developed by ECMWF. Data for the most recent 4 days can be retrieved from ECMWF's servers (source `ecmwf`). Historical data is part of ECMWF's open data project on AWS (source `aws`).",
+      "warning": "This is a remote data source and can potentially download a large amount of data to your local machine for large requests."
     },
     {
       "badges": {
@@ -1148,7 +1304,9 @@
       "catalog": true,
       "name": "ISD",
       "source_file": "earth2studio/data/isd.py",
-      "summary": "NOAA's Integrated Surface Database (ISD) is a global database that consists of hourly and synoptic surface observations compiled from numerous sources into a common data model."
+      "summary": "NOAA's Integrated Surface Database (ISD) is a global database that consists of hourly and synoptic surface observations compiled from numerous sources into a common data model.",
+      "variables": 8,
+      "warning": "This is a remote data source and can potentially download a large amount of data to your local machine for large requests."
     },
     {
       "badges": {},
@@ -1189,7 +1347,8 @@
       "catalog": true,
       "name": "JPSS_ATMS",
       "source_file": "earth2studio/data/jpss_atms.py",
-      "summary": "JPSS ATMS (Advanced Technology Microwave Sounder) Level 1 BUFR brightness-temperature observations served from NOAA Open Data on AWS."
+      "summary": "JPSS ATMS (Advanced Technology Microwave Sounder) Level 1 BUFR brightness-temperature observations served from NOAA Open Data on AWS.",
+      "warning": "This is a remote data source and can potentially download a large amount of data to your local machine for large requests."
     },
     {
       "badges": {
@@ -1206,11 +1365,15 @@
       "catalog": true,
       "name": "JPSS_CRIS",
       "source_file": "earth2studio/data/jpss_cris.py",
-      "summary": "JPSS CrIS (Cross-track Infrared Sounder) Full Spectral Resolution (FSR) Level 1 brightness temperature observations served from NOAA Open Data on AWS."
+      "summary": "JPSS CrIS (Cross-track Infrared Sounder) Full Spectral Resolution (FSR) Level 1 brightness temperature observations served from NOAA Open Data on AWS.",
+      "warning": "This is a remote data source and can potentially download a large amount of data to your local machine for large requests. Each CrIS granule pair (SDR + GEO) is approximately 16 MB."
     },
     {
       "badges": {},
       "catalog": true,
+      "grid": {
+        "resolution": "0.25\u00b0"
+      },
       "name": "LandSeaMask",
       "source_file": "earth2studio/data/rx.py",
       "summary": "Land-sea mask on a 0.25 degree equirectangular grid fetched from the ARCO v2 datasource. This mask's cells are between [0,1] which denotes is the proportion of land, as opposed to ocean or inland waters (lakes, reservoirs, rivers and coastal waters), in that cell."
@@ -1230,7 +1393,9 @@
       "catalog": true,
       "name": "MRMS",
       "source_file": "earth2studio/data/mrms.py",
-      "summary": "NOAA Multi-Radar/Multi-Sensor (MRMS) products via AWS S3."
+      "summary": "NOAA Multi-Radar/Multi-Sensor (MRMS) products via AWS S3.",
+      "variables": 2,
+      "warning": "This is a remote data source and can download sizable files depending on request volume and frequency."
     },
     {
       "badges": {
@@ -1247,7 +1412,9 @@
       "catalog": true,
       "name": "MetOpAMSUA",
       "source_file": "earth2studio/data/metop_amsua.py",
-      "summary": "EUMETSAT MetOp AMSU-A Level 1B brightness temperature observations."
+      "summary": "EUMETSAT MetOp AMSU-A Level 1B brightness temperature observations.",
+      "variables": 1,
+      "warning": "This is a remote data source and can potentially download a large amount of data to your local machine for large requests."
     },
     {
       "badges": {
@@ -1264,7 +1431,9 @@
       "catalog": true,
       "name": "MetOpAVHRR",
       "source_file": "earth2studio/data/metop_avhrr.py",
-      "summary": "EUMETSAT MetOp AVHRR Level 1B radiance and brightness temperature observations."
+      "summary": "EUMETSAT MetOp AVHRR Level 1B radiance and brightness temperature observations.",
+      "variables": 1,
+      "warning": "This is a remote data source and can potentially download a large amount of data to your local machine for large requests. Each AVHRR orbit file is approximately 1 GB."
     },
     {
       "badges": {
@@ -1281,7 +1450,9 @@
       "catalog": true,
       "name": "MetOpIASI",
       "source_file": "earth2studio/data/metop_iasi.py",
-      "summary": "EUMETSAT MetOp IASI Level 1C brightness temperature observations."
+      "summary": "EUMETSAT MetOp IASI Level 1C brightness temperature observations.",
+      "variables": 1,
+      "warning": "This is a remote data source and can potentially download a large amount of data to your local machine for large requests. IASI L1C files are typically 100-200 MB each, with ~42-45 products per day across 3 satellites."
     },
     {
       "badges": {
@@ -1298,7 +1469,9 @@
       "catalog": true,
       "name": "MetOpMHS",
       "source_file": "earth2studio/data/metop_mhs.py",
-      "summary": "EUMETSAT MetOp MHS Level 1B brightness temperature observations."
+      "summary": "EUMETSAT MetOp MHS Level 1B brightness temperature observations.",
+      "variables": 1,
+      "warning": "This is a remote data source and can potentially download a large amount of data to your local machine for large requests."
     },
     {
       "badges": {
@@ -1316,7 +1489,8 @@
       "catalog": true,
       "name": "MeteosatFCI",
       "source_file": "earth2studio/data/meteosat_fci.py",
-      "summary": "EUMETSAT MTG-I FCI Level-1C Full Disk calibrated radiance data source."
+      "summary": "EUMETSAT MTG-I FCI Level-1C Full Disk calibrated radiance data source.",
+      "warning": "This is a remote data source and can potentially download a large amount of data to your local machine for large requests."
     },
     {
       "badges": {
@@ -1334,9 +1508,13 @@
         ]
       },
       "catalog": true,
+      "grid": {
+        "resolution": "0.25\u00b0"
+      },
       "name": "NCAR_ERA5",
       "source_file": "earth2studio/data/ncar.py",
-      "summary": "ERA5 data provided by NSF NCAR via the AWS Open Data Sponsorship Program. ERA5 is the fifth generation of the ECMWF global reanalysis and available on a 0.25 degree WGS84 grid at hourly intervals spanning from 1940 to the present."
+      "summary": "ERA5 data provided by NSF NCAR via the AWS Open Data Sponsorship Program. ERA5 is the fifth generation of the ECMWF global reanalysis and available on a 0.25 degree WGS84 grid at hourly intervals spanning from 1940 to the present.",
+      "warning": "This is a remote data source and can potentially download a large amount of data to your local machine for large requests."
     },
     {
       "badges": {
@@ -1354,7 +1532,8 @@
       "catalog": true,
       "name": "NClimGridDaily",
       "source_file": "earth2studio/data/nclimgrid.py",
-      "summary": "NOAA NClimGrid daily gridded climate data source."
+      "summary": "NOAA NClimGrid daily gridded climate data source.",
+      "warning": "This is a remote data source and can potentially download a large amount of data to your local machine for large requests."
     },
     {
       "badges": {
@@ -1374,7 +1553,9 @@
       "catalog": true,
       "name": "NNJAObsConv",
       "source_file": "earth2studio/data/nnja.py",
-      "summary": "NNJA conventional (in-situ + GPS RO) observational data source. NOAA-NASA Joint Archive (NNJA) of Observations for Earth System Reanalysis is an archive ideal for developing observation-driven weather forecasting tools, as it includes a wide cross-section of data from a plethora of sensing platforms (satellites, surface stations, weather balloons, and more) and features data from 1979 to the present."
+      "summary": "NNJA conventional (in-situ + GPS RO) observational data source. NOAA-NASA Joint Archive (NNJA) of Observations for Earth System Reanalysis is an archive ideal for developing observation-driven weather forecasting tools, as it includes a wide cross-section of data from a plethora of sensing platforms (satellites, surface stations, weather balloons, and more) and features data from 1979 to the present.",
+      "variables": 6,
+      "warning": "This is a remote data source and can potentially download a large amount of data to your local machine for large requests."
     },
     {
       "badges": {
@@ -1391,8 +1572,16 @@
       },
       "catalog": true,
       "name": "NNJAObsSat",
+      "references": [
+        "https://github.com/NOAA-EMC/GSI/blob/860d13740352004fca0136a8c3d0ac9dea30e0da/src/gsi/read_bufrtovs.f90#L754-L823",
+        "https://github.com/NOAA-EMC/GSI/blob/860d13740352004fca0136a8c3d0ac9dea30e0da/src/gsi/radinfo.f90#L1523-L1643",
+        "https://github.com/NOAA-EMC/satingest/blob/3bb883d931d2cbdbd8c5871c30ac25941918c882/ush/ingest_script_atovs1b.sh#L188-L231",
+        "https://github.com/NOAA-EMC/satingest/blob/3bb883d931d2cbdbd8c5871c30ac25941918c882/sorc/bufr_tranamsua.fd/tranamsua.f#L887-L910"
+      ],
       "source_file": "earth2studio/data/nnja.py",
-      "summary": "NNJA historical NCEP aggregate microwave satellite observations."
+      "summary": "NNJA historical NCEP aggregate microwave satellite observations.",
+      "variables": 5,
+      "warning": "Aggregate cycle files contain millions of footprints. Broad long-format requests can require substantial memory. A finite archived value is not a QC decision: historical files may retain passive or degraded channels even when the aggregate carries no usable quality flag. Training pipelines should apply an explicit platform/channel validity policy."
     },
     {
       "badges": {
@@ -1412,7 +1601,8 @@
       "catalog": true,
       "name": "NomadsGDASObsConv",
       "source_file": "earth2studio/data/gdas.py",
-      "summary": "Real-time GDAS conventional observations from NOAA NOMADS."
+      "summary": "Real-time GDAS conventional observations from NOAA NOMADS.",
+      "warning": "This is a remote data source and can potentially download a large amount of data to your local machine for large requests. Each 6-hourly PrepBUFR file is approximately 60-100 MB."
     },
     {
       "badges": {
@@ -1430,7 +1620,9 @@
       "catalog": true,
       "name": "OPERA",
       "source_file": "earth2studio/data/opera.py",
-      "summary": "EUMETNET OPERA European weather radar composite data source."
+      "summary": "EUMETNET OPERA European weather radar composite data source.",
+      "variables": 3,
+      "warning": "This is a remote data source and can potentially download a large amount of data to your local machine for large requests. Each ODIM HDF5 file is roughly 400 KB - 2 MB."
     },
     {
       "badges": {
@@ -1485,7 +1677,8 @@
       "catalog": true,
       "name": "PlanetaryComputerMODISFire",
       "source_file": "earth2studio/data/planetary_computer.py",
-      "summary": "MODIS Thermal Anomalies/Fire Daily (FireMask, MaxFRP, QA)."
+      "summary": "MODIS Thermal Anomalies/Fire Daily (FireMask, MaxFRP, QA).",
+      "warning": "Tile searches are best-effort. If no tile identifiers are provided (the default), the first available tile returned by the Planetary Computer search is used."
     },
     {
       "badges": {
@@ -1546,6 +1739,9 @@
     {
       "badges": {},
       "catalog": true,
+      "grid": {
+        "resolution": "0.25\u00b0"
+      },
       "name": "SurfaceGeoPotential",
       "source_file": "earth2studio/data/rx.py",
       "summary": "Surface geopotential on a 0.25 degree equirectangular grid fetched from the ARCO v2 datasource. This field is the gravitational potential energy of a unit mass relative to mean sea level. This is often referred to as the orography."
@@ -1573,7 +1769,8 @@
       "catalog": true,
       "name": "UFSObsConv",
       "source_file": "earth2studio/data/ufs.py",
-      "summary": "NOAA UFS GEFS-v13 replay observations in-situ data"
+      "summary": "NOAA UFS GEFS-v13 replay observations in-situ data",
+      "warning": "This is a remote data source and can potentially download a large amount of data to your local machine for large requests."
     },
     {
       "badges": {
@@ -1591,7 +1788,8 @@
       "catalog": true,
       "name": "UFSObsSat",
       "source_file": "earth2studio/data/ufs.py",
-      "summary": "NOAA UFS GEFS-v13 replay observations satellite data"
+      "summary": "NOAA UFS GEFS-v13 replay observations satellite data",
+      "warning": "This is a remote data source and can potentially download a large amount of data to your local machine for large requests."
     },
     {
       "badges": {
@@ -1610,8 +1808,12 @@
       },
       "catalog": true,
       "name": "WB2Climatology",
+      "references": [
+        "https://arxiv.org/abs/2308.15560"
+      ],
       "source_file": "earth2studio/data/wb2.py",
-      "summary": "Climatology provided by WeatherBench2,"
+      "summary": "Climatology provided by WeatherBench2,",
+      "warning": "This is a remote data source and can potentially download a large amount of data to your local machine for large requests."
     },
     {
       "badges": {
@@ -1629,9 +1831,17 @@
         ]
       },
       "catalog": true,
+      "grid": {
+        "cadence": "6h",
+        "resolution": "0.25\u00b0"
+      },
       "name": "WB2ERA5",
+      "references": [
+        "https://arxiv.org/abs/2308.15560"
+      ],
       "source_file": "earth2studio/data/wb2.py",
-      "summary": "ERA5 reanalysis data with several derived variables on a 0.25 degree lat-lon grid from 1959 to 2023 (incl) to 6 hour intervals on 13 pressure levels. Provided by the WeatherBench2 data repository."
+      "summary": "ERA5 reanalysis data with several derived variables on a 0.25 degree lat-lon grid from 1959 to 2023 (incl) to 6 hour intervals on 13 pressure levels. Provided by the WeatherBench2 data repository.",
+      "warning": "This is a remote data source and can potentially download a large amount of data to your local machine for large requests."
     },
     {
       "badges": {
@@ -1649,9 +1859,17 @@
         ]
       },
       "catalog": true,
+      "grid": {
+        "cadence": "6h",
+        "resolution": "1.5\u00b0"
+      },
       "name": "WB2ERA5_121x240",
+      "references": [
+        "https://arxiv.org/abs/2308.15560"
+      ],
       "source_file": "earth2studio/data/wb2.py",
-      "summary": "ERA5 reanalysis data with several derived variables down sampled to a 1.5 degree lat-lon grid from 1959 to 2023 (incl) to 6 hour intervals on 13 pressure levels. Provided by the WeatherBench2 data repository."
+      "summary": "ERA5 reanalysis data with several derived variables down sampled to a 1.5 degree lat-lon grid from 1959 to 2023 (incl) to 6 hour intervals on 13 pressure levels. Provided by the WeatherBench2 data repository.",
+      "warning": "This is a remote data source and can potentially download a large amount of data to your local machine for large requests."
     },
     {
       "badges": {
@@ -1669,9 +1887,17 @@
         ]
       },
       "catalog": true,
+      "grid": {
+        "cadence": "6h",
+        "resolution": "5.625\u00b0"
+      },
       "name": "WB2ERA5_32x64",
+      "references": [
+        "https://arxiv.org/abs/2308.15560"
+      ],
       "source_file": "earth2studio/data/wb2.py",
-      "summary": "ERA5 reanalysis data with several derived variables down sampled to a 5.625 degree lat-lon grid from 1959 to 2023 (incl) to 6 hour intervals on 13 pressure levels. Provided by the WeatherBench2 data repository."
+      "summary": "ERA5 reanalysis data with several derived variables down sampled to a 5.625 degree lat-lon grid from 1959 to 2023 (incl) to 6 hour intervals on 13 pressure levels. Provided by the WeatherBench2 data repository.",
+      "warning": "This is a remote data source and can potentially download a large amount of data to your local machine for large requests."
     },
     {
       "badges": {},
@@ -1728,7 +1954,15 @@
       "catalog": true,
       "checkpoint": "hf://nvidia/cbottle@eebd93c85b3cd3a5a8f79c546ed917b0b80438f4",
       "extra": "cbottle",
+      "grid": {
+        "resolution": "100km"
+      },
       "name": "CBottleInfill",
+      "references": [
+        "https://arxiv.org/abs/2505.06474v1",
+        "https://github.com/NVlabs/cBottle",
+        "https://catalog.ngc.nvidia.com/orgs/nvidia/teams/earth-2/models/cbottle"
+      ],
       "source_file": "earth2studio/models/dx/cbottle_infill.py",
       "summary": "Climate in a bottle infill diagnostic Climate in a Bottle (cBottle) is an AI model for emulating global km-scale climate simulations and reanalysis on the equal-area HEALPix grid. The cBottle infill diagnostic enables users to generate all variables supported by cBottle from just a subset ontop of existing monthly average sea surface temperatures and solar conditioning. The cBottle infill model uses the a globally-trained coarse-resolution image diffusion model that generates 100km (50k-pixel) fields"
     },
@@ -1757,6 +1991,11 @@
       "checkpoint": "hf://nvidia/cbottle@eebd93c85b3cd3a5a8f79c546ed917b0b80438f4",
       "extra": "cbottle",
       "name": "CBottleSR",
+      "references": [
+        "https://arxiv.org/abs/2505.06474v1",
+        "https://github.com/NVlabs/cBottle",
+        "https://catalog.ngc.nvidia.com/orgs/nvidia/teams/earth-2/models/cbottle"
+      ],
       "source_file": "earth2studio/models/dx/cbottle_sr.py",
       "summary": "Climate in a Bottle Super-Resolution (CBottleSR) model."
     },
@@ -1785,6 +2024,11 @@
       "checkpoint": "hf://nvidia/cbottle@eebd93c85b3cd3a5a8f79c546ed917b0b80438f4",
       "extra": "cbottle",
       "name": "CBottleTCGuidance",
+      "references": [
+        "https://arxiv.org/abs/2505.06474v1",
+        "https://github.com/NVlabs/cBottle",
+        "https://catalog.ngc.nvidia.com/orgs/nvidia/teams/earth-2/models/cbottle"
+      ],
       "source_file": "earth2studio/models/dx/cbottle_tc.py",
       "summary": "Climate in a Bottle tropical cyclone guidance diagnostic. This model for Climate in a Bottle (cBottle) allows users to provide an cyclone guidance map on a lat-lon grid and synthesis global climate realizations at that given time. The tropical cyclone guidance field is regridded to HPX Level 3, which is then used during the sampling process."
     },
@@ -1810,6 +2054,10 @@
       "checkpoint": "ngc://models/nvidia/modulus/modulus_diagnostics@v0.1",
       "extra": "climatenet",
       "name": "ClimateNet",
+      "references": [
+        "https://doi.org/10.5194/gmd-14-107-2021",
+        "https://github.com/andregraubner/ClimateNet"
+      ],
       "source_file": "earth2studio/models/dx/climatenet.py",
       "summary": "Climate Net diagnostic model, built into Earth2Studio. This model can be used to create prediction labels for tropical cyclones and atmospheric rivers from a set of three atmospheric variables on a quater degree resolution equirectangular grid. It produces three non-standard output channels climnet_bg, climnet_tc and climnet_ar representing background label, tropical cyclone and atmospheric river labels."
     },
@@ -1837,6 +2085,10 @@
       "catalog": true,
       "extra": "corrdiff",
       "name": "CorrDiff",
+      "references": [
+        "https://arxiv.org/html/2309.15214v",
+        "https://catalog.ngc.nvidia.com/orgs/nvidia/teams/modulus/models/corrdiff_inference_package"
+      ],
       "source_file": "earth2studio/models/dx/corrdiff.py",
       "summary": "CorrDiff is a Corrector Diffusion model that learns mappings between low- and high-resolution weather data with high fidelity. This model combines regression and diffusion steps to generate high-resolution predictions."
     },
@@ -1866,6 +2118,9 @@
       "checkpoint": "hf://nvidia/corrdiff-cmip6-era5@f756fad5b85efec64df4868aead14dda698b8aea",
       "extra": "corrdiff",
       "name": "CorrDiffCMIP6",
+      "references": [
+        "https://huggingface.co/nvidia/corrdiff-cmip6-era5"
+      ],
       "source_file": "earth2studio/models/dx/corrdiff_cmip6.py",
       "summary": "CMIP6 to ERA5 downscaling model based on the CorrDiff architecture. This model can be used to downscale both in the spatial and temporal dimensions. This model works with the :py:class:`earth2studio.data.CMIP6MultiRealm` data source."
     },
@@ -1921,6 +2176,10 @@
       "checkpoint": "ngc://models/nvidia/modulus/corrdiff_inference_package@1",
       "extra": "corrdiff",
       "name": "CorrDiffTaiwan",
+      "references": [
+        "https://arxiv.org/abs/2309.15214",
+        "https://catalog.ngc.nvidia.com/orgs/nvidia/teams/modulus/models/corrdiff_inference_package"
+      ],
       "source_file": "earth2studio/models/dx/corrdiff.py",
       "summary": "CorrDiff is a Corrector Diffusion model that learns mappings between low- and high-resolution weather data with high fidelity. This particular model was trained over a particular region near Taiwan."
     },
@@ -1946,6 +2205,10 @@
       "checkpoint": "hf://nvidia/dlesym-v0-isccp-era5@924b2d62644ef61289dd960e018f60d6e067bfca",
       "extra": "dlesym",
       "name": "DLESyMv0_ISCCP_ERA5Precip",
+      "references": [
+        "https://github.com/AtmosSci-DLESM/DLESyM",
+        "https://arxiv.org/abs/2409.16247"
+      ],
       "source_file": "earth2studio/models/dx/dlesym_v0_isccp_era5_precip.py",
       "summary": "Precipitation diagnostic for the DLESyMv0_ISCCP_ERA5 climate model."
     },
@@ -1976,6 +2239,11 @@
       "catalog": false,
       "extra": "derived",
       "name": "DerivedRHDewpoint",
+      "references": [
+        "https://doi.org/10.5194/gmd-9-523-2016",
+        "https://doi.org/10.5194/tc-2023-8",
+        "https://doi.org/10.1175/1520-0450(1996"
+      ],
       "source_file": "earth2studio/models/dx/derived.py",
       "summary": "Calculates the surface relative humidity (RH) from dewpoint temperature and air temperature. This calculation is based on the August-Roche-Magnus approximation."
     },
@@ -2103,7 +2371,15 @@
       "catalog": true,
       "checkpoint": "ngc://models/nvidia/modulus/modulus_diagnostics@v0.1",
       "extra": null,
+      "grid": {
+        "cadence": "6h",
+        "resolution": "0.25\u00b0"
+      },
       "name": "PrecipitationAFNO",
+      "references": [
+        "https://arxiv.org/abs/2202.11214",
+        "https://github.com/NVlabs/FourCastNet"
+      ],
       "source_file": "earth2studio/models/dx/precipitation_afno.py",
       "summary": "Precipitation AFNO diagnsotic model. Predicts the total precipation parameter which is the accumulated amount of liquid and frozen water (rain or snow) with units m. This model was trained on ERA5 data and predicts the 6-hourly accumulated total precipitation at the validity date and time. This model uses an 20 atmospheric inputs and outputs one on a 0.25 degree lat-lon grid (south-pole excluding) [720 x 1440]."
     },
@@ -2128,9 +2404,17 @@
       "catalog": true,
       "checkpoint": "ngc://models/nvidia/earth-2/afno_dx_tp-v1-era5@v0.1.0",
       "extra": null,
+      "grid": {
+        "cadence": "6h",
+        "resolution": "0.25\u00b0"
+      },
       "name": "PrecipitationAFNOv2",
+      "references": [
+        "https://catalog.ngc.nvidia.com/orgs/nvidia/teams/earth-2/models/afno_dx_tp-v1-era5"
+      ],
       "source_file": "earth2studio/models/dx/precipitation_afno_v2.py",
-      "summary": "Improved Precipitation AFNO diagnostic model. Predicts the total precipitation for the next 6 hours [t, t+6h] with the units m. This model uses 20 atmospheric inputs and outputs one on a 0.25 degree lat-lon grid (south-pole excluding) [720 x 1440]."
+      "summary": "Improved Precipitation AFNO diagnostic model. Predicts the total precipitation for the next 6 hours [t, t+6h] with the units m. This model uses 20 atmospheric inputs and outputs one on a 0.25 degree lat-lon grid (south-pole excluding) [720 x 1440].",
+      "warning": "PrecipitationAFNOv2 performs worse than PrecipitationAFNO v1 and will be deprecated in upcoming releases."
     },
     {
       "badges": {
@@ -2153,6 +2437,9 @@
       "catalog": true,
       "checkpoint": "ngc://models/nvidia/earth-2/afno_dx_sr-v1-era5@1.0.0",
       "extra": "solarradiation-afno",
+      "grid": {
+        "cadence": "1h"
+      },
       "name": "SolarRadiationAFNO1H",
       "source_file": "earth2studio/models/dx/solarradiation_afno.py",
       "summary": "Solar Radiation AFNO diagnostic model for 1-hour frequency predictions. Predicts the accumulated global surface solar radiation over 1 hour [Jm^-2]."
@@ -2178,6 +2465,9 @@
       "catalog": true,
       "checkpoint": "ngc://models/nvidia/earth-2/afno_dx_sr-v1-era5@1.0.0",
       "extra": "solarradiation-afno",
+      "grid": {
+        "cadence": "6h"
+      },
       "name": "SolarRadiationAFNO6H",
       "source_file": "earth2studio/models/dx/solarradiation_afno.py",
       "summary": "Solar Radiation AFNO diagnostic model for 6-hour frequency predictions. Predicts the accumulated global surface solar radiation over 6 hours [Jm^-2]."
@@ -2204,6 +2494,9 @@
       "checkpoint": "hf://nvidia/StormScope-NSRDB",
       "extra": "stormscope",
       "name": "StormScopeDxNSRDB",
+      "references": [
+        "https://huggingface.co/nvidia/StormScope-NSRDB"
+      ],
       "source_file": "earth2studio/models/dx/stormscope_dx_nsrdb.py",
       "summary": "Estimate Global Horizontal Irradiance from GOES imagery."
     },
@@ -2222,6 +2515,9 @@
       "catalog": true,
       "extra": null,
       "name": "TCTrackerVitart",
+      "references": [
+        "https://doi.org/10.1175/1520-0442(1997"
+      ],
       "source_file": "earth2studio/models/dx/tc_tracking.py",
       "summary": "Finds a list of tropical cyclone centers using the conditions in Vitart 1997"
     },
@@ -2243,6 +2539,9 @@
       "catalog": true,
       "extra": null,
       "name": "TCTrackerWuDuan",
+      "references": [
+        "https://doi.org/10.1016/j.wace.2023.100626"
+      ],
       "source_file": "earth2studio/models/dx/tc_tracking.py",
       "summary": "Finds a list of tropical cyclone (TC) centers using an adaption of the method described in the conditions in Wu and Duan 2023. The algorithm converts vorticity from reanalysis data into a binary image using a defined critical threshold. Subsequent processing with connected component labeling and erosion identifies the resulting inner cores as TC seeds."
     },
@@ -2267,7 +2566,13 @@
       "catalog": true,
       "checkpoint": "ngc://models/nvidia/earth-2/afno_dx_wg-v1-era5@v0.1.0",
       "extra": "windgust-afno",
+      "grid": {
+        "resolution": "0.25\u00b0"
+      },
       "name": "WindgustAFNO",
+      "references": [
+        "https://catalog.ngc.nvidia.com/orgs/nvidia/teams/earth-2/models/afno_dx_wg-v1-era5"
+      ],
       "source_file": "earth2studio/models/dx/wind_gust.py",
       "summary": "Wind gust AFNO diagnsotic model. Predicts the maximum wind gust during the preceding hour with the units m/s. This model uses an 17 atmospheric inputs and outputs one on a 0.25 degree lat-lon grid (south-pole excluding) [720 x 1440]."
     }
@@ -2519,7 +2824,8 @@
       "catalog": true,
       "name": "AsyncZarrBackend",
       "source_file": "earth2studio/io/async_zarr.py",
-      "summary": "Async Zarr v3 IO Backend"
+      "summary": "Async Zarr v3 IO Backend",
+      "warning": "This IO backend presently does not support overwritting existing Zarr stores. Only creation of new arrays or writing to existing."
     },
     {
       "badges": {},
@@ -2577,7 +2883,8 @@
       "catalog": true,
       "name": "CorrelatedSphericalGaussian",
       "source_file": "earth2studio/perturbation/gaussian.py",
-      "summary": "Produces Gaussian random field on the sphere with Matern covariance peturbation method output to a lat lon grid."
+      "summary": "Produces Gaussian random field on the sphere with Matern covariance peturbation method output to a lat lon grid.",
+      "warning": "Presently this method generates noise on equirectangular grid of size [N, 2*N] when N is even or [N+1, 2*N] when N is odd."
     },
     {
       "badges": {},
@@ -2590,6 +2897,9 @@
       "badges": {},
       "catalog": true,
       "name": "HemisphericCentredBredVector",
+      "references": [
+        "https://arxiv.org/abs/2408.03100"
+      ],
       "source_file": "earth2studio/perturbation/hcbv.py",
       "summary": "Bred Vector perturbation method, following the approach introduced in 'Huge Ensembles Part I: Design of Ensemble Weather Forecasts using Spherical Fourier Neural Operators'. The vector is bred by advancing in time. The bred vector is scaled seperately in the northern and southern extra-tropics and interpolated in the tropics. Additionally, it applies a centred perturbation, ie generating two perturbed stated by adding and subtracting the bred vector, respecitvely."
     },
@@ -2597,6 +2907,9 @@
       "badges": {},
       "catalog": true,
       "name": "LaggedEnsemble",
+      "references": [
+        "https://doi.org/10.1111/j.1600-0870.1983.tb00189.x"
+      ],
       "source_file": "earth2studio/perturbation/lagged.py",
       "summary": "Lagged Ensemble perturbation method. This method creates an ensemble by collecting initial conditions from different times, but verifying at the same time."
     },
@@ -2612,7 +2925,8 @@
       "catalog": true,
       "name": "SphericalGaussian",
       "source_file": "earth2studio/perturbation/spherical.py",
-      "summary": "Gaussian random field on the sphere with Matern covariance peturbation method output to a lat lon grid"
+      "summary": "Gaussian random field on the sphere with Matern covariance peturbation method output to a lat lon grid",
+      "warning": "Presently this method generates noise on equirectangular grid of size [N, 2*N] when N is even or [N+1, 2*N] when N is odd."
     },
     {
       "badges": {},
@@ -2650,8 +2964,14 @@
       "checkpoint": "hf://allenai/ACE2-ERA5",
       "extra": "ace2",
       "name": "ACE2ERA5",
+      "references": [
+        "https://arxiv.org/abs/2411.11268v1",
+        "https://github.com/ai2cm/ace",
+        "https://huggingface.co/allenai/ACE2-ERA5"
+      ],
       "source_file": "earth2studio/models/px/ace2.py",
-      "summary": "ACE2-ERA5 prognostic model wrapper."
+      "summary": "ACE2-ERA5 prognostic model wrapper.",
+      "warning": "This model may only be used with input data on the GPU device that the model was loaded on. Specifically, the data must be on the same device as whatever ``torch.cuda.current_device()`` was set to when the model package was loaded."
     },
     {
       "badges": {
@@ -2679,9 +2999,18 @@
       "catalog": true,
       "checkpoint": "hf://ecmwf/aifs-single-1.1",
       "extra": "aifs",
+      "grid": {
+        "cadence": "6h"
+      },
       "name": "AIFS",
+      "references": [
+        "https://arxiv.org/abs/2406.01465",
+        "https://huggingface.co/ecmwf/aifs-single-1.1",
+        "https://github.com/ecmwf/anemoi-core"
+      ],
       "source_file": "earth2studio/models/px/aifs.py",
-      "summary": "Artificial Intelligence Forecasting System (AIFS), a data driven forecast model developed by the European Centre for Medium-Range Weather Forecasts (ECMWF). AIFS is based on a graph neural network (GNN) encoder and decoder, and a sliding window transformer processor, and is trained on ECMWF's ERA5 re-analysis and ECMWF's operational numerical weather prediction (NWP) analyses. Consists of a single model with a time-step size of 6 hours."
+      "summary": "Artificial Intelligence Forecasting System (AIFS), a data driven forecast model developed by the European Centre for Medium-Range Weather Forecasts (ECMWF). AIFS is based on a graph neural network (GNN) encoder and decoder, and a sliding window transformer processor, and is trained on ECMWF's ERA5 re-analysis and ECMWF's operational numerical weather prediction (NWP) analyses. Consists of a single model with a time-step size of 6 hours.",
+      "warning": "We encourage users to familiarize themselves with the license restrictions of this model's checkpoints."
     },
     {
       "badges": {
@@ -2710,9 +3039,18 @@
       "catalog": true,
       "checkpoint": "hf://ecmwf/aifs-single-2.0@08286fc247419bc40666226c816ad4ac686d2a8b",
       "extra": "aifs2",
+      "grid": {
+        "cadence": "6h"
+      },
       "name": "AIFS2",
+      "references": [
+        "https://arxiv.org/abs/2509.18994",
+        "https://huggingface.co/ecmwf/aifs-single-2.0",
+        "https://github.com/ecmwf/anemoi-core"
+      ],
       "source_file": "earth2studio/models/px/aifs2.py",
-      "summary": "Artificial Intelligence Forecasting System version 2 (AIFS v2), a data driven forecast model developed by the European Centre for Medium-Range Weather Forecasts (ECMWF). AIFS v2 is based on a graph neural network (GNN) encoder and decoder, and a sliding window transformer processor. It extends AIFS v1 with wave forecasting capabilities, improved stratospheric representation (10 hPa level), and snow cover. Consists of a single model with a time-step size of 6 hours."
+      "summary": "Artificial Intelligence Forecasting System version 2 (AIFS v2), a data driven forecast model developed by the European Centre for Medium-Range Weather Forecasts (ECMWF). AIFS v2 is based on a graph neural network (GNN) encoder and decoder, and a sliding window transformer processor. It extends AIFS v1 with wave forecasting capabilities, improved stratospheric representation (10 hPa level), and snow cover. Consists of a single model with a time-step size of 6 hours.",
+      "warning": "We encourage users to familiarize themselves with the license restrictions of this model's checkpoints."
     },
     {
       "badges": {
@@ -2742,8 +3080,14 @@
       "checkpoint": "hf://ecmwf/aifs-ens-2.0@29a1f8c4ab76cd0e5b64cfd415f4ff9e08edf7cf",
       "extra": "aifs2ens",
       "name": "AIFS2ENS",
+      "references": [
+        "https://arxiv.org/abs/2506.10868",
+        "https://huggingface.co/ecmwf/aifs-ens-2.0",
+        "https://github.com/ecmwf/anemoi-core"
+      ],
       "source_file": "earth2studio/models/px/aifs2ens.py",
-      "summary": "Artificial Intelligence Forecasting System Ensemble version 2 (AIFS ENS v2), a data driven ensemble forecast model developed by the European Centre for Medium-Range Weather Forecasts (ECMWF). AIFS ENS v2 is based on a graph neural network (GNN) encoder and decoder, and a sliding window transformer processor. It extends AIFS ENS v1 with wave forecasting capabilities, improved stratospheric representation (10 hPa level), and snow cover. The ensemble model incorporates inherent stochasticity through noise conditioning, producing different forecasts for the same initial conditions."
+      "summary": "Artificial Intelligence Forecasting System Ensemble version 2 (AIFS ENS v2), a data driven ensemble forecast model developed by the European Centre for Medium-Range Weather Forecasts (ECMWF). AIFS ENS v2 is based on a graph neural network (GNN) encoder and decoder, and a sliding window transformer processor. It extends AIFS ENS v1 with wave forecasting capabilities, improved stratospheric representation (10 hPa level), and snow cover. The ensemble model incorporates inherent stochasticity through noise conditioning, producing different forecasts for the same initial conditions.",
+      "warning": "We encourage users to familiarize themselves with the license restrictions of this model's checkpoints."
     },
     {
       "badges": {
@@ -2771,9 +3115,18 @@
       "catalog": true,
       "checkpoint": "hf://ecmwf/aifs-ens-1.0",
       "extra": "aifsens",
+      "grid": {
+        "cadence": "6h"
+      },
       "name": "AIFSENS",
+      "references": [
+        "https://arxiv.org/abs/2406.01465",
+        "https://huggingface.co/ecmwf/aifs-ens-1.0",
+        "https://github.com/ecmwf/anemoi-core"
+      ],
       "source_file": "earth2studio/models/px/aifsens.py",
-      "summary": "Artificial Intelligence Forecasting System Ensemble (AIFS ENS v1.0), a probabilistic, ensemble-based forecast model from the European Centre for Medium-Range Weather Forecasts (ECMWF). AIFS ENS uses a GNN encoder/decoder with a sliding-window transformer processor, trained on ERA5 reanalysis and operational NWP analyses, and is run four times daily with a 6-hour time step. The model is trained with a CRPS objective over a small ensemble to provide calibrated probabilistic output."
+      "summary": "Artificial Intelligence Forecasting System Ensemble (AIFS ENS v1.0), a probabilistic, ensemble-based forecast model from the European Centre for Medium-Range Weather Forecasts (ECMWF). AIFS ENS uses a GNN encoder/decoder with a sliding-window transformer processor, trained on ERA5 reanalysis and operational NWP analyses, and is run four times daily with a 6-hour time step. The model is trained with a CRPS objective over a small ensemble to provide calibrated probabilistic output.",
+      "warning": "We encourage users to familiarize themselves with the license restrictions of this model's checkpoints."
     },
     {
       "badges": {
@@ -2801,7 +3154,8 @@
       "extra": "atlas",
       "name": "Atlas",
       "source_file": "earth2studio/models/px/atlas.py",
-      "summary": "Atlas prognostic model for ERA5 variables on a 0.25\u00b0 global lat-lon grid."
+      "summary": "Atlas prognostic model for ERA5 variables on a 0.25\u00b0 global lat-lon grid.",
+      "warning": "This model is expected to use the iterator interface for autoregressive rollouts longer than one step. Iteratively using the ``__call__`` and ``prep_next_input`` methods will not produce correct results, since the model performs autoregressive timestepping using a full-resolution physical state and an internal low-resolution latent state."
     },
     {
       "badges": {
@@ -2826,9 +3180,19 @@
       "catalog": true,
       "checkpoint": "hf://microsoft/aurora@refs%2Fpr%2F1",
       "extra": "aurora",
+      "grid": {
+        "cadence": "6h",
+        "resolution": "0.25\u00b0"
+      },
       "name": "Aurora",
+      "references": [
+        "https://arxiv.org/abs/2405.13063",
+        "https://github.com/microsoft/aurora",
+        "https://huggingface.co/microsoft/aurora"
+      ],
       "source_file": "earth2studio/models/px/aurora.py",
-      "summary": "Aurora 0.25 degree global forecast model. This model consists of single auto-regressive model with a time-step size of 6 hours. This model operates on 0.25 degree lat-lon grid (720, 1440) equirectangular grid with 4 surface-level variables, 5 atmospheric variables with 13 pressure levels and 3 static variables."
+      "summary": "Aurora 0.25 degree global forecast model. This model consists of single auto-regressive model with a time-step size of 6 hours. This model operates on 0.25 degree lat-lon grid (720, 1440) equirectangular grid with 4 surface-level variables, 5 atmospheric variables with 13 pressure levels and 3 static variables.",
+      "warning": "We encourage users to familiarize themselves with the license restrictions of this model's checkpoints."
     },
     {
       "badges": {
@@ -2857,9 +3221,19 @@
       "catalog": true,
       "checkpoint": "hf://microsoft/aurora@c171214768997594e1a3fc6b8d9bbb489e9d21ab",
       "extra": "aurora",
+      "grid": {
+        "cadence": "6h",
+        "resolution": "0.25\u00b0"
+      },
       "name": "Aurora1p5",
+      "references": [
+        "https://arxiv.org/abs/2405.13063",
+        "https://github.com/microsoft/aurora",
+        "https://huggingface.co/microsoft/aurora"
+      ],
       "source_file": "earth2studio/models/px/aurora1p5.py",
-      "summary": "Aurora v1.5 0.25 degree global forecast model. This model is the improved version of Aurora, featuring an expanded set of surface variables (18 vs 4) and a richer set of static fields. It consists of a single auto-regressive model with a base time-step of 6 hours, operating on a 0.25 degree lat-lon grid (720, 1440) with 5 atmospheric variables across 13 pressure levels and 18 surface variables plus 7 output-only surface variables."
+      "summary": "Aurora v1.5 0.25 degree global forecast model. This model is the improved version of Aurora, featuring an expanded set of surface variables (18 vs 4) and a richer set of static fields. It consists of a single auto-regressive model with a base time-step of 6 hours, operating on a 0.25 degree lat-lon grid (720, 1440) with 5 atmospheric variables across 13 pressure levels and 18 surface variables plus 7 output-only surface variables.",
+      "warning": "We encourage users to familiarize themselves with the license restrictions of this model's checkpoints."
     },
     {
       "badges": {
@@ -2888,9 +3262,18 @@
       "catalog": true,
       "checkpoint": "hf://microsoft/aurora@c171214768997594e1a3fc6b8d9bbb489e9d21ab",
       "extra": "aurora",
+      "grid": {
+        "resolution": "0.25\u00b0"
+      },
       "name": "Aurora1p5Ensemble",
+      "references": [
+        "https://arxiv.org/abs/2405.13063",
+        "https://github.com/microsoft/aurora",
+        "https://huggingface.co/microsoft/aurora"
+      ],
       "source_file": "earth2studio/models/px/aurora1p5.py",
-      "summary": "Aurora v1.5 ensemble 0.25 degree global forecast model. Identical to :class:`Aurora1p5` except it uses the stochastic ensemble checkpoint, where each forward pass injects fresh Gaussian noise into the backbone conditioning context. Calling the model N times (or with a batch of N copies of the same initial condition) therefore produces N statistically independent members."
+      "summary": "Aurora v1.5 ensemble 0.25 degree global forecast model. Identical to :class:`Aurora1p5` except it uses the stochastic ensemble checkpoint, where each forward pass injects fresh Gaussian noise into the backbone conditioning context. Calling the model N times (or with a batch of N copies of the same initial condition) therefore produces N statistically independent members.",
+      "warning": "We encourage users to familiarize themselves with the license restrictions of this model's checkpoints."
     },
     {
       "badges": {
@@ -2918,8 +3301,14 @@
       "checkpoint": "hf://nvidia/cbottle@eebd93c85b3cd3a5a8f79c546ed917b0b80438f4",
       "extra": "cbottle",
       "name": "CBottleVideo",
+      "references": [
+        "https://arxiv.org/abs/2505.06474v1",
+        "https://github.com/NVlabs/cBottle",
+        "https://catalog.ngc.nvidia.com/orgs/nvidia/teams/earth-2/models/cbottle"
+      ],
       "source_file": "earth2studio/models/px/cbottle_video.py",
-      "summary": "Climate in a bottle video prognostic Climate in a Bottle (cBottle) is an AI model for emulating global km-scale climate simulations and reanalysis on the equal-area HEALPix grid. The cBottle video prognostic model uses the video diffusion checkpoint of CBottle trained to predict 12 frames (initial state including) at a time."
+      "summary": "Climate in a bottle video prognostic Climate in a Bottle (cBottle) is an AI model for emulating global km-scale climate simulations and reanalysis on the equal-area HEALPix grid. The cBottle video prognostic model uses the video diffusion checkpoint of CBottle trained to predict 12 frames (initial state including) at a time.",
+      "warning": "Default model package has SST data from January 1940 to December 2022, expanded SST data should be provided out of this range."
     },
     {
       "badges": {
@@ -2945,7 +3334,16 @@
       "catalog": true,
       "checkpoint": "hf://nvidia/dlesym-v1-era5@9dbcdb83706702ac3b7d93f5dad5e535abc2fb72",
       "extra": "dlesym",
+      "grid": {
+        "resolution": "1\u00b0"
+      },
       "name": "DLESyM",
+      "references": [
+        "https://arxiv.org/abs/2409.16247",
+        "https://arxiv.org/abs/2311.06253v2",
+        "https://huggingface.co/nvidia/dlesym-v1-era5",
+        "https://github.com/NVlabs/earth2grid"
+      ],
       "source_file": "earth2studio/models/px/dlesym.py",
       "summary": "DLESyM-V1-ERA5 prognostic model. This is an ensemble forecast model for global earth system modeling. This model includes an atmosphere and ocean component, using atmospheric variables as well as the sea-surface temperature on a HEALPix nside=64 (approximately 1 degree) resolution grid. The model architecture is a U-Net with padding operations modified to support using the HEALPix grid. Because the atmosphere and ocean models are predicted at different times, not all entries in the output tensor are valid. As a result, we provide convenience methods for retrieving the valid atmospheric and oceanic outputs."
     },
@@ -3001,6 +3399,10 @@
       "checkpoint": "hf://nvidia/dlesym-v0-isccp-era5@924b2d62644ef61289dd960e018f60d6e067bfca",
       "extra": "dlesym",
       "name": "DLESyMv0_ISCCP_ERA5",
+      "references": [
+        "https://github.com/AtmosSci-DLESM/DLESyM",
+        "https://arxiv.org/abs/2409.16247"
+      ],
       "source_file": "earth2studio/models/px/dlesym_v0_isccp_era5.py",
       "summary": "DLESyMv0_ISCCP_ERA5 prognostic model for climate-timescale rollouts."
     },
@@ -3053,7 +3455,13 @@
       "catalog": true,
       "checkpoint": "ngc://models/nvidia/modulus/modulus_dlwp_cubesphere@v0.2",
       "extra": "dlwp",
+      "grid": {
+        "cadence": "6h"
+      },
       "name": "DLWP",
+      "references": [
+        "https://catalog.ngc.nvidia.com/orgs/nvidia/teams/modulus/models/modulus_dlwp_cubesphere"
+      ],
       "source_file": "earth2studio/models/px/dlwp.py",
       "summary": "Deep learning weather prediction (DLWP) prognostic model. This is a parsimonious global forecast model with a time-step size of 6 hours. The core model is a convolutional encoder-decoder trained on [64,64] cubed sphere data that has an input of 18 fields (2x7 atmos variables + 4 prescriptive) and outputs 14 fields (2x7 atmos variables). This implementation provides a wrapper that accepts [721,1440] lat-lon equirectangular grid of just the atmospheric varaibles as an input for better compatability with common data sources. Prescriptive fields are added inside the model wrapper."
     },
@@ -3096,7 +3504,15 @@
       "catalog": true,
       "checkpoint": "hf://nvidia/fourcastnet1@c67a63995f6c8e0e557eb3d791f32f437e9b02d5",
       "extra": "fcn",
+      "grid": {
+        "cadence": "6h",
+        "resolution": "0.25\u00b0"
+      },
       "name": "FCN",
+      "references": [
+        "https://arxiv.org/abs/2202.11214",
+        "https://huggingface.co/nvidia/fourcastnet1"
+      ],
       "source_file": "earth2studio/models/px/fcn.py",
       "summary": "FourCastNet global prognostic model. Consists of a single model with a time-step size of 6 hours. FourCastNet operates on 0.25 degree lat-lon grid (south-pole excluding) equirectangular grid with 26 variables."
     },
@@ -3124,6 +3540,12 @@
       "checkpoint": "hf://nvidia/fourcastnet3@76ef0c60237e458b33196ba027134e27f3fc4538",
       "extra": "fcn3",
       "name": "FCN3",
+      "references": [
+        "https://arxiv.org/abs/2507.12144v2",
+        "https://arxiv.org/abs/2402.16845",
+        "https://huggingface.co/nvidia/fourcastnet3",
+        "https://catalog.ngc.nvidia.com/orgs/nvidia/teams/earth-2/models/fourcastnet3"
+      ],
       "source_file": "earth2studio/models/px/fcn3.py",
       "summary": "FourCastNet 3 advances global weather modeling by implementing a scalable, geometric machine learning (ML) approach to probabilistic ensemble forecasting. The approach is designed to respect spherical geometry and to accurately model the spatially correlated probabilistic nature of the problem, resulting in stable spectra and realistic dynamics across multiple scales."
     },
@@ -3150,7 +3572,15 @@
       "catalog": true,
       "checkpoint": "hf://NickGeneva/earth_ai/fengwu",
       "extra": "fengwu",
+      "grid": {
+        "cadence": "6h",
+        "resolution": "0.25\u00b0"
+      },
       "name": "FengWu",
+      "references": [
+        "https://arxiv.org/abs/2304.02948",
+        "https://github.com/OpenEarthLab/FengWu"
+      ],
       "source_file": "earth2studio/models/px/fengwu.py",
       "summary": "FengWu (operational) weather model consists of single auto-regressive model with a time-step size of 6 hours. FengWu operates on 0.25 degree lat-lon grid (south-pole including) equirectangular grid with 69 atmospheric/surface variables. This model uses two time-steps as an input."
     },
@@ -3178,7 +3608,15 @@
       "catalog": true,
       "checkpoint": "hf://NickGeneva/earth_ai/fuxi",
       "extra": "fuxi",
+      "grid": {
+        "cadence": "6h",
+        "resolution": "0.25\u00b0"
+      },
       "name": "FuXi",
+      "references": [
+        "https://arxiv.org/abs/2306.12873",
+        "https://github.com/tpys/FuXi"
+      ],
       "source_file": "earth2studio/models/px/fuxi.py",
       "summary": "FuXi weather model consists of three auto-regressive U-net transfomer models with a time-step size of 6 hours. The three models are trained to predict short (5days), medium (10 days) and longer (15 days) forecasts respectively. FuXi operates on 0.25 degree lat-lon grid (south-pole including) equirectangular grid with 70 atmospheric/surface variables. This model uses two time-steps as an input."
     },
@@ -3207,8 +3645,13 @@
       "catalog": true,
       "extra": "gencast",
       "name": "GenCastMini",
+      "references": [
+        "https://arxiv.org/abs/2312.15796",
+        "https://github.com/google-deepmind/graphcast"
+      ],
       "source_file": "earth2studio/models/px/gencast_mini.py",
-      "summary": "GenCast Mini diffusion-based weather prediction model."
+      "summary": "GenCast Mini diffusion-based weather prediction model.",
+      "warning": "We encourage users to familiarize themselves with the license restrictions of this model's checkpoints."
     },
     {
       "badges": {
@@ -3234,8 +3677,13 @@
       "catalog": true,
       "extra": "graphcast",
       "name": "GraphCastOperational",
+      "references": [
+        "https://arxiv.org/abs/2212.12794",
+        "https://github.com/google-deepmind/graphcast"
+      ],
       "source_file": "earth2studio/models/px/graphcast_operational.py",
-      "summary": "GraphCast operational model"
+      "summary": "GraphCast operational model",
+      "warning": "We encourage users to familiarize themselves with the license restrictions of this model's checkpoints."
     },
     {
       "badges": {
@@ -3260,9 +3708,17 @@
       },
       "catalog": true,
       "extra": "graphcast",
+      "grid": {
+        "resolution": "1.0\u00b0"
+      },
       "name": "GraphCastSmall",
+      "references": [
+        "https://arxiv.org/abs/2212.12794",
+        "https://github.com/google-deepmind/graphcast"
+      ],
       "source_file": "earth2studio/models/px/graphcast_small.py",
-      "summary": "GraphCast Small 1.0 degree model"
+      "summary": "GraphCast Small 1.0 degree model",
+      "warning": "We encourage users to familiarize themselves with the license restrictions of this model's checkpoints."
     },
     {
       "badges": {
@@ -3287,9 +3743,18 @@
       "catalog": true,
       "checkpoint": "ngc://models/nvidia/earth-2/afno_dx_fi-v1-era5@v0.1.0",
       "extra": "interp-modafno",
+      "grid": {
+        "cadence": "1h",
+        "resolution": "0.25\u00b0"
+      },
       "name": "InterpModAFNO",
+      "references": [
+        "https://catalog.ngc.nvidia.com/orgs/nvidia/teams/earth-2/models/afno_dx_fi-v1-era5",
+        "https://arxiv.org/abs/2410.18904"
+      ],
       "source_file": "earth2studio/models/px/interpmodafno.py",
-      "summary": "ModAFNO interpolation for global prognostic models. Interpolates a forecast model to a shorter time-step size (by default from 6 to 1 hour). Operates on 0.25 degree lat-lon equirectangular grid with 73 variables."
+      "summary": "ModAFNO interpolation for global prognostic models. Interpolates a forecast model to a shorter time-step size (by default from 6 to 1 hour). Operates on 0.25 degree lat-lon equirectangular grid with 73 variables.",
+      "warning": "The model requires a base forecast model to be set before execution. This can be done by setting the `px_model` attribute or using the `load_model` method."
     },
     {
       "badges": {
@@ -3313,9 +3778,18 @@
       },
       "catalog": true,
       "extra": "pangu",
+      "grid": {
+        "cadence": "24h",
+        "resolution": "0.25\u00b0"
+      },
       "name": "Pangu24",
+      "references": [
+        "https://doi.org/10.1038/s41586-023-06185-3",
+        "https://github.com/198808xc/Pangu-Weather"
+      ],
       "source_file": "earth2studio/models/px/pangu.py",
-      "summary": "Pangu Weather 24 hour model. This model consists of single auto-regressive model with a time-step size of 24 hours. Pangu Weather operates on 0.25 degree lat-lon grid (south-pole including) equirectangular grid with 69 atmospheric/surface variables."
+      "summary": "Pangu Weather 24 hour model. This model consists of single auto-regressive model with a time-step size of 24 hours. Pangu Weather operates on 0.25 degree lat-lon grid (south-pole including) equirectangular grid with 69 atmospheric/surface variables.",
+      "warning": "We encourage users to familiarize themselves with the license restrictions of this model's checkpoints."
     },
     {
       "badges": {
@@ -3339,9 +3813,18 @@
       },
       "catalog": true,
       "extra": "pangu",
+      "grid": {
+        "cadence": "3h",
+        "resolution": "0.25\u00b0"
+      },
       "name": "Pangu3",
+      "references": [
+        "https://doi.org/10.1038/s41586-023-06185-3",
+        "https://github.com/198808xc/Pangu-Weather"
+      ],
       "source_file": "earth2studio/models/px/pangu.py",
-      "summary": "Pangu Weather 3 hour model. This model consists of three underlying auto-regressive models with a time-step size of 24, 6 and 3 hours. These three models are interweaved during prediction. Pangu Weather operates on 0.25 degree lat-lon grid (south-pole including) equirectangular grid with 69 atmospheric/surface variables."
+      "summary": "Pangu Weather 3 hour model. This model consists of three underlying auto-regressive models with a time-step size of 24, 6 and 3 hours. These three models are interweaved during prediction. Pangu Weather operates on 0.25 degree lat-lon grid (south-pole including) equirectangular grid with 69 atmospheric/surface variables.",
+      "warning": "We encourage users to familiarize themselves with the license restrictions of this model's checkpoints."
     },
     {
       "badges": {
@@ -3365,14 +3848,26 @@
       },
       "catalog": true,
       "extra": "pangu",
+      "grid": {
+        "cadence": "6h",
+        "resolution": "0.25\u00b0"
+      },
       "name": "Pangu6",
+      "references": [
+        "https://doi.org/10.1038/s41586-023-06185-3",
+        "https://github.com/198808xc/Pangu-Weather"
+      ],
       "source_file": "earth2studio/models/px/pangu.py",
-      "summary": "Pangu Weather 6 hour model. This model consists of two underlying auto-regressive models with a time-step size of 24 hours and 6 hours. These two models are interweaved during prediction. Pangu Weather operates on 0.25 degree lat-lon grid (south-pole including) equirectangular grid with 69 atmospheric/surface variables."
+      "summary": "Pangu Weather 6 hour model. This model consists of two underlying auto-regressive models with a time-step size of 24 hours and 6 hours. These two models are interweaved during prediction. Pangu Weather operates on 0.25 degree lat-lon grid (south-pole including) equirectangular grid with 69 atmospheric/surface variables.",
+      "warning": "We encourage users to familiarize themselves with the license restrictions of this model's checkpoints."
     },
     {
       "badges": {},
       "catalog": false,
       "extra": null,
+      "grid": {
+        "cadence": "6h"
+      },
       "name": "Persistence",
       "source_file": "earth2studio/models/px/persistence.py",
       "summary": "Persistence model that generates a forecast by applying the identity operator on the initial condition and indexing the lead time by 6 hours. Primarily used in testing."
@@ -3408,7 +3903,16 @@
       "catalog": true,
       "checkpoint": "ngc://models/nvidia/modulus/sfno_73ch_small@0.1.0",
       "extra": "sfno",
+      "grid": {
+        "cadence": "6h",
+        "resolution": "0.25\u00b0"
+      },
       "name": "SFNO",
+      "references": [
+        "https://arxiv.org/abs/2306.03838",
+        "https://github.com/NVIDIA/modulus-makani",
+        "https://catalog.ngc.nvidia.com/orgs/nvidia/teams/modulus/models/sfno_73ch_small"
+      ],
       "source_file": "earth2studio/models/px/sfno.py",
       "summary": "Spherical Fourier Operator Network global prognostic model. Consists of a single model with a time-step size of 6 hours. FourCastNet operates on 0.25 degree lat-lon grid (south-pole excluding) equirectangular grid with 73 variables."
     },
@@ -3436,7 +3940,14 @@
       "catalog": true,
       "checkpoint": "hf://nvidia/stormcast-v1-era5-hrrr@6c89a0877a0d6b231033d3b0d8b9828a6f833ed8",
       "extra": "stormcast",
+      "grid": {
+        "cadence": "1h"
+      },
       "name": "StormCast",
+      "references": [
+        "https://arxiv.org/abs/2408.10958",
+        "https://huggingface.co/nvidia/stormcast-v1-era5-hrrr"
+      ],
       "source_file": "earth2studio/models/px/stormcast.py",
       "summary": "StormCast generative convection-allowing model for regional forecasts consists of two core models: a regression and diffusion model. Model time step size is 1 hour, taking as input:"
     },
@@ -3466,6 +3977,10 @@
       "checkpoint": "hf://nvidia/stormcast-conus@bc8dd783f96fe0fa75fcff5bb67f66b549a5299f",
       "extra": "stormcast-conus",
       "name": "StormCastCONUS",
+      "references": [
+        "https://arxiv.org/abs/2408.10958",
+        "https://huggingface.co/nvidia/stormcast-conus"
+      ],
       "source_file": "earth2studio/models/px/stormcastconus.py",
       "summary": "StormCast-CONUS generative convection-allowing model for the full CONUS domain."
     },
@@ -3541,7 +4056,15 @@
       "catalog": true,
       "checkpoint": "hf://salv47/u-cast@775f2974b52b5beb8945ac3c60212ca25e0a13f5",
       "extra": "ucast",
+      "grid": {
+        "resolution": "1.5\u00b0"
+      },
       "name": "UCast",
+      "references": [
+        "https://arxiv.org/abs/2604.09041",
+        "https://github.com/Rose-STL-Lab/u-cast",
+        "https://huggingface.co/salv47/u-cast"
+      ],
       "source_file": "earth2studio/models/px/ucast.py",
       "summary": "U-CAST 1.5 degree global probabilistic weather model."
     }
@@ -3593,6 +4116,9 @@
       "badges": {},
       "catalog": true,
       "name": "fss",
+      "references": [
+        "https://doi.org/10.1002/qj.4824"
+      ],
       "source_file": "earth2studio/statistics/fss.py",
       "summary": "Statistic for calculating the fractions skill score (FSS) of one tensors with respect to another over a set of given dimensions."
     },
@@ -3666,5 +4192,371 @@
       "source_file": "earth2studio/statistics/moments.py",
       "summary": "Statistic for calculating the sample variance over a set of given dimensions."
     }
-  ]
+  ],
+  "vocabulary": {
+    "abi01c": "GOES ABI Channel 1 - Blue (0.47 \u00b5m)",
+    "abi02c": "GOES ABI Channel 2 - Red (0.64 \u00b5m)",
+    "abi03c": "GOES ABI Channel 3 - Vegetation (0.86 \u00b5m)",
+    "abi04c": "GOES ABI Channel 4 - Cirrus (1.37 \u00b5m)",
+    "abi05c": "GOES ABI Channel 5 - Snow/Ice (1.61 \u00b5m)",
+    "abi06c": "GOES ABI Channel 6 - Cloud Particle Size (2.24 \u00b5m)",
+    "abi07c": "GOES ABI Channel 7 - Shortwave Window (3.90 \u00b5m)",
+    "abi08c": "GOES ABI Channel 8 - Upper-level Water Vapor (6.19 \u00b5m)",
+    "abi09c": "GOES ABI Channel 9 - Mid-level Water Vapor (6.95 \u00b5m)",
+    "abi10c": "GOES ABI Channel 10 - Lower-level Water Vapor (7.34 \u00b5m)",
+    "abi11c": "GOES ABI Channel 11 - Cloud-top Phase (8.50 \u00b5m)",
+    "abi12c": "GOES ABI Channel 12 - Ozone (9.61 \u00b5m)",
+    "abi13c": "GOES ABI Channel 13 - Clean IR Longwave Window (10.35 \u00b5m)",
+    "abi14c": "GOES ABI Channel 14 - IR Longwave Window (11.20 \u00b5m)",
+    "abi15c": "GOES ABI Channel 15 - Dirty IR Longwave Window (12.30 \u00b5m)",
+    "abi16c": "GOES ABI Channel 16 - CO2 Longwave IR (13.30 \u00b5m)",
+    "aerot": "aerosol optical thickness",
+    "afire": "active fire detection from VIIRS thermal anomaly algorithm",
+    "ahi01": "Himawari AHI Band 1 - Visible Blue (0.47 \u00b5m)",
+    "ahi02": "Himawari AHI Band 2 - Visible Green (0.51 \u00b5m)",
+    "ahi03": "Himawari AHI Band 3 - Visible Red (0.64 \u00b5m)",
+    "ahi04": "Himawari AHI Band 4 - Near-IR (0.86 \u00b5m)",
+    "ahi05": "Himawari AHI Band 5 - Near-IR (1.6 \u00b5m)",
+    "ahi06": "Himawari AHI Band 6 - Near-IR (2.3 \u00b5m)",
+    "ahi07": "Himawari AHI Band 7 - Shortwave IR (3.9 \u00b5m)",
+    "ahi08": "Himawari AHI Band 8 - Water Vapor (6.2 \u00b5m)",
+    "ahi09": "Himawari AHI Band 9 - Water Vapor (6.9 \u00b5m)",
+    "ahi10": "Himawari AHI Band 10 - Water Vapor (7.3 \u00b5m)",
+    "ahi11": "Himawari AHI Band 11 - Cloud-top Phase (8.6 \u00b5m)",
+    "ahi12": "Himawari AHI Band 12 - Ozone (9.6 \u00b5m)",
+    "ahi13": "Himawari AHI Band 13 - Clean IR Window (10.4 \u00b5m)",
+    "ahi14": "Himawari AHI Band 14 - IR Window (11.2 \u00b5m)",
+    "ahi15": "Himawari AHI Band 15 - Dirty IR Window (12.4 \u00b5m)",
+    "ahi16": "Himawari AHI Band 16 - CO2 Longwave IR (13.3 \u00b5m)",
+    "airs": "Atmospheric Infrared Sounder brightness temperature (K)",
+    "amsua": "Advanced Microwave Sounding Unit-A brightness temperature (K)",
+    "amsub": "Advanced Microwave Sounding Unit-B brightness temperature (K)",
+    "aod": "aerosol optical depth at 550nm - atmospheric particulate loading",
+    "aod550": "total aerosol optical depth at 550 nm (dimensionless)",
+    "atms": "Advanced Technology Microwave Sounder brightness temperature (K)",
+    "atms_antenna_temperature": "Advanced Technology Microwave Sounder antenna temperature (K)",
+    "avhrr": "AVHRR/3 calibrated observation (reflectance percent or brightness temperature K)",
+    "bcaod550": "black carbon aerosol optical depth at 550 nm (dimensionless)",
+    "blh": "boundary layer height (m)",
+    "cape": "convective available potential energy (J kg-1)",
+    "cbh": "cloud base height above sea level from atmospheric profile analysis (m)",
+    "ccl": "cloud cover fraction by atmospheric layers - low/mid/high clouds (0 - 1)",
+    "cdcomp": "cloud optical depth and effective radius from visible/near-IR channels (day)",
+    "cdww": "coefficient of drag with waves (dimensionless)",
+    "cfrzr": "categorical (80, 90, or 100  percent chance of measurable precipitation (0.01 inch)) freezing rain",
+    "cicep": "categorical (80, 90, or 100  percent chance of measurable precipitation (0.01 inch)) ice pellets",
+    "cmask": "cloud mask - clear/cloudy pixel classification from multispectral analysis",
+    "cncomp": "cloud optical properties from thermal IR channels (night)",
+    "cos_mwd": "cosine of mean wave direction (unitless)",
+    "cp": "Convective precipitation accumulated over given time frame (m)",
+    "cp06": "convective precipitation accumulated over past 6 hours (m)",
+    "cphase": "cloud phase - ice/water/mixed phase determination from IR channels",
+    "crain": "categorical (80, 90, or 100  percent chance of measurable precipitation (0.01 inch)) rain",
+    "crisfsr": "Cross-track Infrared Sounder Full Spectral Resolution (CrIS-FSR) brightness temperature (K)",
+    "csnow": "categorical snow",
+    "cth": "cloud top height above sea level from IR temperature retrieval (m)",
+    "d2m": "dewpoint temperature at 2m (K)",
+    "duaod550": "dust aerosol optical depth at 550 nm (dimensionless)",
+    "fci04vis": "MTG FCI VIS (0.444 \u00b5m)",
+    "fci05vis": "MTG FCI VIS (0.510 \u00b5m)",
+    "fci06vis": "MTG FCI VIS (0.640 \u00b5m)",
+    "fci08vis": "MTG FCI VIS (0.865 \u00b5m)",
+    "fci09vis": "MTG FCI VIS (0.914 \u00b5m)",
+    "fci105ir": "MTG FCI IR (10.500 \u00b5m)",
+    "fci123ir": "MTG FCI IR (12.300 \u00b5m)",
+    "fci133ir": "MTG FCI IR (13.300 \u00b5m)",
+    "fci13nir": "MTG FCI NIR (1.380 \u00b5m)",
+    "fci16nir": "MTG FCI NIR (1.610 \u00b5m)",
+    "fci22nir": "MTG FCI NIR (2.250 \u00b5m)",
+    "fci38ir": "MTG FCI IR (3.800 \u00b5m)",
+    "fci63wv": "MTG FCI WV (6.300 \u00b5m)",
+    "fci73wv": "MTG FCI WV (7.350 \u00b5m)",
+    "fci87ir": "MTG FCI IR (8.700 \u00b5m)",
+    "fci97ir": "MTG FCI IR (9.660 \u00b5m)",
+    "fdir": "surface direct short-wave radiation (J m-2)",
+    "fg10m": "maximum 10 m wind gust since previous post-processing (m s-1)",
+    "flashc": "lightning flash event count (per detected event, 1.0)",
+    "flashe": "lightning flash event optical energy (J)",
+    "fmask": "fire detection confidence mask - fire pixel classification quality",
+    "fsr": "forecast surface roughness (m)",
+    "h1012": "significant wave height of waves with periods 10-12 seconds (m)",
+    "h1214": "significant wave height of waves with periods 12-14 seconds (m)",
+    "h1417": "significant wave height of waves with periods 14-17 seconds (m)",
+    "h1721": "significant wave height of waves with periods 17-21 seconds (m)",
+    "h2125": "significant wave height of waves with periods 21-25 seconds (m)",
+    "h2530": "significant wave height of waves with periods 25-30 seconds (m)",
+    "hcc": "high cloud cover (0 - 1)",
+    "i10fg": "instantaneous 10 m wind gust (m s-1)",
+    "iasi": "Infrared Atmospheric Sounding Interferometer brightness temperature (K)",
+    "ie": "instantaneous moisture flux (kg m-2 s-1)",
+    "lcc": "low cloud cover (0 - 1)",
+    "lsm": "land-sea mask",
+    "lsp": "Large-scale precipitation accumulated over given time frame (m)",
+    "lst": "land surface temperature from VIIRS thermal infrared channels (K)",
+    "mcc": "medium cloud cover (0 - 1)",
+    "mfrp": "fire radiative power (FRP) per pixel (MW)",
+    "mhs": "Microwave Humidity Sounder brightness temperature (K)",
+    "msl": "mean sea level pressure (Pa)",
+    "mwd": "mean wave direction (degrees true)",
+    "mwp": "mean wave period (s)",
+    "omaod550": "organic matter aerosol optical depth at 550 nm (dimensionless)",
+    "pres": "pressure (Pa) at a certain altitude(s)",
+    "ptype": "categorical precipitation type",
+    "pv100": "potential vorticity at 100 hPa (K m2 kg-1 s-1)",
+    "pv1000": "potential vorticity at 1000 hPa (K m2 kg-1 s-1)",
+    "pv150": "potential vorticity at 150 hPa (K m2 kg-1 s-1)",
+    "pv200": "potential vorticity at 200 hPa (K m2 kg-1 s-1)",
+    "pv250": "potential vorticity at 250 hPa (K m2 kg-1 s-1)",
+    "pv300": "potential vorticity at 300 hPa (K m2 kg-1 s-1)",
+    "pv400": "potential vorticity at 400 hPa (K m2 kg-1 s-1)",
+    "pv50": "potential vorticity at 50 hPa (K m2 kg-1 s-1)",
+    "pv500": "potential vorticity at 500 hPa (K m2 kg-1 s-1)",
+    "pv600": "potential vorticity at 600 hPa (K m2 kg-1 s-1)",
+    "pv700": "potential vorticity at 700 hPa (K m2 kg-1 s-1)",
+    "pv850": "potential vorticity at 850 hPa (K m2 kg-1 s-1)",
+    "pv925": "potential vorticity at 925 hPa (K m2 kg-1 s-1)",
+    "q100": "specific humidity at 100 hPa (kg kg-1)",
+    "q1000": "specific humidity at 1000 hPa (kg kg-1)",
+    "q150": "specific humidity at 150 hPa (kg kg-1)",
+    "q200": "specific humidity at 200 hPa (kg kg-1)",
+    "q250": "specific humidity at 250 hPa (kg kg-1)",
+    "q2m": "specific humidity at 2 m (kg kg-1)",
+    "q300": "specific humidity at 300 hPa (kg kg-1)",
+    "q400": "specific humidity at 400 hPa (kg kg-1)",
+    "q50": "specific humidity at 50 hPa (kg kg-1)",
+    "q500": "specific humidity at 500 hPa (kg kg-1)",
+    "q600": "specific humidity at 600 hPa (kg kg-1)",
+    "q700": "specific humidity at 700 hPa (kg kg-1)",
+    "q850": "specific humidity at 850 hPa (kg kg-1)",
+    "q925": "specific humidity at 925 hPa (kg kg-1)",
+    "qa": "fire detection quality assurance (0 - 1)",
+    "r100": "relative humidity at 100 hPa (%)",
+    "r1000": "relative humidity at 1000 hPa (%)",
+    "r150": "relative humidity at 150 hPa (%)",
+    "r200": "relative humidity at 200 hPa (%)",
+    "r250": "relative humidity at 250 hPa (%)",
+    "r2m": "relative humidity at 2 m (%)",
+    "r300": "relative humidity at 300 hPa (%)",
+    "r400": "relative humidity at 400 hPa (%)",
+    "r50": "relative humidity at 50 hPa (%)",
+    "r500": "relative humidity at 500 hPa (%)",
+    "r600": "relative humidity at 600 hPa (%)",
+    "r700": "relative humidity at 700 hPa (%)",
+    "r850": "relative humidity at 850 hPa (%)",
+    "r925": "relative humidity at 925 hPa (%)",
+    "refc": "Maximum/Composite radar reflectivity (dB)",
+    "rlut": "outgoing longwave radiation (W m-2)",
+    "ro": "runoff water equivalent (surface plus subsurface) (kg m-2)",
+    "ro06": "runoff accumulated over past 6 hours (m)",
+    "rsds": "surface downwelling shortwave radiation (W m-2)",
+    "rsut": "outgoing shortwave radiation (W m-2)",
+    "s3sy01aod": "Sentinel-3 SYNERGY aerosol optical depth band 01 (440 nm)",
+    "s3sy01sr": "Sentinel-3 SYNERGY nadir surface reflectance band 01 (440 nm)",
+    "s3sy01ssa": "Sentinel-3 SYNERGY single-scattering albedo band 01 (440 nm)",
+    "s3sy02aod": "Sentinel-3 SYNERGY aerosol optical depth band 02 (550 nm)",
+    "s3sy02sr": "Sentinel-3 SYNERGY nadir surface reflectance band 02 (550 nm)",
+    "s3sy02ssa": "Sentinel-3 SYNERGY single-scattering albedo band 02 (550 nm)",
+    "s3sy03aod": "Sentinel-3 SYNERGY aerosol optical depth band 03 (670 nm)",
+    "s3sy03sr": "Sentinel-3 SYNERGY nadir surface reflectance band 03 (670 nm)",
+    "s3sy03ssa": "Sentinel-3 SYNERGY single-scattering albedo band 03 (670 nm)",
+    "s3sy04aod": "Sentinel-3 SYNERGY aerosol optical depth band 04 (865 nm)",
+    "s3sy04sr": "Sentinel-3 SYNERGY nadir surface reflectance band 04 (865 nm)",
+    "s3sy04ssa": "Sentinel-3 SYNERGY single-scattering albedo band 04 (865 nm)",
+    "s3sy05aod": "Sentinel-3 SYNERGY aerosol optical depth band 05 (1600 nm)",
+    "s3sy05sr": "Sentinel-3 SYNERGY nadir surface reflectance band 05 (1600 nm)",
+    "s3sy05ssa": "Sentinel-3 SYNERGY single-scattering albedo band 05 (1600 nm)",
+    "s3sy06aod": "Sentinel-3 SYNERGY aerosol optical depth band 06 (2250 nm)",
+    "salb": "surface albedo - fraction of solar radiation reflected by Earth's surface (0 - 1)",
+    "sd": "snow depth (m of water equivalent)",
+    "sde": "snow depth (m)",
+    "sdor": "standard deviation of sub-grid scale orography",
+    "sf": "snowfall water equivalent (kg m-2)",
+    "sf06": "snowfall accumulated over past 6 hours (m of water equivalent)",
+    "sf1h": "snowfall (m of water equivalent) past 1 hour",
+    "sic": "sea ice concentration / sea ice area fraction (0 - 1)",
+    "sin_mwd": "sine of mean wave direction (unitless)",
+    "skt": "skin temperature at surface (K)",
+    "slhf": "time-integrated surface latent heat net flux (J m-2)",
+    "slor": "slope of sub-grid scale orography",
+    "smlt": "Snowmelt accumulated over given time frame (m of water equivalent)",
+    "snc": "snow cover fraction - percentage of pixel covered by snow (0 - 1)",
+    "snowc": "snow coverage (%)",
+    "sp": "surface pressure (Pa)",
+    "ssaod550": "sea salt aerosol optical depth at 550 nm (dimensionless)",
+    "ssr": "surface net short-wave radiation (J m-2)",
+    "ssrd": "surface short-wave (solar) radiation downwards (J m-2) accumulated over a time period",
+    "ssrd06": "surface short-wave (solar) radiation downwards (J m-2) past 6 hours",
+    "ssrd1h": "surface short-wave (solar) radiation downwards (J m-2) past 1 hour",
+    "sst": "Temperature of sea water near the surface (K)",
+    "ssta": "Sea surface temperature anomaly relative to climatology (K)",
+    "sstu": "Uncertainty estimate of the analysed sea surface temperature (K)",
+    "stl1": "soil temperature level 1 (K)",
+    "stl2": "soil temperature level 2 (K)",
+    "stl3": "soil temperature level 3 (K)",
+    "stl4": "soil temperature level 4 (K)",
+    "strd": "surface long-wave (thermal) radiation downwards (J m-2) accumulated over a time period",
+    "strd06": "surface long-wave (thermal) radiation downwards (J m-2) past 6 hours",
+    "suaod550": "sulphate aerosol optical depth at 550 nm (dimensionless)",
+    "swh": "significant wave height of combined wind waves and swell (m)",
+    "swvl1": "volumetric soil water layer 1 (m\u00b3/m\u00b3)",
+    "swvl2": "volumetric soil water layer 2 (m\u00b3/m\u00b3)",
+    "t10": "temperature at 10 hPa (K)",
+    "t100": "temperature at 100 hPa (K)",
+    "t1000": "temperature at 1000 hPa (K)",
+    "t150": "temperature at 150 hPa (K)",
+    "t200": "temperature at 200 hPa (K)",
+    "t250": "temperature at 250 hPa (K)",
+    "t2m": "temperature at 2m (K)",
+    "t300": "temperature at 300 hPa (K)",
+    "t400": "temperature at 400 hPa (K)",
+    "t50": "temperature at 50 hPa (K)",
+    "t500": "temperature at 500 hPa (K)",
+    "t600": "temperature at 600 hPa (K)",
+    "t700": "temperature at 700 hPa (K)",
+    "t850": "temperature at 850 hPa (K)",
+    "t925": "temperature at 925 hPa (K)",
+    "tau300-700": "Geopotential thickness between 300 and 700 hPa levels (z300 - z700)",
+    "tcc": "total cloud cover (0 - 1)",
+    "tcco": "total column carbon monoxide (kg m-2)",
+    "tcd2l": "tropical cyclone distance to land (km)",
+    "tciw": "total column ice water / vertically integrated ice (cloud) water path (kg m-2)",
+    "tclat": "tropical cyclone center latitude position",
+    "tclon": "tropical cyclone center longitude position",
+    "tclw": "total column liquid water / vertically integrated liquid (cloud) water path (kg m-2)",
+    "tcmsl": "tropical cyclone center min mean sea level pressure (Pa)",
+    "tcno2": "total column nitrogen dioxide (kg m-2)",
+    "tco3": "total column ozone (kg m-2)",
+    "tcr34": "tropical cyclone 34-kt wind radius (km)",
+    "tcr50": "tropical cyclone 50-kt wind radius (km)",
+    "tcr64": "tropical cyclone 64-kt wind radius (km)",
+    "tcso2": "total column sulphur dioxide (kg m-2)",
+    "tcsshs": "tropical cyclone Saffir-Simpson Hurricane Scale category (-5 to 5)",
+    "tcustm": "tropical cyclone translation u-component (m s-1)",
+    "tcvstm": "tropical cyclone translation v-component (m s-1)",
+    "tcw": "total column water (kg m-2)",
+    "tcw10m": "tropical cyclone center max wind speed at 10m (m s-1)",
+    "tcwnd": "tropical cyclone maximum sustained wind speed (m s-1)",
+    "tcwv": "total column water vapor / precipitable water (kg m-2)",
+    "tisr": "TOA incident short-wave radiation (J m-2)",
+    "tp": "total precipitation (m)",
+    "tp01": "total precipitation accumulated over past 1 hour (m)",
+    "tp06": "total precipitation accumulated over past 6 hours (m)",
+    "tp12": "total precipitation accumulated over past 12 hours (m)",
+    "tp1h": "total precipitation (m) past 1 hour",
+    "tp24": "total precipitation accumulated over past 24 hours (m)",
+    "tpf": "total precipitation flux (kg m-2 s-1)",
+    "tpi": "total precipitation index",
+    "tpp": "total precipitation probability",
+    "tprate": "instantaneous surface rain rate (mm h-1)",
+    "tsr": "top net short-wave radiation (J m-2)",
+    "ttr1h": "top net thermal (longwave) radiation (J m-2) past 1 hour",
+    "u10": "u-component of wind at 10 hPa (m s-1)",
+    "u100": "u-component of wind at 100 hPa (m s-1)",
+    "u1000": "u-component of wind at 1000 hPa (m s-1)",
+    "u100m": "u-component of wind at 100 m (m s-1)",
+    "u10m": "u-component (eastward, zonal) of wind at 10 m (m s-1)",
+    "u150": "u-component of wind at 150 hPa (m s-1)",
+    "u200": "u-component of wind at 200 hPa (m s-1)",
+    "u250": "u-component of wind at 250 hPa (m s-1)",
+    "u300": "u-component of wind at 300 hPa (m s-1)",
+    "u400": "u-component of wind at 400 hPa (m s-1)",
+    "u50": "u-component of wind at 50 hPa (m s-1)",
+    "u500": "u-component of wind at 500 hPa (m s-1)",
+    "u600": "u-component of wind at 600 hPa (m s-1)",
+    "u700": "u-component of wind at 700 hPa (m s-1)",
+    "u850": "u-component of wind at 850 hPa (m s-1)",
+    "u925": "u-component of wind at 925 hPa (m s-1)",
+    "uvb1h": "UV biologically effective dose (J m-2) past 1 hour",
+    "uvcossza": "cosine of solar zenith angle",
+    "v10": "v-component of wind at 10 hPa (m s-1)",
+    "v100": "v-component of wind at 100 hPa (m s-1)",
+    "v1000": "v-component of wind at 1000 hPa (m s-1)",
+    "v100m": "v-component of wind at 100 m (m s-1)",
+    "v10m": "v-component (northward, meridional) of wind at 10 m (m s-1)",
+    "v150": "v-component of wind at 150 hPa (m s-1)",
+    "v200": "v-component of wind at 200 hPa (m s-1)",
+    "v250": "v-component of wind at 250 hPa (m s-1)",
+    "v300": "v-component of wind at 300 hPa (m s-1)",
+    "v400": "v-component of wind at 400 hPa (m s-1)",
+    "v50": "v-component of wind at 50 hPa (m s-1)",
+    "v500": "v-component of wind at 500 hPa (m s-1)",
+    "v600": "v-component of wind at 600 hPa (m s-1)",
+    "v700": "v-component of wind at 700 hPa (m s-1)",
+    "v850": "v-component of wind at 850 hPa (m s-1)",
+    "v925": "v-component of wind at 925 hPa (m s-1)",
+    "vash": "volcanic ash detection and concentration from thermal IR signature",
+    "viirs01i": "VIIRS I1 - Red (0.64 \u00b5m)",
+    "viirs01m": "VIIRS M1 - Violet (0.412 \u00b5m)",
+    "viirs02i": "VIIRS I2 - Near-IR (0.864 \u00b5m)",
+    "viirs02m": "VIIRS M2 - Blue (0.445 \u00b5m)",
+    "viirs03i": "VIIRS I3 - SWIR (1.58 \u00b5m)",
+    "viirs03m": "VIIRS M3 - Blue-Green (0.488 \u00b5m)",
+    "viirs04i": "VIIRS I4 - MWIR (3.74 \u00b5m)",
+    "viirs04m": "VIIRS M4 - Green (0.555 \u00b5m)",
+    "viirs05i": "VIIRS I5 - LWIR/Thermal (11.45 \u00b5m)",
+    "viirs05m": "VIIRS M5 - Red (0.672 \u00b5m)",
+    "viirs06m": "VIIRS M6 - Red Edge (0.746 \u00b5m)",
+    "viirs07m": "VIIRS M7 - Near-IR (0.865 \u00b5m)",
+    "viirs08m": "VIIRS M8 - Near-IR (1.24 \u00b5m)",
+    "viirs09m": "VIIRS M9 - Cirrus (1.378 \u00b5m)",
+    "viirs10m": "VIIRS M10 - SWIR (1.61 \u00b5m)",
+    "viirs11m": "VIIRS M11 - SWIR (2.25 \u00b5m)",
+    "viirs12m": "VIIRS M12 - MWIR (3.7 \u00b5m)",
+    "viirs13m": "VIIRS M13 - MWIR (4.05 \u00b5m)",
+    "viirs14m": "VIIRS M14 - LWIR (8.55 \u00b5m)",
+    "viirs15m": "VIIRS M15 - LWIR (10.76 \u00b5m)",
+    "viirs16m": "VIIRS M16 - LWIR (12.01 \u00b5m)",
+    "vpd100": "vapor pressure deficit (hPa) at 100 hPa",
+    "vpd1000": "vapor pressure deficit (hPa) at 1000 hPa",
+    "vpd200": "vapor pressure deficit (hPa) at 200 hPa",
+    "vpd300": "vapor pressure deficit (hPa) at 300 hPa",
+    "vpd400": "vapor pressure deficit (hPa) at 400 hPa",
+    "vpd500": "vapor pressure deficit (hPa) at 500 hPa",
+    "vpd600": "vapor pressure deficit (hPa) at 600 hPa",
+    "vpd700": "vapor pressure deficit (hPa) at 700 hPa",
+    "vpd850": "vapor pressure deficit (hPa) at 850 hPa",
+    "vpd925": "vapor pressure deficit (hPa) at 925 hPa",
+    "w10": "vertical wind at 10 hPa (Pa s-1)",
+    "w100": "vertical wind at 100 hPa (Pa s-1)",
+    "w1000": "vertical wind at 1000 hPa (Pa s-1)",
+    "w150": "vertical wind at 150 hPa (Pa s-1)",
+    "w200": "vertical wind at 200 hPa (Pa s-1)",
+    "w250": "vertical wind at 250 hPa (Pa s-1)",
+    "w300": "vertical wind at 300 hPa (Pa s-1)",
+    "w400": "vertical wind at 400 hPa (Pa s-1)",
+    "w50": "vertical wind at 50 hPa (Pa s-1)",
+    "w500": "vertical wind at 500 hPa (Pa s-1)",
+    "w600": "vertical wind at 600 hPa (Pa s-1)",
+    "w700": "vertical wind at 700 hPa (Pa s-1)",
+    "w850": "vertical wind at 850 hPa (Pa s-1)",
+    "w925": "vertical wind at 925 hPa (Pa s-1)",
+    "wmb": "model bathymetry (m)",
+    "ws100": "wind speed at 100 hPa (m s-1)",
+    "ws1000": "wind speed at 1000 hPa (m s-1)",
+    "ws10m": "wind speed at 10 m (m s-1)",
+    "ws200": "wind speed at 200 hPa (m s-1)",
+    "ws300": "wind speed at 300 hPa (m s-1)",
+    "ws400": "wind speed at 400 hPa (m s-1)",
+    "ws500": "wind speed at 500 hPa (m s-1)",
+    "ws600": "wind speed at 600 hPa (m s-1)",
+    "ws700": "wind speed at 700 hPa (m s-1)",
+    "ws850": "wind speed at 850 hPa (m s-1)",
+    "ws925": "wind speed at 925 hPa (m s-1)",
+    "z": "geopotential at surface (orography) (m2 s-2)",
+    "z10": "geopotential at 10 hPa (m2 s-2)",
+    "z100": "geopotential at 100 hPa (m2 s-2)",
+    "z1000": "geopotential at 1000 hPa (m2 s-2)",
+    "z150": "geopotential at 150 hPa (m2 s-2)",
+    "z200": "geopotential at 200 hPa (m2 s-2)",
+    "z250": "geopotential at 250 hPa (m2 s-2)",
+    "z300": "geopotential at 300 hPa (m2 s-2)",
+    "z400": "geopotential at 400 hPa (m2 s-2)",
+    "z50": "geopotential at 50 hPa (m2 s-2)",
+    "z500": "geopotential at 500 hPa (m2 s-2)",
+    "z600": "geopotential at 600 hPa (m2 s-2)",
+    "z700": "geopotential at 700 hPa (m2 s-2)",
+    "z850": "geopotential at 850 hPa (m2 s-2)",
+    "z925": "geopotential at 925 hPa (m2 s-2)",
+    "zust": "friction velocity (m s-1)"
+  }
 }

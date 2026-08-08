@@ -874,3 +874,8 @@
 }
 
 .md-typeset .e2s-rows tbody tr[hidden] { display: none; }
+
+/* Reference icons + warning marker in catalog rows */
+.md-typeset .e2s-refs { white-space: nowrap; }
+.md-typeset .e2s-refs a { margin-right: 0.25em; text-decoration: none; font-size: 0.9em; }
+.e2s-warn { cursor: help; opacity: 0.75; }

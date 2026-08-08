@@ -25,7 +25,7 @@ predict the next state and roll forward to build a forecast.
 
 <div class="e2s-table">
 <table class="e2s-rows">
-<thead><tr><th>Model</th><th>Coverage</th><th>Type</th><th>Products</th><th>Rec. VRAM</th><th>Install</th><th>Checkpoint</th></tr></thead>
+<thead><tr><th>Model</th><th>Coverage</th><th>Type</th><th>Products</th><th>Rec. VRAM</th><th>Install</th><th>Checkpoint</th><th>Refs</th></tr></thead>
 <tbody>
 {%- for m in entries('prognostic') %}
 <tr data-href="https://nvidia.github.io/earth2studio/modules/generated/models/px/earth2studio.models.px.{{ m.name }}.html"
@@ -39,6 +39,7 @@ predict the next state and roll forward to build a forecast.
 <td>{{ m.badges.gpu | join(', ') | upper if m.badges.gpu else '—' }}</td>
 <td>{% if m.extra %}<code>[{{ m.extra }}]</code>{% else %}—{% endif %}</td>
 <td>{% if m.checkpoint %}<code>{{ m.checkpoint.split('@')[0] }}</code>{% else %}—{% endif %}</td>
+<td class="e2s-refs">{% for r in m.references %}{% if 'arxiv' in r %}<a href="{{ r }}" title="Paper">📄</a>{% elif 'huggingface' in r %}<a href="{{ r }}" title="Hugging Face">🤗</a>{% elif 'ngc' in r %}<a href="{{ r }}" title="NGC">NGC</a>{% elif 'github' in r %}<a href="{{ r }}" title="GitHub">⌥</a>{% endif %}{% endfor %}{% if m.warning %}<span class="e2s-warn" title="{{ m.warning | truncate(220) | e }}">⚠</span>{% endif %}</td>
 </tr>
 {%- endfor %}
 </tbody>
@@ -52,7 +53,7 @@ downscaling to higher resolution, cyclone tracking, and other decision-ready var
 
 <div class="e2s-table">
 <table class="e2s-rows">
-<thead><tr><th>Model</th><th>Coverage</th><th>Type</th><th>Products</th><th>Rec. VRAM</th><th>Install</th></tr></thead>
+<thead><tr><th>Model</th><th>Coverage</th><th>Type</th><th>Products</th><th>Rec. VRAM</th><th>Install</th><th>Refs</th></tr></thead>
 <tbody>
 {%- for m in entries('diagnostic') %}
 <tr data-href="https://nvidia.github.io/earth2studio/modules/generated/models/dx/earth2studio.models.dx.{{ m.name }}.html"
@@ -65,6 +66,7 @@ downscaling to higher resolution, cyclone tracking, and other decision-ready var
 <td>{{ m.badges['product'] | join(', ') if m.badges['product'] else '—' }}</td>
 <td>{{ m.badges.gpu | join(', ') | upper if m.badges.gpu else '—' }}</td>
 <td>{% if m.extra %}<code>[{{ m.extra }}]</code>{% else %}—{% endif %}</td>
+<td class="e2s-refs">{% for r in m.references %}{% if 'arxiv' in r %}<a href="{{ r }}" title="Paper">📄</a>{% elif 'huggingface' in r %}<a href="{{ r }}" title="Hugging Face">🤗</a>{% elif 'ngc' in r %}<a href="{{ r }}" title="NGC">NGC</a>{% elif 'github' in r %}<a href="{{ r }}" title="GitHub">⌥</a>{% endif %}{% endfor %}{% if m.warning %}<span class="e2s-warn" title="{{ m.warning | truncate(220) | e }}">⚠</span>{% endif %}</td>
 </tr>
 {%- endfor %}
 </tbody>
@@ -97,6 +99,7 @@ downscaling to higher resolution, cyclone tracking, and other decision-ready var
 **Legend** — *Type*: MRF medium-range forecast · NWC nowcasting · DS downscaling ·
 S2S subseasonal-to-seasonal · CM climate · DA data assimilation.
 *Install*: the pip extra, e.g. `pip install earth2studio[fcn3]`.
+*Refs*: 📄 paper · 🤗 Hugging Face · NGC catalog · ⌥ GitHub · ⚠ licensing note (hover).
 Click any row to open its API reference.
 
 [Full API reference :octicons-arrow-right-24:](https://nvidia.github.io/earth2studio/modules/models_px.html){ .md-button }

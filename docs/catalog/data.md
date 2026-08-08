@@ -25,7 +25,7 @@ satellite and in-situ observations — all behind one interface.
 
 <div class="e2s-table">
 <table class="e2s-rows">
-<thead><tr><th>Source</th><th>Coverage</th><th>Products</th><th>Description</th></tr></thead>
+<thead><tr><th>Source</th><th>Coverage</th><th>Resolution</th><th>Cadence</th><th>Vars</th><th>Products</th><th>Description</th></tr></thead>
 <tbody>
 {%- for d in entries('data_sources') if key in (d.badges.dataclass or []) %}
 <tr data-href="https://nvidia.github.io/earth2studio/modules/datasources_analysis.html"
@@ -33,6 +33,9 @@ satellite and in-situ observations — all behind one interface.
     data-product="{{ d.badges['product'] | join(' ') }}">
 <td><code>{{ d.name }}</code></td>
 <td>{{ d.badges.region | join(', ') | upper if d.badges.region else '—' }}</td>
+<td>{{ d.grid.resolution if d.grid and d.grid.resolution else '—' }}</td>
+<td>{{ d.grid.cadence if d.grid and d.grid.cadence else '—' }}</td>
+<td>{{ d.variables if d.variables else '—' }}</td>
 <td>{{ d.badges['product'] | join(', ') if d.badges['product'] else '—' }}</td>
 <td>{{ d.summary | truncate(110) }}</td>
 </tr>
@@ -46,5 +49,9 @@ satellite and in-situ observations — all behind one interface.
 
 Sources without a data class badge (utilities, synthetic sources, and file readers) are
 documented in the API reference. Click any row to open the API docs.
+
+**Columns** — *Resolution* and *Cadence* are parsed from each source's own documentation;
+*Vars* is the number of variables its lexicon maps (blank where the lexicon is built
+dynamically). See the [variable glossary](vocabulary.md) for what each variable ID means.
 
 [Full API reference :octicons-arrow-right-24:](https://nvidia.github.io/earth2studio/modules/datasources_analysis.html){ .md-button }

@@ -21,9 +21,10 @@ def define_env(env):
     @env.macro
     def n(key: str, field: str = "catalog") -> int:
         """Count for a registry section, e.g. n('prognostic') or n('data_sources')."""
-        if key == "models_total":
-            return counts.get("models_total", 0)
-        return counts.get(key, {}).get(field, 0)
+        value = counts.get(key, 0)
+        if isinstance(value, dict):          # per-module counts
+            return value.get(field, 0)
+        return value                          # scalar totals (models_total, vocabulary)
 
     @env.macro
     def entries(key: str, catalog_only: bool = True) -> list:

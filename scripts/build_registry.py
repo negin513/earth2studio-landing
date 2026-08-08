@@ -101,6 +101,56 @@ def parse_badges(docstring: str) -> dict[str, list[str]]:
     return badges
 
 
+REF_HOSTS = ("arxiv.org", "huggingface.co", "ngc.nvidia.com", "github.com", "doi.org")
+
+
+def parse_references(docstring: str) -> list[str]:
+    """Reference URLs from the ``Note`` docstring section (papers, model cards)."""
+    if not docstring:
+        return []
+    urls = re.findall(r"https?://[^\s<>\"')]+", docstring)
+    seen: list[str] = []
+    for url in urls:
+        url = url.rstrip(".,)")
+        if any(host in url for host in REF_HOSTS) and url not in seen:
+            seen.append(url)
+    return seen
+
+
+def parse_warning(docstring: str) -> str | None:
+    """The ``Warning`` docstring section — usually licensing or download size."""
+    if not docstring:
+        return None
+    match = re.search(r"Warning\s*\n\s*-+\s*\n(.*?)(?:\n\s*\n\s*\w+\s*\n\s*-+|\Z)", docstring, re.S)
+    if not match:
+        return None
+    return " ".join(match.group(1).split()) or None
+
+
+# Phrasing is consistent enough across data-source docstrings to structure:
+#   "0.25 degree lat lon grid", "3km", "at 6-hour intervals", "Temporal resolution is 1 hour"
+RE_SPATIAL = re.compile(r"(\d+(?:\.\d+)?)\s*(?:degree|deg|km)\b", re.I)
+RE_TEMPORAL = re.compile(r"(?:at\s+)?(\d+)[- ]hour(?:ly)?(?:\s+intervals)?|temporal resolution is (\d+)\s*hour", re.I)
+
+
+def parse_grid(docstring: str) -> dict[str, str]:
+    """Best-effort spatial/temporal resolution from data-source prose."""
+    out: dict[str, str] = {}
+    if not docstring:
+        return out
+    head = " ".join(docstring.split("\n\n")[0].split())
+    spatial = RE_SPATIAL.search(head)
+    if spatial:
+        unit = "km" if "km" in spatial.group(0).lower() else "\u00b0"
+        out["resolution"] = f"{spatial.group(1)}{unit}"
+    temporal = RE_TEMPORAL.search(head)
+    if temporal:
+        hours = temporal.group(1) or temporal.group(2)
+        if hours:
+            out["cadence"] = f"{hours}h"
+    return out
+
+
 def parse_default_package(class_node: ast.ClassDef) -> str | None:
     """Default checkpoint URI from ``load_default_package()``.
 
@@ -136,6 +186,9 @@ def scan_module(source: Path, module: str) -> dict[str, dict[str, Any]]:
                 "summary": summary,
                 "badges": parse_badges(doc),
                 "checkpoint": parse_default_package(node),
+                "references": parse_references(doc),
+                "warning": parse_warning(doc),
+                "grid": parse_grid(doc),
                 "source_file": f"earth2studio/{module}/{py.name}",
             }
     return found
@@ -190,6 +243,57 @@ def parse_facets(source: Path) -> dict[str, Any]:
     return facets
 
 
+def parse_vocabulary(source: Path) -> dict[str, str]:
+    """``E2STUDIO_VOCAB`` — the canonical variable glossary (id -> description)."""
+    path = source / "earth2studio" / "lexicon" / "base.py"
+    if not path.exists():
+        return {}
+    for node in ast.parse(path.read_text()).body:
+        target = None
+        if isinstance(node, ast.Assign):
+            target = getattr(node.targets[0], "id", None)
+        elif isinstance(node, ast.AnnAssign):
+            target = getattr(node.target, "id", None)
+        if target == "E2STUDIO_VOCAB":
+            try:
+                return ast.literal_eval(node.value)
+            except (ValueError, SyntaxError):
+                return {}
+    return {}
+
+
+def parse_source_variables(source: Path) -> dict[str, int]:
+    """Lexicon class -> number of variables it maps.
+
+    24 of 54 lexicons build ``VOCAB`` dynamically (comprehensions/loops); those are
+    skipped rather than guessed at.
+    """
+    counts: dict[str, int] = {}
+    for py in sorted((source / "earth2studio" / "lexicon").glob("*.py")):
+        if py.name in {"__init__.py", "base.py"}:
+            continue
+        try:
+            tree = ast.parse(py.read_text())
+        except SyntaxError:
+            continue
+        for node in tree.body:
+            if not isinstance(node, ast.ClassDef):
+                continue
+            for sub in node.body:
+                target = None
+                if isinstance(sub, ast.AnnAssign):
+                    target = getattr(sub.target, "id", None)
+                elif isinstance(sub, ast.Assign):
+                    target = getattr(sub.targets[0], "id", None)
+                if target != "VOCAB":
+                    continue
+                try:
+                    counts[node.name] = len(ast.literal_eval(sub.value))
+                except (ValueError, SyntaxError):
+                    pass  # dynamically built — not statically countable
+    return counts
+
+
 def build(source: Path) -> dict[str, Any]:
     extras = parse_extras(source)
     registry: dict[str, Any] = {
@@ -199,7 +303,9 @@ def build(source: Path) -> dict[str, Any]:
             "note": "Generated file — do not edit by hand. Run the generator instead.",
         },
         "facets": parse_facets(source),
+        "vocabulary": parse_vocabulary(source),
     }
+    variables = parse_source_variables(source)
 
     for module, key in MODULES:
         exported = parse_exports(source / "earth2studio" / module / "__init__.py")
@@ -217,6 +323,16 @@ def build(source: Path) -> dict[str, Any]:
             }
             if meta.get("checkpoint"):
                 entry["checkpoint"] = meta["checkpoint"]
+            if meta.get("references"):
+                entry["references"] = meta["references"]
+            if meta.get("warning"):
+                entry["warning"] = meta["warning"]
+            if meta.get("grid"):
+                entry["grid"] = meta["grid"]
+            if key == "data_sources":
+                nvars = variables.get(f"{name}Lexicon")
+                if nvars:
+                    entry["variables"] = nvars
             if key in {"prognostic", "diagnostic", "data_assimilation"}:
                 entry["extra"] = match_extra(name, extras)
             entries.append(entry)
@@ -234,6 +350,7 @@ def build(source: Path) -> dict[str, Any]:
     registry["counts"]["models_total"] = sum(
         registry["counts"][k]["catalog"] for k in models
     )
+    registry["counts"]["vocabulary"] = len(registry["vocabulary"])
     return registry
 
 

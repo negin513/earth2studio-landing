@@ -92,6 +92,7 @@ nav:
       - Models: catalog/models.md
       - Data Sources: catalog/data.md
       - Components: catalog/components.md
+      - Variable Glossary: catalog/vocabulary.md
   - User Guide:
       - user-guide/index.md
       - Models: user-guide/models.md
