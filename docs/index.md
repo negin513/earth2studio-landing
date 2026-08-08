@@ -13,7 +13,7 @@ hide:
 <h1>Earth2Studio<br><em>Unified platform for AI in Earth System Sciences</em></h1>
 
 Run and verify AI-driven forecasts of the Earth system — on your own
-infrastructure. **40+ open models** behind one Python API.
+infrastructure. **{{ n('models_total') }} open models** behind one Python API.
 
 [Get started](#quickstart){ .md-button .md-button--primary }
 [View on GitHub](https://github.com/NVIDIA/earth2studio){ .md-button }
@@ -49,8 +49,8 @@ infrastructure. **40+ open models** behind one Python API.
 <div class="e2s-bleed e2s-trust">
   <span><a href="https://www.nvidia.com/en-us/high-performance-computing/earth-2/">Part of NVIDIA Earth-2</a></span>
   <span><a href="https://github.com/NVIDIA/earth2studio/blob/main/LICENSE">Apache-2.0 open source</a></span>
-  <span><a href="user-guide/models/">40+ AI models</a></span>
-  <span><a href="user-guide/data/">60+ data sources</a></span>
+  <span><a href="user-guide/models/">{{ n('models_total') }} AI models</a></span>
+  <span><a href="user-guide/data/">{{ n('data_sources') }} data sources</a></span>
 </div>
 
 <!-- ═══ 3. WHY IT MATTERS ═══ -->
@@ -319,6 +319,7 @@ weather and climate science.*
 
 ??? note "Cite Earth2Studio"
 
+    {% raw %}
     ```bibtex
     @software{earth2studio2024,
       author  = {{Earth2Studio Contributors}},
@@ -327,3 +328,4 @@ weather and climate science.*
       year    = {2024}
     }
     ```
+    {% endraw %}

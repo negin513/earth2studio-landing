@@ -6,6 +6,22 @@ on:
     branches: [main]
 
 jobs:
+  registry:
+    name: Registry drift guard
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check out earth2studio source
+        uses: actions/checkout@v4
+        with:
+          repository: NVIDIA/earth2studio
+          path: .earth2studio
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Fail if docs/data/registry.json is stale
+        run: python scripts/build_registry.py --source .earth2studio --check
+
   build:
     name: Build site (strict)
     runs-on: ubuntu-latest

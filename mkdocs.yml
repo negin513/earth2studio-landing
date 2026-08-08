@@ -51,6 +51,8 @@ extra_css:
 
 plugins:
   - search
+  - macros:
+      module_name: docs/macros
 
 markdown_extensions:
   - attr_list
