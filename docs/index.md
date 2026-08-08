@@ -1,10 +1,9 @@
 ---
+title: Earth2Studio
 hide:
   - navigation
   - toc
 ---
-
-# Earth2Studio { .e2s-hidden-title }
 
 <!-- ═══ 1. HERO — split layout on dark band ═══ -->
 <div class="e2s-bleed e2s-hero2" markdown>
@@ -13,12 +12,11 @@ hide:
 
 <h1>Earth2Studio<br><em>Unified platform for AI in Earth System Sciences</em></h1>
 
-Build, run, and verify AI-driven forecasts of the Earth system — on your
-own infrastructure. The largest open zoo of Earth system AI models,
-AI-ready data, and GPU-accelerated pipelines, behind one API.
+Run and verify AI-driven forecasts of the Earth system — on your own
+infrastructure. **40+ open models** behind one Python API.
 
-[Get started](user-guide/index.md){ .md-button .md-button--primary }
-[Learn more](#why-it-matters){ .md-button }
+[Get started](#quickstart){ .md-button .md-button--primary }
+[Try it in your browser :octicons-link-external-16:](https://build.nvidia.com/nvidia/fourcastnet){ .md-button }
 
 <p class="e2s-pip"><code>uv add "earth2studio @ git+https://github.com/NVIDIA/earth2studio.git@0.17.0"</code>
 <span class="e2s-pip__ver">v0.17.0 · July 2026</span></p>
