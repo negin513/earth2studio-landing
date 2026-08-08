@@ -60,6 +60,8 @@ Earth &amp; Environment</em>, 2025</a>) · a km-scale 12-hour forecast in
 2026</a>).</p>
 
 <!-- ═══ 4. THE PLATFORM — four named pillars ═══ -->
+<div class="e2s-bleed e2s-alt" markdown>
+
 ## The platform { .e2s-centered }
 
 <p class="e2s-centered">Four interchangeable building blocks. Swap any of
@@ -103,6 +105,8 @@ them without rewriting the rest.</p>
     every forecast against analysis and real observations.
 
     [Explore verification →](user-guide/verification.md)
+
+</div>
 
 </div>
 
@@ -172,8 +176,8 @@ regridding, coordinates, and device placement are handled for you.</p>
     and Typhoon Hagibis.
     [Launch the playground :octicons-link-external-16:](https://build.nvidia.com/nvidia/fourcastnet)
 
-<!-- ═══ 6. SPOTLIGHTS ═══ -->
-## More than a model runner { .e2s-centered }
+<!-- ═══ 6. SPOTLIGHT ═══ -->
+<div class="e2s-bleed e2s-alt" markdown>
 
 <div class="e2s-spot" markdown>
 <div class="e2s-spot__media" markdown>
@@ -192,6 +196,8 @@ Graduate from a notebook to recipes like huge ensembles and S2S forecasting.
 [Explore workflows →](user-guide/workflows.md)
 
 </div>
+</div>
+
 </div>
 
 <!-- ═══ 7. INSTITUTIONS + MODEL TEASER ═══ -->
@@ -223,15 +229,43 @@ from these research teams. Logos do not imply endorsement.</p>
 ## Proven in operation { .e2s-centered }
 
 <p class="e2s-centered">Earth-2 models — delivered through Earth2Studio — run
-in production today. <a href="https://www.brightband.com/company/news/earth2-medium-range-model">Brightband</a>
-issues daily global ensemble forecasts with Earth-2 Medium Range. The
-<strong>Israel Meteorological Service</strong> runs CorrDiff operationally —
-"a 90% reduction in compute time at 2.5-kilometer resolution" (Amir Givati,
-IMS director, <a href="https://blogs.nvidia.com/blog/nvidia-earth-2-open-models/">per
-NVIDIA</a>). <strong>GCL</strong> uses Earth-2 models in operation for
-photovoltaic prediction. <em>(As of NVIDIA's January 2026 announcement.)</em></p>
+in production today.</p>
+
+<div class="grid cards e2s-cols-fit e2s-proof" markdown>
+
+- **Brightband**
+
+    ---
+
+    Issues daily global ensemble forecasts with Earth-2 Medium Range —
+    among the first to run it operationally.
+
+    [Source: Brightband →](https://www.brightband.com/company/news/earth2-medium-range-model)
+
+- **Israel Meteorological Service**
+
+    ---
+
+    Runs CorrDiff operationally: "a 90% reduction in compute time at
+    2.5-kilometer resolution." — Amir Givati, IMS director
+
+    [Source: NVIDIA →](https://blogs.nvidia.com/blog/nvidia-earth-2-open-models/)
+
+- **GCL**
+
+    ---
+
+    Uses Earth-2 models in operation for photovoltaic power prediction.
+
+    [Source: NVIDIA →](https://blogs.nvidia.com/blog/nvidia-earth-2-open-models/)
+
+</div>
+
+<p class="e2s-centered e2s-evidence">As of NVIDIA's January 2026 open-models announcement.</p>
 
 <!-- ═══ 8. ECOSYSTEM ═══ -->
+<div class="e2s-bleed e2s-alt" markdown>
+
 ## Built open, connected everywhere { .e2s-centered }
 
 <div class="grid cards" markdown>
@@ -262,6 +296,8 @@ photovoltaic prediction. <em>(As of NVIDIA's January 2026 announcement.)</em></p
     fetch data, and run a first forecast automatically.
 
     [NVIDIA Skills →](https://build.nvidia.com/skills?q=earth2studio)
+
+</div>
 
 </div>
 

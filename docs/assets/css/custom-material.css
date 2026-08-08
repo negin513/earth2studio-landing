@@ -691,3 +691,37 @@
 .md-typeset .grid.e2s-cols-fit {
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 }
+
+/* ═══ Polish pass ═══ */
+
+/* Alternating tinted section bands */
+.e2s-alt {
+  background: var(--md-code-bg-color);
+  border-block: 1px solid var(--md-default-fg-color--lightest);
+  margin-block: 2.6rem;
+  padding-block: 0.4rem 2.2rem;
+}
+
+/* Pillars are the senior card grid: accent top border, larger icons */
+.md-typeset .grid.e2s-cols-4 > ul > li {
+  border-top: 3px solid var(--md-primary-fg-color);
+}
+
+.md-typeset .grid.e2s-cols-4 > ul > li > p:first-child .twemoji,
+.md-typeset .grid.e2s-cols-4 > ul > li > p:first-child .twemoji svg {
+  height: 1.7em;
+  width: 1.7em;
+}
+
+/* Proof cards: org name large, source link small */
+.md-typeset .grid.e2s-proof > ul > li > p:first-child {
+  font-size: 1.02rem;
+}
+
+.md-typeset .grid.e2s-proof > ul > li > p:last-child a {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  opacity: 0.85;
+  text-transform: uppercase;
+}
