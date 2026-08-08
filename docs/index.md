@@ -29,7 +29,17 @@ infrastructure. **40+ open models** behind one Python API.
 </div>
 <div class="e2s-hero2__img" markdown>
 
-![Global AI weather forecast rendered by Earth2Studio](https://huggingface.co/datasets/nvidia/earth2studio-assets/resolve/main/readme/v2/earth2studio-readme-hero.png?v2)
+<div class="e2s-orbit" role="img" aria-label="Earth2Studio mark: weather icons orbiting Earth">
+<img class="e2s-orbit__globe" src="assets/logo/earth2studio-globe-white.svg" alt="">
+<div class="e2s-orbit__ring">
+  <span class="e2s-orbit__icon" style="left:41.667%;top:3.333%"><svg viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9L17 7M7 17l-2.1 2.1"></path></svg></span>
+  <span class="e2s-orbit__icon" style="left:74.667%;top:22.5%"><svg viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 18h11a4 4 0 0 0 .6-7.95A6 6 0 0 0 6.3 8.6 4.5 4.5 0 0 0 6 18z"></path></svg></span>
+  <span class="e2s-orbit__icon" style="left:74.667%;top:60.833%"><svg viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L5 13h6l-1 9 8-11h-6z"></path></svg></span>
+  <span class="e2s-orbit__icon" style="left:41.667%;top:80%"><svg viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9c2.5-3 4.5-3 7 0s4.5 3 7 0 4.5-3 6 0M2 16c2.5-3 4.5-3 7 0s4.5 3 7 0 4.5-3 6 0"></path></svg></span>
+  <span class="e2s-orbit__icon" style="left:8.667%;top:60.833%"><svg viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 13v8M9 21h6M12 13V5M12 13l6.9 4M12 13l-6.9 4"></path><circle cx="12" cy="13" r="1.4"></circle></svg></span>
+  <span class="e2s-orbit__icon" style="left:8.667%;top:22.5%"><svg viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h9a3 3 0 1 0-3-3M3 12h13a3 3 0 1 1-3 3M3 16h6a2 2 0 1 1-2 2"></path></svg></span>
+</div>
+</div>
 
 </div>
 </div>

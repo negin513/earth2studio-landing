@@ -36,8 +36,9 @@ theme:
       toggle:
         icon: material/weather-sunny
         name: Switch to light mode
+  logo: assets/logo/earth2studio-mark.svg
+  favicon: assets/logo/earth2studio-mark.svg
   icon:
-    logo: nvidia/nvidia-logo
     repo: fontawesome/brands/github
 
 extra_css:

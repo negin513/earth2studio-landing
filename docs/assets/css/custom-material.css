@@ -725,3 +725,55 @@
   opacity: 0.85;
   text-transform: uppercase;
 }
+
+/* ═══ Earth2Studio brand mark (from NVIDIA Earth-2 UI mockups design) ═══ */
+
+/* Header logo: dark mark on light header, inverted on dark */
+.md-header__button.md-logo img { height: 1.6rem; width: 1.6rem; }
+[data-md-color-scheme="dark"] .md-header__button.md-logo img { filter: invert(1); }
+
+/* Animated orbit — icons circle the globe (36 s), counter-rotating upright */
+@keyframes e2sspin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+.e2s-orbit {
+  aspect-ratio: 1;
+  margin-inline: auto;
+  max-width: 340px;
+  position: relative;
+  width: 100%;
+}
+
+.e2s-orbit__globe {
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  inset: 0;
+  position: absolute;
+  width: 100% !important;
+}
+
+.e2s-orbit__ring {
+  animation: e2sspin 36s linear infinite;
+  inset: 0;
+  position: absolute;
+}
+
+.e2s-orbit__icon {
+  animation: e2sspin 36s linear infinite reverse;
+  display: block;
+  height: 16.667%;
+  position: absolute;
+  width: 16.667%;
+}
+
+.e2s-orbit__icon svg { display: block; height: 100%; width: 100%; }
+
+.e2s-orbit:hover .e2s-orbit__ring,
+.e2s-orbit:hover .e2s-orbit__icon { animation-play-state: paused; }
+
+@media (prefers-reduced-motion: reduce) {
+  .e2s-orbit__ring, .e2s-orbit__icon { animation: none; }
+}
