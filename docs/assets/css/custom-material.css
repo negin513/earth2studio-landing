@@ -533,3 +533,117 @@
   letter-spacing: 0.01em;
   margin-top: 0.45em;
 }
+
+/* ═══ Outline v2 additions ═══ */
+
+/* Hero pip-install line */
+.e2s-pip {
+  margin-top: 1.3rem;
+}
+
+.e2s-pip code {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 6px;
+  color: #d6f5a2 !important;
+  font-size: 0.78rem;
+  padding: 0.45em 0.9em;
+}
+
+.e2s-pip__ver {
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 0.72rem;
+  margin-left: 0.8em;
+}
+
+/* Trust band */
+.e2s-trust {
+  background: var(--md-code-bg-color);
+  border-block: 1px solid var(--md-default-fg-color--lightest);
+  color: var(--md-default-fg-color--light);
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 0.74rem;
+  font-weight: 700;
+  gap: 0.6rem 3rem;
+  justify-content: center;
+  letter-spacing: 0.08em;
+  padding-block: 1.05rem;
+  text-transform: uppercase;
+}
+
+.e2s-trust span::before {
+  color: var(--md-primary-fg-color);
+  content: "◆";
+  font-size: 0.55rem;
+  margin-right: 0.7em;
+  vertical-align: 2px;
+}
+
+/* Quickstart tabbed panel */
+.e2s-quick {
+  margin: 0 auto;
+  max-width: 760px;
+}
+
+.e2s-quick + ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 2.4rem;
+  justify-content: center;
+  list-style: none;
+  margin: 1.4rem auto 0 !important;
+  padding: 0;
+}
+
+.e2s-quick + ul li {
+  color: var(--md-default-fg-color--light);
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin: 0 !important;
+}
+
+/* Sovereignty band */
+.e2s-sov {
+  background:
+    radial-gradient(ellipse 70% 100% at 50% 0%, rgba(118, 185, 0, 0.16) 0%, transparent 70%),
+    #141810;
+  margin-top: 3.2rem;
+  padding-block: 3.6rem 4rem;
+  text-align: center;
+}
+
+.e2s-sov__title {
+  color: #fff !important;
+  font-size: clamp(1.5rem, 3vw, 2.1rem) !important;
+  margin-top: 0 !important;
+}
+
+.e2s-sov p {
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0 auto 1.8rem;
+  max-width: 560px;
+}
+
+.e2s-sov .md-button {
+  border-color: rgba(255, 255, 255, 0.35);
+  color: #fff;
+  margin: 0 0.3rem;
+}
+
+.e2s-sov .md-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: #fff;
+  color: #fff;
+}
+
+.e2s-sov .md-button--primary,
+.e2s-sov .md-button--primary:hover {
+  border-color: var(--md-primary-fg-color);
+  color: #000;
+}
+
+/* Institutions teaser table centered */
+.md-typeset table:not([class]) {
+  margin-inline: auto;
+}

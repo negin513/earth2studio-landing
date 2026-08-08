@@ -6,19 +6,22 @@ hide:
 
 # Earth2Studio { .e2s-hidden-title }
 
-<!-- ═══ HERO — split layout on dark band ═══ -->
+<!-- ═══ 1. HERO — split layout on dark band ═══ -->
 <div class="e2s-bleed e2s-hero2" markdown>
 <div class="e2s-hero2__inner" markdown>
 <div class="e2s-hero2__text" markdown>
 
 <h1>Earth2Studio<br><em>Unified platform for AI in Earth System Sciences</em></h1>
 
-Turn pre-trained AI Earth system models into running, GPU-accelerated
-forecast pipelines — the largest open model zoo, AI-ready Earth system
-data on demand, and built-in verification, behind one API.
+Build, run, and verify AI-driven forecasts of the Earth system — on your
+own infrastructure. The largest open zoo of Earth system AI models,
+AI-ready data, and GPU-accelerated pipelines, behind one API.
 
 [Get started](user-guide/index.md){ .md-button .md-button--primary }
-[Learn more](#everything-you-need-out-of-the-box){ .md-button }
+[Learn more](#why-it-matters){ .md-button }
+
+<p class="e2s-pip"><code>pip install earth2studio</code>
+<span class="e2s-pip__ver">v0.17.0 · July 2026</span></p>
 
 </div>
 <div class="e2s-hero2__img" markdown>
@@ -29,58 +32,147 @@ data on demand, and built-in verification, behind one API.
 </div>
 </div>
 
-## Everything you need, out of the box { .e2s-centered #everything-you-need-out-of-the-box }
+<!-- ═══ 2. TRUST BAND ═══ -->
+<div class="e2s-bleed e2s-trust">
+  <span>Part of NVIDIA Earth-2</span>
+  <span>Apache-2.0 open source</span>
+  <span>Global forecasts on a single GPU</span>
+  <span>Production-ready pipelines</span>
+</div>
 
-<p class="e2s-centered">Focus on the science and the product — Earth2Studio
-handles the models, data plumbing, and GPU details.</p>
+<!-- ═══ 3. WHY IT MATTERS ═══ -->
+## From anticipating extremes to exploring climate futures { .e2s-centered #why-it-matters }
+
+<p class="e2s-centered">AI Earth system models change the economics of
+forecasting — and what becomes possible when a forecast costs seconds
+instead of supercomputer-hours.</p>
 
 <div class="grid cards" markdown>
 
-- 🐍 **It's just Python**
+- ⚡ **Anticipate**
 
     ---
 
-    A forecast is a data source, a model, and a run function. No custom
-    configs, no job schedulers — plain Python you can read in a minute.
+    Ensemble forecasts at a scale traditional NWP can't afford —
+    quantify tail risk for the extreme events that matter most.
 
-- ⚡ **Fast on a single GPU**
-
-    ---
-
-    Global forecasts that once needed a supercomputing center complete in
-    seconds to minutes on one NVIDIA GPU.
-
-- 🧠 **Any model, one API**
+- 🌱 **Adapt**
 
     ---
 
-    FourCastNet, GraphCast, Pangu, Aurora, AIFS, and many more — swap
-    models with a one-line change. Checkpoints fetch automatically.
+    Downscaled, decision-ready projections for energy, agriculture,
+    insurance, and infrastructure planning.
 
-- 🌐 **AI-ready Earth system data**
-
-    ---
-
-    ERA5, GFS, HRRR, satellite and in-situ observations — analysis-ready
-    and cloud-optimized, streamed on demand with no downloads or
-    preprocessing.
-
-- ✅ **Verification built in**
+- 🔭 **Advance**
 
     ---
 
-    ACC, RMSE, CRPS, and more — GPU-accelerated metrics to score
-    forecasts against analysis and real observations.
-
-- 🔓 **Open source**
-
-    ---
-
-    Apache-2.0 licensed, framework-agnostic, and developed in the open as
-    part of NVIDIA Earth-2.
+    An open, level playing field for evaluating the next generation of
+    Earth system AI — in service of planetary resilience.
 
 </div>
 
+<!-- ═══ 4. THE PLATFORM — four named pillars ═══ -->
+## The platform { .e2s-centered }
+
+<p class="e2s-centered">Four interchangeable building blocks. Swap any of
+them without rewriting the rest.</p>
+
+<div class="grid cards" markdown>
+
+- 🧠 **Earth System Model Zoo**
+
+    ---
+
+    The largest open collection of prognostic and diagnostic Earth system
+    AI models — from medium-range weather to subseasonal scales — with
+    automatic checkpoint fetching.
+
+    [Explore models →](user-guide/models.md)
+
+- 🌐 **AI-Ready Earth System Data Sources**
+
+    ---
+
+    Reanalysis, operational forecasts, and satellite and in-situ
+    observations — analysis-ready and cloud-optimized, streamed on demand.
+
+    [Explore data →](user-guide/data.md)
+
+- 🔁 **Composable Inference Pipelines**
+
+    ---
+
+    Deterministic, ensemble, and downscaling workflows built from
+    interchangeable blocks: models, data, perturbations, statistics, IO.
+
+    [Explore workflows →](user-guide/workflows.md)
+
+- ✅ **Trusted Verification**
+
+    ---
+
+    GPU-accelerated deterministic and probabilistic metrics to score
+    every forecast against analysis and real observations.
+
+    [Explore verification →](user-guide/verification.md)
+
+</div>
+
+<!-- ═══ 5. QUICKSTART — tabbed code ═══ -->
+## Your first forecast in five lines { .e2s-centered }
+
+<p class="e2s-centered">A data source, a model, a run function — checkpoints,
+regridding, coordinates, and device placement are handled for you.</p>
+
+<div class="e2s-quick" markdown>
+
+=== "Deterministic"
+
+    ```python
+    from earth2studio.models.px import SFNO
+    from earth2studio.data import GFS
+    from earth2studio.io import ZarrBackend
+    from earth2studio.run import deterministic
+
+    model = SFNO.load_model(SFNO.load_default_package())
+    deterministic(["2024-01-01"], 10, model, GFS(), ZarrBackend())
+    ```
+
+=== "Ensemble"
+
+    ```python
+    from earth2studio.models.px import SFNO
+    from earth2studio.data import GFS
+    from earth2studio.io import ZarrBackend
+    from earth2studio.perturbation import SphericalGaussian
+    from earth2studio.run import ensemble
+
+    model = SFNO.load_model(SFNO.load_default_package())
+    ensemble(["2024-01-01"], 10, 8, model, GFS(), ZarrBackend(), SphericalGaussian())
+    ```
+
+=== "Diagnostics"
+
+    ```python
+    from earth2studio.models.px import SFNO
+    from earth2studio.models.dx import PrecipitationAFNO
+    from earth2studio.data import GFS
+    from earth2studio.io import ZarrBackend
+    from earth2studio.run import diagnostic
+
+    px = SFNO.load_model(SFNO.load_default_package())
+    dx = PrecipitationAFNO.load_model(PrecipitationAFNO.load_default_package())
+    diagnostic(["2024-01-01"], 10, px, dx, GFS(), ZarrBackend())
+    ```
+
+</div>
+
+- ✔ Checkpoints fetch automatically
+- ✔ Regridding and coordinates handled
+- ✔ Swapping models is a one-line change
+
+<!-- ═══ 6. SPOTLIGHTS ═══ -->
 ## More than a model runner { .e2s-centered }
 
 <div class="e2s-spot" markdown>
@@ -93,8 +185,9 @@ handles the models, data plumbing, and GPU details.</p>
 
 ### The largest open model zoo
 
-Prognostic and diagnostic AI weather models from across the field, packaged
-and ready to run behind one interface — with new models added continuously.
+Prognostic and diagnostic Earth system AI models from across the field,
+packaged and ready to run behind one interface — with new models added
+continuously.
 
 [Explore models →](user-guide/models.md)
 
@@ -128,21 +221,23 @@ regridding and coordinates handled for you.
 </div>
 <div class="e2s-spot__body" markdown>
 
-### Composable pipelines
+### From experiment to operations
 
 Chain data sources, models, perturbations, diagnostics, and statistics into
-deterministic, ensemble, or downscaling workflows — then swap any piece
-without rewriting the rest.
+production pipelines — then swap any piece without rewriting the rest.
+Graduate from a notebook to recipes like huge ensembles and S2S forecasting.
 
 [Explore workflows →](user-guide/workflows.md)
 
 </div>
 </div>
 
+<!-- ═══ 7. INSTITUTIONS + MODEL TEASER ═══ -->
 ## Models from leading institutions { .e2s-centered }
 
-<p class="e2s-centered">The Earth2Studio model zoo includes AI weather models
-developed by research teams across the industry and academia.</p>
+<p class="e2s-centered">The Earth2Studio model zoo includes Earth system AI
+models developed by research teams across industry and academia — the same
+model families powering national forecasting and digital-twin initiatives.</p>
 
 <div class="e2s-orgs">
   <span>NVIDIA</span>
@@ -155,6 +250,52 @@ developed by research teams across the industry and academia.</p>
   <span>Allen Institute for AI</span>
 </div>
 
+| Model | Institution | Type |
+| --- | --- | --- |
+| FourCastNet 3 / SFNO | NVIDIA | Global prognostic |
+| GraphCast | Google DeepMind | Global prognostic |
+| Aurora | Microsoft | Global prognostic |
+| CorrDiff | NVIDIA | Downscaling diagnostic |
+
+<div class="e2s-centered" markdown>
+[Browse the full model zoo :octicons-arrow-right-24:](user-guide/models.md){ .md-button }
+</div>
+
+<!-- ═══ 8. ECOSYSTEM ═══ -->
+## Built open, connected everywhere { .e2s-centered }
+
+<div class="grid cards" markdown>
+
+- 🏗️ **Train with PhysicsNeMo**
+
+    ---
+
+    PhysicsNeMo trains physics-AI models; Earth2Studio deploys them.
+    NVIDIA's open Earth-2 models flow directly into the zoo.
+
+    [PhysicsNeMo →](https://docs.nvidia.com/physicsnemo/latest/index.html)
+
+- 🗂️ **Speaks the scientific stack**
+
+    ---
+
+    Outputs stream to Zarr and NetCDF, landing directly in the
+    xarray / Pangeo analysis ecosystem — no conversion steps.
+
+    [Ecosystem →](user-guide/ecosystem.md)
+
+- 🤖 **Agent-ready**
+
+    ---
+
+    Official skills let coding agents install Earth2Studio, pick a model,
+    fetch data, and run a first forecast automatically.
+
+    [NVIDIA Skills →](https://build.nvidia.com/skills?q=earth2studio)
+
+</div>
+
+<!-- ═══ 9. WHO IT'S FOR ═══ -->
 ## Who it's for { .e2s-centered }
 
 <div class="grid cards" markdown>
@@ -163,8 +304,15 @@ developed by research teams across the industry and academia.</p>
 
     ---
 
-    Benchmark models against each other on identical data through one
-    unified API, and verify results with built-in metrics.
+    Benchmark models on identical data through one unified API, and
+    verify results with built-in metrics.
+
+- 🛰️ **Met services & agencies**
+
+    ---
+
+    Sovereign forecasting capability — run, fine-tune, and deploy
+    independently, on infrastructure you control.
 
 - 🏢 **Enterprises**
 
@@ -184,19 +332,39 @@ developed by research teams across the industry and academia.</p>
 
     ---
 
-    A free, open on-ramp to modern AI weather modeling that runs on a
+    A free, open on-ramp to modern Earth system AI that runs on a
     single GPU.
 
 </div>
 
-<div class="e2s-centered" markdown>
+<!-- ═══ 10. SOVEREIGNTY BAND ═══ -->
+<div class="e2s-bleed e2s-sov" markdown>
 
-## Ready to run your first forecast?
+## Your models. Your data. Your GPUs. { .e2s-sov__title }
 
-*Our mission is to enable everyone to build, research, and explore AI-driven
-weather and climate science.*
+Earth2Studio is open source and runs where you run — no queue, no service
+tier, no data leaving your site.
 
 [Get started :octicons-arrow-right-24:](user-guide/index.md){ .md-button .md-button--primary }
 [Browse examples](examples/index.md){ .md-button }
+
+</div>
+
+<!-- ═══ 11. CITATION + MISSION ═══ -->
+## Citing Earth2Studio { .e2s-centered }
+
+```bibtex
+@software{earth2studio2024,
+  author  = {{Earth2Studio Contributors}},
+  title   = {{NVIDIA Earth2Studio}},
+  url     = {https://github.com/NVIDIA/earth2studio},
+  year    = {2024}
+}
+```
+
+<div class="e2s-centered" markdown>
+
+*Our mission is to enable everyone to build, research, and explore AI-driven
+weather and climate science.*
 
 </div>
