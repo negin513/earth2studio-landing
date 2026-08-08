@@ -40,4 +40,4 @@ from earth2studio.models.px import SFNO      # or GraphCast, Pangu, Aurora, ...
 model = SFNO.load_model(SFNO.load_default_package())
 ```
 
-[Full model catalog :octicons-arrow-right-24:](https://nvidia.github.io/earth2studio/modules/models.html){ .md-button }
+[Full model catalog :octicons-arrow-right-24:](https://nvidia.github.io/earth2studio/modules/models_px.html){ .md-button }

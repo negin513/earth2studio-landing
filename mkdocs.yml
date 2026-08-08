@@ -1,6 +1,8 @@
 site_name: NVIDIA Earth2Studio
 site_description: Unified platform for AI in Earth System Sciences — open-source inference for AI weather and climate models
-site_url: https://nvidia.github.io/earth2studio/
+# TODO: set the real deployment URL before publishing (must NOT collide with the
+# official Sphinx docs at https://nvidia.github.io/earth2studio/)
+site_url: https://example.invalid/earth2studio-landing/
 repo_url: https://github.com/NVIDIA/earth2studio
 repo_name: NVIDIA/earth2studio
 
@@ -90,5 +92,4 @@ nav:
       - Verification: user-guide/verification.md
   - Examples: examples/index.md
   - Recipes: recipes/index.md
-  - Applications: applications/index.md
   - Earth2Academy: earth2academy/index.md

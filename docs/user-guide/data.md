@@ -31,4 +31,4 @@ assimilation research.
 - **Satellite instruments** — GOES, Himawari, Meteosat, JPSS, and MetOp readers
 - **Station and event records** — ISD surface stations, GHCN, IBTrACS cyclone tracks
 
-[Full data source catalog :octicons-arrow-right-24:](https://nvidia.github.io/earth2studio/modules/datasources.html){ .md-button }
+[Full data source catalog :octicons-arrow-right-24:](https://nvidia.github.io/earth2studio/modules/datasources_analysis.html){ .md-button }
