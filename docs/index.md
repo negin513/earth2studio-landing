@@ -78,7 +78,7 @@ instead of supercomputer-hours.</p>
 <p class="e2s-centered">Four interchangeable building blocks. Swap any of
 them without rewriting the rest.</p>
 
-<div class="grid cards" markdown>
+<div class="grid cards e2s-cols-4" markdown>
 
 - 🧠 **Earth System Model Zoo**
 
