@@ -704,3 +704,10 @@
 /* Trust band links inherit band styling */
 .e2s-trust a { color: inherit; font-weight: inherit; }
 .e2s-trust a:hover { color: var(--md-primary-fg-color); text-decoration: none; }
+
+/* Evidence chip under why-it-matters */
+.e2s-evidence {
+  font-size: 0.78rem !important;
+  max-width: 720px !important;
+  opacity: 0.85;
+}

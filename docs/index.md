@@ -44,36 +44,20 @@ infrastructure. **40+ open models** behind one Python API.
 </div>
 
 <!-- ═══ 3. WHY IT MATTERS ═══ -->
-## From anticipating extremes to exploring climate futures { .e2s-centered #why-it-matters }
+## From anticipating extremes to exploring what's next { .e2s-centered #why-it-matters }
 
 <p class="e2s-centered">AI Earth system models change the economics of
-forecasting — and what becomes possible when a forecast costs seconds
-instead of supercomputer-hours.</p>
+forecasting. When a global forecast takes seconds on a GPU instead of hours
+on a supercomputer, ensembles grow from dozens of members to thousands — and
+tail risks that were invisible become quantifiable.</p>
 
-<div class="grid cards" markdown>
-
-- :fontawesome-solid-bolt: **Anticipate**
-
-    ---
-
-    Ensemble forecasts at a scale traditional NWP can't afford —
-    quantify tail risk for the extreme events that matter most.
-
-- :fontawesome-solid-seedling: **Adapt**
-
-    ---
-
-    Downscaled, decision-ready projections for energy, agriculture,
-    insurance, and infrastructure planning.
-
-- :fontawesome-solid-rocket: **Advance**
-
-    ---
-
-    An open, level playing field for evaluating the next generation of
-    Earth system AI — in service of planetary resilience.
-
-</div>
+<p class="e2s-centered e2s-evidence">Peer-reviewed: km-scale downscaling at
+least 22× faster and 1,300× more energy-efficient than CPU-based NWP
+(<a href="https://www.nature.com/articles/s43247-025-02042-5"><em>Communications
+Earth &amp; Environment</em>, 2025</a>) · a km-scale 12-hour forecast in
+~2 minutes on a single GPU
+(<a href="https://doi.org/10.1126/sciadv.adv0423"><em>Science Advances</em>,
+2026</a>).</p>
 
 <!-- ═══ 4. THE PLATFORM — four named pillars ═══ -->
 ## The platform { .e2s-centered }
