@@ -1,8 +1,8 @@
 site_name: NVIDIA Earth2Studio
 site_description: Unified platform for AI in Earth System Sciences — open-source inference for AI weather and climate models
-# TODO: set the real deployment URL before publishing (must NOT collide with the
-# official Sphinx docs at https://nvidia.github.io/earth2studio/)
-site_url: https://example.invalid/earth2studio-landing/
+# Overridden at deploy time by the SITE_URL env var (see .github/workflows/deploy.yml).
+# Must NOT be nvidia.github.io/earth2studio/ — that is the official Sphinx docs.
+site_url: !ENV [SITE_URL, "https://negin513.github.io/earth2studio-landing/"]
 repo_url: https://github.com/NVIDIA/earth2studio
 repo_name: NVIDIA/earth2studio
 

@@ -4,8 +4,33 @@ on:
   pull_request:
   push:
     branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
+  build:
+    name: Build site (strict)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: requirements.txt
+      - run: pip install -r requirements.txt
+      - name: Build with strict mode
+        run: mkdocs build --strict
+      # Reused by the link job and (on main) by deploy, so the site is built once.
+      - uses: actions/upload-artifact@v4
+        with:
+          name: site
+          path: site/
+          retention-days: 7
+
   registry:
     name: Registry drift guard
     runs-on: ubuntu-latest
@@ -19,39 +44,31 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Fail if docs/data/registry.json is stale
+      # Fails if docs/data/registry.json differs from a fresh parse of upstream —
+      # i.e. the catalog can never silently drift from the code it documents.
+      - name: Check registry is current
         run: python scripts/build_registry.py --source .earth2studio --check
-
-  build:
-    name: Build site (strict)
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-          cache: pip
-      - run: pip install -r requirements.txt
-      - name: Build with strict mode
-        run: mkdocs build --strict
 
   links:
     name: Check links
     runs-on: ubuntu-latest
+    needs: build
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/download-artifact@v4
         with:
-          python-version: "3.12"
-          cache: pip
-      - run: pip install -r requirements.txt
-      - run: mkdocs build
+          name: site
+          path: site
       - name: lychee link checker
         uses: lycheeverse/lychee-action@v2
         with:
+          # 429 = rate-limited by the target host, not a broken link.
           args: >-
             --no-progress
             --accept 200,206,429
+            --max-concurrency 8
             --exclude-path site/404.html
             'site/**/*.html'
           fail: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
