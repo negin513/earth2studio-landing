@@ -2,7 +2,9 @@ name: Deploy
 
 # Publishes to GitHub Pages at https://<owner>.github.io/earth2studio-landing/
 #
-# Pages is enabled automatically by the configure-pages step below.
+# ONE-TIME SETUP (required): repo Settings -> Pages -> Source = "GitHub Actions".
+# The workflow's GITHUB_TOKEN cannot create a Pages site itself, so this cannot be
+# automated from here.
 # Note this deliberately does NOT publish to nvidia.github.io/earth2studio/, which
 # is the official Sphinx docs' address — see site_url in mkdocs.yml.
 
@@ -40,10 +42,6 @@ jobs:
 
       - uses: actions/configure-pages@v5
         id: pages
-        with:
-          # Turn Pages on automatically instead of failing when it has never
-          # been configured in repo settings.
-          enablement: true
 
       # Build against the Pages URL so canonical links and the sitemap are correct,
       # rather than the placeholder site_url committed in mkdocs.yml.

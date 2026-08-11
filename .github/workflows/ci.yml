@@ -62,12 +62,14 @@ jobs:
       - name: lychee link checker
         uses: lycheeverse/lychee-action@v2
         with:
-          # 429 = rate-limited by the target host, not a broken link.
-          # The site's own canonical/sitemap URLs are excluded: they 404 until the
-          # first Pages deploy publishes them, which would make CI fail on PRs.
+          # Accepted non-2xx codes are anti-bot responses, not broken links:
+          #   401 gated Hugging Face repos, 403 doi.org's crawler policy,
+          #   202 build.nvidia.com's bot check, 429 host rate limiting.
+          # The site's own canonical URLs are excluded: they 404 until the first
+          # Pages deploy publishes them, which would fail every PR until then.
           args: >-
             --no-progress
-            --accept 200,206,429
+            --accept 200,206,202,401,403,429
             --max-concurrency 8
             --exclude-path site/404.html
             --exclude '^https://negin513\.github\.io/earth2studio-landing'
