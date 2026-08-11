@@ -112,6 +112,10 @@ def parse_references(docstring: str) -> list[str]:
     seen: list[str] = []
     for url in urls:
         url = url.rstrip(".,)")
+        # Upstream docstrings wrap long URLs, leaving a dangling version suffix
+        # (e.g. ".../html/2309.15214v"). Normalize to the canonical abs/ form
+        # rather than emitting a 404.
+        url = re.sub(r"^https://arxiv\.org/html/([\d.]+?)v?$", r"https://arxiv.org/abs/\1", url)
         if any(host in url for host in REF_HOSTS) and url not in seen:
             seen.append(url)
     return seen
